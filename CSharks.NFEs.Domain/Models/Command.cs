@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharks.NFEs.Domain.Enums
+namespace CSharks.NFEs.Domain.Models
 {
-    public enum TypeUser
+    public class Command
     {
     }
 }

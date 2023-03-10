@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharks.NFEs.Services.Services
+namespace CSharks.NFEs.Services.Helpers
 {
-    public class Encrypt : IEncryptService
+    public class StringCodec : IStringCodecService
     {
     }
 }

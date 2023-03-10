@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharks.NFEs.Domain.Models
+namespace CSharks.NFEs.Services.Interfaces
 {
-    public class Categories
+    public interface IStringCodecService
     {
     }
 }

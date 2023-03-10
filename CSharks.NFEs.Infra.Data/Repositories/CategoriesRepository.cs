@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Infra.Data.Repositories
 {
-    public class CategoriesRepository : BaseRepository<Categories>, ICategoriesRepository
+    public class CategoriesRepository : BaseRepository<Category>, ICategoriesRepository
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Domain.Interfaces.Repositories
 {
-    public interface IServicesRepository : IBaseRepository<Services>
+    public interface IServicesRepository : IBaseRepository<Service>
     {
     }
 }

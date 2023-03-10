@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharks.NFEs.Services.Helpers
+namespace CSharks.NFEs.Domain.Models
 {
-    public class Encrypt
+    public class Category
     {
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharks.NFEs.Services.Interfaces
+namespace CSharks.NFEs.Domain.Enums
 {
-    public interface IEncryptService
+    public enum TypeProfile
     {
     }
 }

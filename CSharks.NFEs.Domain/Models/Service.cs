@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Domain.Models
 {
-    public class Services
+    public class Service
     {
     }
 }
