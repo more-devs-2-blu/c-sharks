@@ -2,7 +2,7 @@
 
 Requisito | Descrição
 ------------ | -------------
-RF | O sistema deve conter uma página de login com sessão de usuáriol
+RF | O sistema deve conter uma página de login com sessão de usuário
 RF | Cada usuário deve ter seu acesso restrito de acordo com o seu perfil de usuário 
 RF | O sistema deve ser capaz de `emitir uma nota fiscal`
 RF | O sistema deve ser capaz de obter o resultado de uma emissão de NF assim como cancelar e buscar NFs
