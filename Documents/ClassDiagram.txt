@@ -1,0 +1,67 @@
+@startuml
+
+
+skin rose
+
+
+title Class Diagram
+
+
+
+
+class NF {
+  +Id: guid
+  +Description: string 
+  +SerialNumber: string 
+  +Tax: float 
+  -ServiceId: fk_Service
+  -ServiceCategoryId: fk_Category
+  -ClientId: fk_Client
+  +GetService(): Service
+  +GetCategory(): Category
+  +GetClient(): Client
+}
+
+
+class Client {
+  +Id: guid
+  +Name: string
+  +CpfCnpj: string
+  +Enrollment: TypeClient 
+  -NFId: List
+  +GetNFs(): List
+}
+
+
+class User {
+  +Id: guid
+  +Name: string
+  +Login: string
+  +Password: string
+  +Profile: TypeProfile
+  +InputValidation(): bool
+}
+
+
+class Service {
+  +Id: guid
+  +Name: string
+  +Aliquot: double
+  -Category_Id: fk_Category
+  +GetCategory(): Category
+  
+}
+class Category {
+  +Id: guid
+  +Description: string
+}
+
+
+
+
+Client <|-down- "many" NF : "1"
+NF <|-down- "1" Service : "many"
+Service <|-up- "1" Category : "1"
+
+
+@enduml

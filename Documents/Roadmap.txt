@@ -1,0 +1,16 @@
+1o encontro e definição de um escopo geral | Tirar dúvidas com o pessoal da senior | Afunilamento do escopo | Conversa com a equipe para discutir métodos, atribuições e espírito
+Pesquisa do produto (NF)
+Arquitetura inicial do Sistema, definição de tecnologias, patterns e visão geral da estrutura de arquivos e nomes
+Estudo da possibilidade de integração da Dashboard com PowerBi (definição entre powerBi e chart.js)
+Criação de workspace geral no Postman
+Criação de modelo relacional das tabelas do banco de dados
+Criação dos modelos de telas (a partir da arquitetura proposta) utilizando o Figma 
+Criação do projeto utilizando os patterns de acordo com o projeto criado (arquitetura) no Draw.io
+Subir projeto no Github não oficial para agilizar o processo 
+Configurações iniciais do projeto, tais como logs, configurações de usuário, migrations e etc
+2o encontro, discussão da arquitetura e mudanças | atribuições da equipe na criação dos cruds | atribuições na criação de tela | verificar o modo de consumo da API  | Definir RNF e RF | Definir diagrama de classes e Modelo relacional
+Subir o projeto no Github ofiicial
+Implantação em geral 
+3o encontro 'definir data' definir aspectos do projeto pós primeira implantação, tirar dúvidas e considerar novos caminhos
+Implantação em geral 2
+4o encontro 'definir data'
