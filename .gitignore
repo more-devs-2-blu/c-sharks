@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Draw IO items
+.$Architecture.drawio.bkp
+.$Architecture.drawio.dtmp
