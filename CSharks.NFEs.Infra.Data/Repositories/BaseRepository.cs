@@ -16,20 +16,19 @@ namespace CSharks.NFEs.Infra.Data.Repositories
             _sqlContext = context;
         }
 
-        public List<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            List<T> list = _sqlContext.Set<T>();
-            return list;
+            return _sqlContext.Set<T>();
         }
 
-        public Task<T> GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            return await _sqlContext.set<T>().findAsync(id);
+            return await _sqlContext.Set<T>().FindAsync(id);
         }
 
         public Task<int> Save(T entity)
         {
-            _sqlContext.set<T>().Add(entity);
+            _sqlContext.Set<T>().Add(entity);
             return _sqlContext.SaveChangesAsync();
         }
 
@@ -40,7 +39,7 @@ namespace CSharks.NFEs.Infra.Data.Repositories
         }
         public Task<int> Delete(T entity)
         {
-            _sqlContext.Set<T>.Remove(entity);
+            _sqlContext.Set<T>().Remove(entity);
             return _sqlContext.SaveChangesAsync();
         }
     }
