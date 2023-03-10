@@ -1,8 +1,14 @@
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
+/*
+builder.Services.AddDbContext<SQLServerContext>
+    (options => options.UseSqlServer();
+*/
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
