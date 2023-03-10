@@ -1,0 +1,25 @@
+Type: Quais são os tipos de commit:
+
+
+O type é responsável por nos dizer qual o tipo de alteração ou iteração está sendo feita, das regras da convenção, temos os seguintes tipos:
+
+
+test: indica qualquer tipo de criação ou alteração de códigos de teste.
+
+
+feat: indica o desenvolvimento de uma nova feature ao projeto.
+
+
+refactor: usado quando houver uma refatoração de código que não tenha qualquer tipo de impacto na lógica/regras de negócio do sistema. 
+
+
+style: empregado quando há mudanças de formatação e estilo do código que não alteram o sistema de nenhuma forma.
+
+
+fix: utilizado quando há correção de erros que estão gerando bugs no sistema.
+
+
+docs: usado quando há mudanças na documentação do projeto.
+
+
+revert: indica a reverão de um commit anterior.
