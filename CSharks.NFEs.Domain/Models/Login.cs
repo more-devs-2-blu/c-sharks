@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Domain.Models
 {
-    public class Login
-    {
-    }
+    
 }
