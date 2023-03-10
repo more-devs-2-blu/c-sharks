@@ -28,5 +28,14 @@ namespace CSharks.NFEs.Domain.Models
 	public string Situacao { get; set; }
 	public string Observacao { get; set; }
 	public string Solicitacao { get; set; }
+	    
+	    public int ServiceId { get; set; }
+	public virtual Service? Service { get; set; }
+	
+	public int CategoryId { get; set; }
+	public virtual Category? Category { get; set; }
+	
+	public int ClientId { get; set; }
+	public virtual Client? Client { get; set; }
     }
 }
