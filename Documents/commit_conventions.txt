@@ -22,4 +22,6 @@ fix: utilizado quando há correção de erros que estão gerando bugs no sistema
 docs: usado quando há mudanças na documentação do projeto.
 
 
+del: utilizado para remover arquivos
+
 revert: indica a reverão de um commit anterior.
