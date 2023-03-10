@@ -9,10 +9,10 @@ namespace CSharks.NFEs.Domain.Models
     public class Client
     {
         public int Id { get; set; }
-	    public string Name { get; set; }
-	    public string CPFCNPJ { get; set; }
-	    public string Enrollment { get; set; }
+	public string Name { get; set; }
+	public string CPFCNPJ { get; set; }
+	public string Enrollment { get; set; }
 	
-	    public virtual List<int>? NFId { get; set; }
+	public virtual List<int>? NFId { get; set; }
     }
 }
