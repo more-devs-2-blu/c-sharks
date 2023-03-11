@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 namespace CSharks.NFEs.WebApp.Services
 {
-    public class Session : ISessionService
+    public class UserSession : ISessionService
     {
         
         private readonly IHttpContextAccessor _httpContext;
 
-        public Session(IHttpContextAccessor httpContextAccessor)
+        public UserSession(IHttpContextAccessor httpContextAccessor)
         {
             _httpContext = httpContextAccessor;
         }
