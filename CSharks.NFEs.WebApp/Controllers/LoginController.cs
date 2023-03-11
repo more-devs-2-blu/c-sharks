@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Domain.Interfaces.Repositories;
 using CSharks.NFEs.Services.Helpers;
+using CSharks.NFEs.Services.Interfaces;
+using CSharks.NFEs.WebApp.Services;
 
 namespace CSharks.NFEs.WebApp.Controllers
 {
@@ -10,10 +12,12 @@ namespace CSharks.NFEs.WebApp.Controllers
     {
 
         private readonly IUserRepository _userRepo;
+        private readonly ISessionService _session;
 
-        public LoginController(IUserRepository userRepo)
+        public LoginController(IUserRepository userRepo, ISessionService session)
         {
             _userRepo = userRepo;
+            _session = session;
         }
 
         public IActionResult Index()
@@ -31,7 +35,8 @@ namespace CSharks.NFEs.WebApp.Controllers
                     string passEncoded = StringCodec.EncodeToBase64(credentials.Password);
                     if (user.InputValidation(passEncoded))
                     {
-                        return View("~/Views/Home/Index.cshtml");
+                        _session.CreateSession(user);
+                        return RedirectToAction("Index", "Home");
                     }
 
                     TempData["Error"] = "Senha inválida";
@@ -47,6 +52,13 @@ namespace CSharks.NFEs.WebApp.Controllers
             return View("Index");
             
 
+        }
+
+        public IActionResult Exit()
+        {
+            _session.RemoveSession();
+            TempData["Success"] = "Usuário Deslogado!";
+            return RedirectToAction("Index");
         }
     }
 }

@@ -21,16 +21,14 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<MySqlContext>
     (options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
 
 //Default lifetimes services
-//builder.Services.AddScoped<ISessionService, UserSession>();
-
+builder.Services.AddScoped<ISessionService, UserSession>();
 builder.Services.AddScoped<IApiClientService, ApiClient>();
-
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
