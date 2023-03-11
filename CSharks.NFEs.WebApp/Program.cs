@@ -28,9 +28,14 @@ builder.Services.AddDbContext<MySqlContext>
 
 //Default lifetimes services
 //builder.Services.AddScoped<ISessionService, UserSession>();
+
+builder.Services.AddScoped<IApiClientService, ApiClient>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+
 //Creates WebApplication instance
+
 var app = builder.Build();
 
 //Resources
