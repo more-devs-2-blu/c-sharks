@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Infra.Data.Data
 {
-    public class SqlServerContext : DbContext
+    public class MySqlContext : DbContext
     {
-        public SqlServerContext(DbContextOptions<SqlServerContext> options) : base(options)
+        public MySqlContext(DbContextOptions<MySqlContext> options) : base(options)
         {
         }
 

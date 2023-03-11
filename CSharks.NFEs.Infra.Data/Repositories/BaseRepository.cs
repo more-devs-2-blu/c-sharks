@@ -10,8 +10,8 @@ namespace CSharks.NFEs.Infra.Data.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly SqlServerContext _sqlContext;
-        public BaseRepository(SqlServerContext context) 
+        private readonly MySqlContext _sqlContext;
+        public BaseRepository(MySqlContext context) 
         {
             _sqlContext = context;
         }
