@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CSharks.NFEs.Domain.Models;
 
 namespace CSharks.NFEs.Services.Interfaces
 {
     public interface ISessionService
     {
+        void CreateSession(User user);
+        void RemoveSession();
+        User GetSession();
     }
 }

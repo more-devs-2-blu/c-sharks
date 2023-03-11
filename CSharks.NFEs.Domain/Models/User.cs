@@ -1,23 +1,23 @@
 ﻿using CSharks.NFEs.Domain.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CSharks.NFEs.Domain.Models
 {
     public class User
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
 
-        [Required(ErrorMessage = "Digite o login")]
-        public string Login { get; set; }
+        [Required(ErrorMessage = "Digite o nome do usuário"), Column(TypeName = "varchar(55)")]
+        public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Digite a senha")]
-        public string Password { get; set; }
+        [Required(ErrorMessage = "Digite um login para o usuário"), Column(TypeName = "varchar(16)")]
+        public string Login { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Digite uma senha para o usuário"), Column(TypeName = "varchar(18)")]
+        public string Password { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Escolha um perfil para o usuário")]
         public TypeProfile Profile { get; set; }
 
         public bool InputValidation(string paramLogin, string paramPassword)
@@ -26,6 +26,5 @@ namespace CSharks.NFEs.Domain.Models
                 return true;
             else return false;
         }
-
     }
 }
