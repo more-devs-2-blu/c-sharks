@@ -8,15 +8,16 @@ namespace CSharks.NFEs.Domain.Models
     {
         public Guid Id { get; set; }
 
-        [Required, Column(TypeName = "varchar(55)")]
+        [Required(ErrorMessage = "Digite o nome do usuário"), Column(TypeName = "varchar(55)")]
         public string Name { get; set; } = string.Empty;
 
-        [Required, Column(TypeName = "varchar(16)")]
+        [Required(ErrorMessage = "Digite um login para o usuário"), Column(TypeName = "varchar(16)")]
         public string Login { get; set; } = string.Empty;
 
-        [Required, Column(TypeName = "varchar(18)")]
+        [Required(ErrorMessage = "Digite uma senha para o usuário"), Column(TypeName = "varchar(18)")]
         public string Password { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Escolha um perfil para o usuário")]
         public TypeProfile Profile { get; set; }
 
         public bool InputValidation(string paramLogin, string paramPassword)

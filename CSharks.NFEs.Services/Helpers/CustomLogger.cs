@@ -10,12 +10,12 @@ namespace CSharks.NFEs.Services.Helpers
             .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
-        internal static void LogInformation(string message)
+        public static void LogInformation(string message)
         {
             logger.Information(message);
         }
 
-        internal static void LogError(string message)
+        public static void LogError(string message)
         {
             logger.Error(message);
         }
