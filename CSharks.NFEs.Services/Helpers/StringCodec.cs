@@ -1,7 +1,4 @@
-﻿using CSharks.NFEs.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace CSharks.NFEs.Services.Helpers
 {
