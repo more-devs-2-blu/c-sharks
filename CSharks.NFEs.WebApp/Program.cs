@@ -5,11 +5,15 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 var MySqlConnectionString = builder.Configuration.GetConnectionString("MySqlConnectionString");
 
-builder.Services.AddDbContext<MySqlContext>
-    (options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MySqlContext>
+    (options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
+
+
 
 var app = builder.Build();
 
@@ -21,6 +25,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}");
+
 
 using (var scope = app.Services.CreateScope())
 {
