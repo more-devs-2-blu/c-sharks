@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Services.Interfaces
 {
-    public class ISessionService
+    public interface ISessionService
     {
     }
 }

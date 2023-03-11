@@ -1,4 +1,6 @@
 using CSharks.NFEs.Infra.Data.Data;
+using CSharks.NFEs.Services.Interfaces;
+using CSharks.NFEs.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -13,7 +15,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MySqlContext>
     (options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
 
-
+builder.Services.AddScoped<IApiClientService, ApiClient>();
 
 var app = builder.Build();
 
