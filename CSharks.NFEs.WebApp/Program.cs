@@ -22,7 +22,7 @@ builder.Services.AddDbContext<MySqlContext>
     (options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
 
 //Default lifetimes services
-builder.Services.AddScoped<ISessionService, Session>();
+builder.Services.AddScoped<ISessionService, UserSession>();
 
 //Creates WebApplication instance
 var app = builder.Build();
