@@ -1,5 +1,6 @@
-﻿using CSharks.NFEs.Domain.Models;
+﻿using CSharks.NFEs.Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using CSharks.NFEs.Domain.Models;
 
 namespace CSharks.NFEs.WebApp.Controllers
 {
@@ -10,22 +11,22 @@ namespace CSharks.NFEs.WebApp.Controllers
             return View();
         }
 
-        public IActionResult InputValidate(User credentials)
+        public IActionResult InputValidate(LoginDTO credentials)
         {
-            if (true)
+            if (ModelState.IsValid)
             {
-
-                if (credentials.InputValidation(credentials.Login, credentials.Password))
+                User user = new User();
+                if (user.InputValidation(credentials.Login, credentials.Password))
                 {
                     return View("~/Views/Home/Index.cshtml");
                 }
 
                 TempData["Error"] = "Senha ou usuário inválidos"; 
-                return RedirectToAction("Index");
+                return View("Index");
 
             }
             
-            return RedirectToAction("Index");
+            return View("Index");
             
 
         }
