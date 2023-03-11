@@ -1,15 +1,22 @@
 ﻿using CSharks.NFEs.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CSharks.NFEs.Domain.Models
 {
     public class User
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
 
-        public string Login { get; set; }
+        [Required, Column(TypeName = "varchar(55)")]
+        public string Name { get; set; } = string.Empty;
 
-        public string Password { get; set; }
+        [Required, Column(TypeName = "varchar(16)")]
+        public string Login { get; set; } = string.Empty;
+
+        [Required, Column(TypeName = "varchar(18)")]
+        public string Password { get; set; } = string.Empty;
+
         public TypeProfile Profile { get; set; }
 
         public bool InputValidation(string paramLogin, string paramPassword)
@@ -18,6 +25,5 @@ namespace CSharks.NFEs.Domain.Models
                 return true;
             else return false;
         }
-
     }
 }
