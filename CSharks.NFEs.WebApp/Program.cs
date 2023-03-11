@@ -1,4 +1,5 @@
 using CSharks.NFEs.Domain.Interfaces.Repositories;
+using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Infra.Data.Data;
 using CSharks.NFEs.Infra.Data.Repositories;
 using CSharks.NFEs.Services.Interfaces;

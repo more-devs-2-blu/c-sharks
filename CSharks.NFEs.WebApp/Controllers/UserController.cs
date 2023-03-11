@@ -1,5 +1,6 @@
 ﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
 using CSharks.NFEs.Domain.Models;
+using CSharks.NFEs.Services.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSharks.NFEs.WebApp.Controllers
@@ -23,7 +24,7 @@ namespace CSharks.NFEs.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                user.Password = StringCodec.EncodeToBase64(user.Password);
                 _userRepo.Save(user);
                 TempData["Success"] = "Salvo com sucesso";
             } else
