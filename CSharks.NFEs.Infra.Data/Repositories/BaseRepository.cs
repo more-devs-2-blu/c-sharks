@@ -1,10 +1,5 @@
 ﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
 using CSharks.NFEs.Infra.Data.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Infra.Data.Repositories
 {
