@@ -1,4 +1,5 @@
-﻿using CSharks.NFEs.Domain.Models;
+﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
+using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Services.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,15 @@ namespace CSharks.NFEs.WebApp.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IUserRepository _userRepo; 
+        public UserController(IUserRepository userRepository){
+
+            _userRepo = userRepository;
+
+        }
         public IActionResult Index()
         {
-            //recive list of categories to display
-            //  List<users> users = _requestMySql and pass it on parameters
+
             return View("~/Views/Register/Users/Index.cshtml");
         }
 
@@ -18,7 +24,8 @@ namespace CSharks.NFEs.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //save the category on database _saveOnDataBase (category) 
+                user.Password = StringCodec.EncodeToBase64(user.Password);
+                _userRepo.Save(user);
                 TempData["Success"] = "Salvo com sucesso";
             } else
             {
