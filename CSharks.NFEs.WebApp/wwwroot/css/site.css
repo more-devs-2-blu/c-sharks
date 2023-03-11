@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Validation Styles */ 
+.field-validation-error {
+    color: red;
+}
+/* End Validation Styles */
