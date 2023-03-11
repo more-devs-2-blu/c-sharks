@@ -1,0 +1,42 @@
+﻿@using CSharks.NFEs.Domain.Models;
+@model User
+@{
+    ViewData["Title"] = "Shark NFE - Usuarios";
+}
+
+<section>
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Login" class="control-label">Login</label>
+            <input asp-for="Login" class="form-control" />
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Password</label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Profile" class="control-label">Profile</label>
+            <select asp-for="Profile" class="form-control">
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+            </select>
+        </div>
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+
+</section>
+
+@section Scripts {
+        <script type="text/javascript">
+
+        </script>
+}
