@@ -12,6 +12,6 @@ namespace CSharks.NFEs.Domain.Models
 
         public string Enrollment { get; set; }
 	
-		public virtual List<int>? NFId { get; set; }
+		//public virtual List<int>? NFId { get; set; }
     }
 }

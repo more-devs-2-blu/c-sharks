@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using CSharks.NFEs.Domain.Models;
 
 namespace CSharks.NFEs.Infra.Data.Data
 {
@@ -15,7 +16,10 @@ namespace CSharks.NFEs.Infra.Data.Data
 
         #region DbSets
 
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Service> Services { get; set; }
 
         #endregion
     }
