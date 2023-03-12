@@ -1,0 +1,33 @@
+﻿@using CSharks.NFEs.Domain.Models.NF;
+@model Pesquisa
+@{
+    ViewData["Title"] = "Shark NFE - Registro Pesquisa";
+}
+
+<section>
+    <form asp-controller="Nfe" asp-action="CreatePesquisa" method="post">
+        <div class="form-group">
+            <label for="numero">Número:</label>
+            <input asp-for="numero" type="text" class="form-control" id="numero" name="numero">
+            <span asp-validation-for="numero" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="serie_nfse">Série:</label>
+            <input asp-for="serie_nfse" type="text" class="form-control" id="serie_nfse" name="serie_nfse">
+            <span asp-validation-for="serie_nfse" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="cadastro">Cadastro:</label>
+            <input type="text" class="form-control" id="cadastro" name="cadastro">
+            <span asp-validation-for="cadastro" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Pesquisar</button>
+    </form>
+
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    </script>
+}

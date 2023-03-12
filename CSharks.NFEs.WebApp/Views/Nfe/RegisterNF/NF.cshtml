@@ -1,0 +1,42 @@
+﻿@using CSharks.NFEs.Domain.Models.NF;
+@model NF
+@{
+    ViewData["Title"] = "Shark NFE - Registro NF";
+}
+
+<section>
+    <form asp-controller="Nfe" asp-action="CreateNF" method="post">
+        <div class="form-group">
+            <label asp-for="valor_total">Valor Total:</label>
+            <input asp-for="valor_total" class="form-control" />
+            <span asp-validation-for="valor_total" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="numero">Número:</label>
+            <input asp-for="numero" class="form-control" />
+            <span asp-validation-for="numero" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="serie_nfse">Série NFSE:</label>
+            <input asp-for="serie_nfse" class="form-control" />
+            <span asp-validation-for="serie_nfse" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="situacao">Situação:</label>
+            <input asp-for="situacao" class="form-control" />
+            <span asp-validation-for="situacao" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="observacao">Observação:</label>
+            <input asp-for="observacao" class="form-control" />
+            <span asp-validation-for="observacao" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+</form>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    </script>
+}
