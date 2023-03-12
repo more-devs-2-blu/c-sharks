@@ -1,0 +1,29 @@
+﻿@using CSharks.NFEs.Domain.Models.NF;
+@model Prestador
+@{
+    ViewData["Title"] = "Shark NFE - Registro Lista";
+}
+
+<section>
+    <form asp-controller="Nfe" asp-action="CreatePrestador" method="post">
+        <div class="form-group">
+            <label  for="cpfcnpj">CPF/CNPJ:</label>
+            <input asp-for="cpfcnpj" type="text" class="form-control" id="cpfcnpj" name="cpfcnpj" required>
+            <span asp-validation-for="cpfcnpj" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input asp-for="cidade" type="text" class="form-control" id="cidade" name="cidade" required>
+            <span asp-validation-for="cidade" class="text-danger"></span>
+
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Enviar</button>
+    </form>
+
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    </script>
+}

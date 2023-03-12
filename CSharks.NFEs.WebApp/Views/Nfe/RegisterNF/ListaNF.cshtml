@@ -1,0 +1,56 @@
+﻿@using CSharks.NFEs.Domain.Models.NF;
+@model Lista
+@{
+    ViewData["Title"] = "Shark NFE - Registro Lista";
+}
+
+<section>
+
+    <form asp-controller="Nfe" asp-action="CreateLista" method="post">
+        <div class="form-group">
+            <label asp-for="tributa_municipio_prestador" class="control-label"></label>
+            <input asp-for="tributa_municipio_prestador" class="form-control" />
+            <span asp-validation-for="tributa_municipio_prestador" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="codigo_local_prestacao_servico" class="control-label"></label>
+            <input asp-for="codigo_local_prestacao_servico" class="form-control" />
+            <span asp-validation-for="codigo_local_prestacao_servico" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="codigo_item_lista_servico" class="control-label"></label>
+            <input asp-for="codigo_item_lista_servico" class="form-control" />
+            <span asp-validation-for="codigo_item_lista_servico" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="descritivo" class="control-label"></label>
+            <input asp-for="descritivo" class="form-control" />
+            <span asp-validation-for="descritivo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="aliquota_item_lista_servico" class="control-label"></label>
+            <input asp-for="aliquota_item_lista_servico" class="form-control" />
+            <span asp-validation-for="aliquota_item_lista_servico" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="situacao_tributaria" class="control-label"></label>
+            <input asp-for="situacao_tributaria" class="form-control" />
+            <span asp-validation-for="situacao_tributaria" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="valor_tributavel" class="control-label"></label>
+            <input asp-for="valor_tributavel" class="form-control" />
+            <span asp-validation-for="valor_tributavel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary mt-4">Create</button>
+        </div>
+    </form>
+
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    </script>
+}

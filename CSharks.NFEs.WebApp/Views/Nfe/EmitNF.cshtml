@@ -1,9 +1,114 @@
-﻿@{
+﻿@using CSharks.NFEs.Domain.Models.NF;
+@{
+    List<Lista> listas = ViewBag.listas;
+    List<Pesquisa> pesquisas = ViewBag.pesquisas;
+    List<NF> NFS = ViewBag.NFS;
+    List<Tomador> tomadores = ViewBag.tomadores;
+    List<Prestador> prestadores = ViewBag.prestadores;
     ViewData["Title"] = "Shark NFE - NFEs";
 }
 
 <section>
+    <div class="container">
+        <div class="form-control">
+            <div class="mt-4">
+                <h2> Emitir uma nova Nota Fiscal </h2>
+            </div>
+            <div class="mt-4">
+                <label> Identificador </label>
+                <input class="form-control" />
+            </div>
+            <div>
+                <label> Lista</label>
+                <select class="form-control">
+                    @if (listas != null && listas.Any())
+                    {
+                        foreach (Lista lista in listas)
+                        {
+                            <option value="#">@lista.descritivo</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre uma Lista. </option>
+                    }
 
+                </select>
+            </div>
+            <div>
+                <label> Pesquisa </label>
+                <select class="form-control">
+                    @if (pesquisas != null && pesquisas.Any())
+                    {
+                        foreach (Pesquisa pesquisa in pesquisas)
+                        {
+                            <option value="#">@pesquisa.cadastro</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre uma Pesquisa. </option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label> NF</label>
+                <select class="form-control">
+                    @if (NFS != null && NFS.Any())
+                    {
+                        foreach (NF nf in NFS)
+                        {
+                            <option value="#">@nf.numero</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre uma NF. </option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label> Tomador</label>
+                <select class="form-control">
+                    @if (tomadores != null && tomadores.Any())
+                    {
+                        foreach (Tomador tomador in tomadores)
+                        {
+                            <option value="#">@tomador.identificador</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre uma Tomador. </option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label> Prestador </label>
+                <select class="form-control">
+                    @if (listas != null && listas.Any())
+                    {
+                        foreach (Prestador prestador in prestadores)
+                        {
+                            <option value="#"> @prestador.cpfcnpj</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre uma Prestador. </option>
+                    }
+
+                </select>
+            </div>
+            <div> 
+                <a class="btn btn-primary mt-4"> Emitir </a>
+            </div>
+        </div>
+        
+    </div>
 </section>
 
 @section Scripts {
