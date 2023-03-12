@@ -1,10 +1,20 @@
-﻿using CSharks.NFEs.Domain.Models;
+﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
+using CSharks.NFEs.Domain.Models;
+using CSharks.NFEs.Services.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSharks.NFEs.WebApp.Controllers
 {
     public class ClientController : Controller
     {
+
+        private readonly IClientRepository _clientRepo;
+
+        public ClientController(IClientRepository clientRepo)
+        {
+            _clientRepo = clientRepo;
+        }
+
         public IActionResult Index()
         {
             //recive list of clients to display
@@ -15,9 +25,10 @@ namespace CSharks.NFEs.WebApp.Controllers
         [HttpPost]
         public IActionResult Create(Client client)
         {
+            
             if (ModelState.IsValid)
             {
-                //save the service on database _saveOnDataBase (client) 
+                _clientRepo.Save(client);
                 TempData["Success"] = "Salvo com sucesso";
             }
             else
