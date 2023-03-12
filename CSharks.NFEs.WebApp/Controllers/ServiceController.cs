@@ -1,14 +1,26 @@
-﻿using CSharks.NFEs.Domain.Models;
+﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
+using CSharks.NFEs.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSharks.NFEs.WebApp.Controllers
 {
     public class ServiceController : Controller
     {
+        private readonly ICategoriesRepository _categoryRepo;
+        private readonly IServicesRepository _serviceRepo; 
+
+        public ServiceController(
+            ICategoriesRepository categoriesRepository,
+            IServicesRepository servicesRepository)
+        {
+            _categoryRepo = categoriesRepository;
+            _serviceRepo = servicesRepository;
+        }
         public IActionResult Index()
         {
-            //recive list of services to display
-            //  List<services> services = _requestMySql and pass it on parameters
+
+            List<Category> categories = _categoryRepo.GetAll().ToList();
+            ViewBag.categories = categories;
             return View("~/Views/Register/Services/Index.cshtml");
         }
 
@@ -17,8 +29,9 @@ namespace CSharks.NFEs.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //save the service on database _saveOnDataBase (service) 
+                _serviceRepo.Save(service); 
                 TempData["Success"] = "Salvo com sucesso";
+                return RedirectToAction("Index");
             }
             else
             {
