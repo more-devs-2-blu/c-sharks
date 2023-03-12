@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Views\History\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>

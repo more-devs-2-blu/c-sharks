@@ -8,28 +8,27 @@
 <section>
     <div class="mt-3">
         @await Html.PartialAsync("_MessageResult")
-    </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h1 class="text-center mb-4"> @ViewData["Title"]</h1>
-                        <form asp-action="InputValidate" asp-controller="Login" method="POST">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input asp-for="Login" type="text" class="form-control">
-                                @Html.ValidationMessageFor(x => x.Login)
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input asp-for="Password" type="password" class="form-control">
-                                @Html.ValidationMessageFor(x => x.Password)
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
-                        </form>
-                    </div>
-                </div>
+    </div>    
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <h3 class="title-login text-center"> @ViewData["Title"]</h3>
+            </div>
+
+            <!-- Login Form -->
+            <form asp-action="InputValidate" asp-controller="Login" method="POST">
+                <input asp-for="Login" type="text" id="login" class="fadeIn second form-control" name="login" placeholder="login">
+                <input asp-for="Password" type="password" id="password" class="fadeIn third form-control" name="password" placeholder="senha">
+                <input type="submit" class="fadeIn fourth" value="Entrar">
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                @Html.ValidationMessageFor(x => x.Login)
+                <br />
+                @Html.ValidationMessageFor(x => x.Password)
             </div>
         </div>
     </div>

@@ -1,5 +1,8 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
 html {
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 
 @media (min-width: 768px) {
@@ -22,3 +25,25 @@ body {
     color: red;
 }
 /* End Validation Styles */
+
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.legenda {
+    text-align: center;
+    margin-top: 1.8em;
+}
+
+.card-body {
+    padding: 1.5em;
+    margin: auto;
+}
+
+.card:hover {
+    -webkit-box-shadow: 5px 10px 25px 1px #b8bdc1;
+    box-shadow: 5px 10px 25px 1px #b8bdc1;
+    padding: .3em;
+}

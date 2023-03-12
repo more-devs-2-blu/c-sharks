@@ -4,6 +4,49 @@
 
 <section class="text-center">
     <h3>Bem vindo @TempData["NameUserLogged"]</h3>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <h5 class="card-title text-center mb-4">Notas Fiscais</h5>
+                <a asp-controller="Nfe" asp-action="Index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/img/nfIcon-02.svg" style="max-width:10rem" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+                </a>
+                <div class="legenda">
+                    <small class="text-muted">Obtenha a listagem, o histórico ou cadastre novas notas fiscais no sistema</small>
+                </div>
+            </div>
+            <div class="col">
+                <h5 class="card-title text-center mb-4">Cadastros</h5>
+                <a asp-controller="Home" asp-action="Index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/img/cadastroIcon-02.svg" style="max-width:10rem" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+                </a>
+                <div class="legenda">
+                    <small class="text-muted">Cadastre clientes, serviços, categorias, comandos e agilize o processo de criação de notas fiscais.</small>
+                </div>
+            </div>
+            <div class="col">
+                <h5 class="card-title text-center mb-4">Dashboard</h5>
+                <a asp-controller="Dashboard" asp-action="Index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/img/dashboardIcon-02.svg" style="max-width: 10rem" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+                </a>
+                <div class="legenda">
+                    <small class="text-muted">Obtenha uma análise detalhada do volume de notas fiscais.</small>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 @section Scripts {

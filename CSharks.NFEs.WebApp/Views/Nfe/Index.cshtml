@@ -3,7 +3,49 @@
 }
 
 <section>
-
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <h5 class="card-title text-center mb-4">Cadastrar</h5>
+                <a asp-controller="Nfe" asp-action="Index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/img/cadastronfIcon-02-02.svg" style="max-width: 10rem" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+                </a>
+                <div class="legenda">
+                    <small class="text-muted">Cadastrar uma nova nota fiscal.</small>
+                </div>
+            </div>
+            <div class="col">
+                <h5 class="card-title text-center mb-4">Listar</h5>
+                <a asp-controller="Nfe" asp-action="Index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/img/listnfIcon-02.svg" style="max-width: 10rem" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+                </a>
+                <div class="legenda">
+                    <small class="text-muted">Listar notas fiscais existentes.</small>
+                </div>
+            </div>
+            <div class="col">
+                <h5 class="card-title text-center mb-4">Histórico</h5>
+                <a asp-controller="Nfe" asp-action="Index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/img/historicnfIcon-02-02.svg" style="max-width: 10rem" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+                </a>
+                <div class="legenda">
+                    <small class="text-muted">Histórico de modificações das notas fiscais.</small>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 @section Scripts {

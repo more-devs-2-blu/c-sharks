@@ -40,10 +40,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Gestão</a>
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Login" asp-action="Exit">Sair</a>
-                        </li>
+                        </li>*@
                     </ul>
+                    <li class="navbar-nav nav-item dropdown me-5">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bem vindo @TempData["NameUserLogged"]
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Login" asp-action="Exit">Sair</a></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
         </nav>
