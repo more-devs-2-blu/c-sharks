@@ -19,7 +19,7 @@ namespace CSharks.NFEs.Domain.Models
         public double Aliquot { get; set; }
 
         [Required(ErrorMessage = "Selecione uma categoria")]
-        public int CategoryId { get; set; }
-		public virtual Category? Category { get; set; }
+        public Guid CategoryId { get; set; }
+		//public virtual Category? Category { get; set; }
     }
 }

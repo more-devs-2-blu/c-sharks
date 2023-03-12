@@ -1,4 +1,5 @@
 using CSharks.NFEs.Domain.Interfaces.Repositories;
+using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Infra.Data.Data;
 using CSharks.NFEs.Infra.Data.Repositories;
 using CSharks.NFEs.Services.Interfaces;
@@ -20,16 +21,25 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<MySqlContext>
     (options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
 
 //Default lifetimes services
-//builder.Services.AddScoped<ISessionService, UserSession>();
+builder.Services.AddScoped<ISessionService, UserSession>();
+
+builder.Services.AddScoped<IApiClientService, ApiClient>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+builder.Services.AddScoped<IServicesRepository, ServicesRepository>();  
+
+
 
 //Creates WebApplication instance
+
 var app = builder.Build();
 
 //Resources

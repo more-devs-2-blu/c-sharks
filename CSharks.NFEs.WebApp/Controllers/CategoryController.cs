@@ -1,10 +1,18 @@
-﻿using CSharks.NFEs.Domain.Models;
+﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
+using CSharks.NFEs.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSharks.NFEs.WebApp.Controllers
 {
     public class CategoryController : Controller
     {
+        private readonly ICategoriesRepository _categoryRepo;
+
+        public CategoryController(ICategoriesRepository categoriesRepository)
+        {
+            _categoryRepo = categoriesRepository;
+        }
+
         public IActionResult Index()
         {
             //recive list of categories 
@@ -16,8 +24,9 @@ namespace CSharks.NFEs.WebApp.Controllers
         public IActionResult Create(Category category)
         {
             if(ModelState.IsValid) {
-                //save the category on database _saveOnDataBase (category) 
+                _categoryRepo.Save(category);
                 TempData["Success"] = "Salvo com sucesso";
+                return View("~/Views/Register/Categories/Index.cshtml");
             }
 
 

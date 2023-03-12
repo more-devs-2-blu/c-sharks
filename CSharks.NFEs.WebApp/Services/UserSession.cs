@@ -23,11 +23,9 @@ namespace CSharks.NFEs.WebApp.Services
 
         public User GetSession()
         {
-            //string userSession = _httpContext.HttpContext.Session.GetString("userSession");
-            //if (string.IsNullOrEmpty(userSession)) return null;
-            // return JsonConvert.DeserializeObject<UsuarioModel>(userSession);
-
-            throw new NotImplementedException();
+            string userSession = _httpContext.HttpContext.Session.GetString("userSession");
+            if (string.IsNullOrEmpty(userSession)) return null;
+            return JsonConvert.DeserializeObject<User>(userSession)!;
 
         }
 

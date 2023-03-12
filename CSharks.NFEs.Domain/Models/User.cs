@@ -1,6 +1,8 @@
 ﻿using CSharks.NFEs.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+
 
 namespace CSharks.NFEs.Domain.Models
 {
@@ -20,9 +22,9 @@ namespace CSharks.NFEs.Domain.Models
         [Required(ErrorMessage = "Escolha um perfil para o usuário")]
         public TypeProfile Profile { get; set; }
 
-        public bool InputValidation(string paramLogin, string paramPassword)
+        public bool InputValidation(string paramPassword)
         {
-            if (paramLogin.Equals("dev") && paramPassword.Equals("123"))
+            if (Password.Equals(paramPassword))
                 return true;
             else return false;
         }
