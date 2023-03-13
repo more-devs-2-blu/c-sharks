@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharks.NFEs.Infra.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20230313133828_mock-service")]
-    partial class mockservice
+    [Migration("20230313182242_Update8")]
+    partial class Update8
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,21 +21,6 @@ namespace CSharks.NFEs.Infra.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("CSharks.NFEs.Domain.Models.Category", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
 
             modelBuilder.Entity("CSharks.NFEs.Domain.Models.Client", b =>
                 {
@@ -74,6 +59,10 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -85,11 +74,35 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1ec72713-91a4-48a6-b803-7ee15c5d35a0"),
-                            City = "Mock City",
+                            Id = new Guid("ce5664c3-523f-4791-aeda-bd17d5a55a99"),
+                            City = "8453",
                             CpfCnpj = "12345678901234",
-                            Name = "Mock Enterprise"
+                            Email = "csharkenterprise@hotmail.com",
+                            Name = "Csharks Developers LTDA"
                         });
+                });
+
+            modelBuilder.Entity("CSharks.NFEs.Domain.Models.NF_UTILS.ISQN", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Aliquot")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Isqns");
                 });
 
             modelBuilder.Entity("CSharks.NFEs.Domain.Models.Service", b =>
@@ -133,7 +146,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9d2fe87f-2829-4074-8ab0-a5ef5d9e2cae"),
+                            Id = new Guid("c4599466-04ba-4570-85f4-d3f13c0f78e4"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
                             codigo_local_prestacao_servico = "8357",
@@ -144,7 +157,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f4df3f94-9494-42e4-9108-c02b99886b4b"),
+                            Id = new Guid("96397d8e-90a6-4320-a67a-cda18286bfb7"),
                             aliquota_item_lista_servico = "2",
                             codigo_item_lista_servico = "0106",
                             codigo_local_prestacao_servico = "8357",
@@ -155,11 +168,34 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CSharks.NFEs.Domain.Models.TOM", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("CSharks.NFEs.Domain.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<Guid>("EnterpriseId")
                         .HasColumnType("char(36)");
@@ -188,8 +224,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d3f12311-b743-46f2-8880-c7fa5b16b9a4"),
-                            EnterpriseId = new Guid("1ec72713-91a4-48a6-b803-7ee15c5d35a0"),
+                            Id = new Guid("eab4085c-de7e-4a6f-b351-20224630fa6c"),
+                            Email = "teste@hotmail.com",
+                            EnterpriseId = new Guid("ce5664c3-523f-4791-aeda-bd17d5a55a99"),
                             Login = "dev",
                             Name = "Desenvolvedor",
                             Password = "MTIz",
