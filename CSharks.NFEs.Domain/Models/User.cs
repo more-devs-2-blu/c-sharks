@@ -28,5 +28,8 @@ namespace CSharks.NFEs.Domain.Models
                 return true;
             else return false;
         }
+        
+        public Guid? EnterpriseId { get; set; } 
+
     }
 }

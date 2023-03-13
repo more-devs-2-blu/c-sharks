@@ -10,16 +10,15 @@ namespace CSharks.NFEs.Domain.Models
     public class Service
     {
         public Guid Id { get; set; }
+        public string tributa_municipio_prestador { get; set; }
+        public string codigo_local_prestacao_servico { get; set; }
+        public string codigo_item_lista_servico { get; set; }
+        public string descritivo { get; set; }
+        public string aliquota_item_lista_servico { get; set; }
+        public string situacao_tributaria { get; set; }
+        public string valor_tributavel { get; set; }
 
-		[Required(ErrorMessage = "Digite o nome do serviço")]
-		public string Name { get; set; }
 
-
-        [Required(ErrorMessage = "Digite o valor do serviço")]
-        public double Aliquot { get; set; }
-
-        [Required(ErrorMessage = "Selecione uma categoria")]
-        public Guid CategoryId { get; set; }
-		//public virtual Category? Category { get; set; }
+        //public virtual Category? Category { get; set; }
     }
 }

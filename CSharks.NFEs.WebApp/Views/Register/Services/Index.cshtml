@@ -1,46 +1,52 @@
-﻿@using CSharks.NFEs.Domain.Models; 
-@model Service
+﻿@using CSharks.NFEs.Domain.Models;
+@model Service;
 @{
-    List<Category> categories = new List<Category>(); 
-    categories = ViewBag.categories;
-    ViewData["Title"] = "Shark NFE - Serviços";
+    ViewData["Title"] = "Shark NFE - Registro Serviço";
 }
 
 <section>
-    <form asp-action="Create" method="post">
-        <div class="mt-3">
-            @await Html.PartialAsync("_MessageResult")
+
+    <form asp-controller="Nfe" asp-action="CreateLista" method="post">
+        <div class="form-group">
+            <label asp-for="tributa_municipio_prestador" class="control-label"></label>
+            <input asp-for="tributa_municipio_prestador" class="form-control" />
+            <span asp-validation-for="tributa_municipio_prestador" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Name" class="control-label">Name</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <label asp-for="codigo_local_prestacao_servico" class="control-label"></label>
+            <input asp-for="codigo_local_prestacao_servico" class="form-control" />
+            <span asp-validation-for="codigo_local_prestacao_servico" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Aliquot" class="control-label">Aliquot</label>
-            <input asp-for="Aliquot" class="form-control" type="number" step="0.01" />
-            <span asp-validation-for="Aliquot" class="text-danger"></span>
+            <label asp-for="codigo_item_lista_servico" class="control-label"></label>
+            <input asp-for="codigo_item_lista_servico" class="form-control" />
+            <span asp-validation-for="codigo_item_lista_servico" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="CategoryId" class="control-label">Categoria</label>
-            <select asp-for="CategoryId" class="form-control">
-                @if (categories != null && categories.Any())
-                {
-                    foreach (Category category in categories)
-                    {
-                        <option value="@category.Id">@category.Description</option>
-                    }
-                } else
-                {   
-                    <option> Cadastre uma categoria. </option>
-                }
-                
-            </select>
+            <label asp-for="descritivo" class="control-label"></label>
+            <input asp-for="descritivo" class="form-control" />
+            <span asp-validation-for="descritivo" class="text-danger"></span>
         </div>
-        <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">Create</button>
+        <div class="form-group">
+            <label asp-for="aliquota_item_lista_servico" class="control-label"></label>
+            <input asp-for="aliquota_item_lista_servico" class="form-control" />
+            <span asp-validation-for="aliquota_item_lista_servico" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="situacao_tributaria" class="control-label"></label>
+            <input asp-for="situacao_tributaria" class="form-control" />
+            <span asp-validation-for="situacao_tributaria" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="valor_tributavel" class="control-label"></label>
+            <input asp-for="valor_tributavel" class="form-control" />
+            <span asp-validation-for="valor_tributavel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary mt-4">Create</button>
         </div>
     </form>
+
 </section>
 
 @section Scripts {
