@@ -22,6 +22,7 @@ namespace CSharks.NFEs.WebApp.Controllers
 
         public IActionResult ListNFE()
         {
+            ViewBag.services = _serviceRepo.GetAll().ToList();
             return View("~/Views/Nfe/ListNF.cshtml");
         }
         public IActionResult EmitNFE()

@@ -9,6 +9,7 @@ namespace CSharks.NFEs.Domain.Models
     public class Enterprise
     {   
         public Guid Id { get; set; }
+        public string Name { get; set; }    
         public string CpfCnpj { get; set; }
         public string City { get; set; }
         

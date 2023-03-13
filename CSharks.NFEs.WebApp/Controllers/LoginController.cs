@@ -38,16 +38,23 @@ namespace CSharks.NFEs.WebApp.Controllers
                     User user = _userRepo.GetByLogin(credentials.Login);
                     if (user != null)
                     {
-                        user.EnterpriseId = enterprise.Id;
-                        string passEncoded = StringCodec.EncodeToBase64(credentials.Password);
-                        if (user.InputValidation(passEncoded))
+                        try
                         {
-                            _session.CreateSession(user);
-                            return RedirectToAction("Index", "Home");
-                        }
+                            user.Enterprise!.Id = enterprise.Id;
+                            user.Enterprise = enterprise;
+                            string passEncoded = StringCodec.EncodeToBase64(credentials.Password);
+                            if (user.InputValidation(passEncoded))
+                            {
+                                _session.CreateSession(user);
+                                return RedirectToAction("Index", "Home");
+                            }
 
-                        TempData["Error"] = "Senha inválida";
-                        return View("Index");
+                            TempData["Error"] = "Senha inválida";
+                            return View("Index");
+                        }
+                        catch (Exception) {
+                            TempData["Error"] = "Dados não conferem. "; 
+                        }
                     }
                     else
                     {
