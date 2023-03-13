@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Services.Helpers;
 using CSharks.NFEs.Services.Interfaces;
-using System.Data.Entity.Core.Objects;
 
 namespace CSharks.NFEs.WebApp.Controllers
 {

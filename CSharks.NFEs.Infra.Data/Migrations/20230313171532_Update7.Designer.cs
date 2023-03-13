@@ -3,6 +3,7 @@ using System;
 using CSharks.NFEs.Infra.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharks.NFEs.Infra.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20230313171532_Update7")]
+    partial class Update7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,24 +146,12 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-
-                            Id = new Guid("9d2fe87f-2829-4074-8ab0-a5ef5d9e2cae"),
+                            Id = new Guid("f48238f4-98e2-4ccd-86bd-9b2866ead0a4"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
                             codigo_local_prestacao_servico = "8357",
                             descritivo = "Teste",
-                            situacao_tributaria = "000",
-                            tributa_municipio_prestador = "S",
-                            valor_tributavel = "0"
-                        },
-                        new
-                        {
-                            Id = new Guid("f4df3f94-9494-42e4-9108-c02b99886b4b"),
-                            aliquota_item_lista_servico = "2",
-                            codigo_item_lista_servico = "0106",
-                            codigo_local_prestacao_servico = "8357",
-                            descritivo = "Assessoria e consultoria em informática.",
-                            situacao_tributaria = "000",
+                            situacao_tributaria = "0",
                             tributa_municipio_prestador = "S",
                             valor_tributavel = "0"
                         });

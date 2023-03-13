@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Domain.Enums;
+using CSharks.NFEs.Domain.Models.NF_UTILS;
 
 namespace CSharks.NFEs.Infra.Data.Data
 {
@@ -68,6 +69,9 @@ namespace CSharks.NFEs.Infra.Data.Data
         public DbSet<Client> Clients { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Enterprise> Enterprises { get; set; }
+
+        public DbSet<TOM> Cities { get; set; }
+        public DbSet<ISQN> Isqns { get ; set; }
 
 
 
