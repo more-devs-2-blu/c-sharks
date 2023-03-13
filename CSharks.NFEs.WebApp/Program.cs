@@ -28,6 +28,7 @@ builder.Services.AddDbContext<MySqlContext>
 //Default lifetimes services
 builder.Services.AddScoped<ISessionService, UserSession>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IExcel, ExcelService>();
 
 builder.Services.AddScoped<IApiClientService, ApiClient>();
 
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddScoped<IServicesRepository, ServicesRepository>();
+builder.Services.AddScoped<IIsqnRepository, IsqnRepository>();
 
 //NF Utils
 builder.Services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
