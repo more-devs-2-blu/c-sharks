@@ -15,7 +15,7 @@ namespace CSharks.NFEs.WebApp.Controllers
 
 
         public IActionResult Index()
-        {
+        { 
             TempData["NameUserLogged"] = _session.GetSession().Name;
             return View();
         }

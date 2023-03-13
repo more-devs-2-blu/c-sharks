@@ -6,21 +6,16 @@ namespace CSharks.NFEs.WebApp.Controllers
 {
     public class ServiceController : Controller
     {
-        private readonly ICategoriesRepository _categoryRepo;
         private readonly IServicesRepository _serviceRepo; 
 
         public ServiceController(
-            ICategoriesRepository categoriesRepository,
             IServicesRepository servicesRepository)
         {
-            _categoryRepo = categoriesRepository;
             _serviceRepo = servicesRepository;
         }
         public IActionResult Index()
         {
-
-            List<Category> categories = _categoryRepo.GetAll().ToList();
-            ViewBag.categories = categories;
+            ViewBag.services = _serviceRepo.GetAll().ToList();
             return View("~/Views/Register/Services/Index.cshtml");
         }
 

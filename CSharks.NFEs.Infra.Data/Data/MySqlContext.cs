@@ -13,10 +13,23 @@ namespace CSharks.NFEs.Infra.Data.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            var enterprise = new Enterprise
+            {
+                Id = Guid.NewGuid(),
+                Name = "Mock Enterprise",
+                CpfCnpj = "12345678901234",
+                City = "Mock City"
+            };
+
+
+            modelBuilder.Entity<Enterprise>()
+                .HasData(enterprise);
+
             modelBuilder.Entity<User>()
                 .HasData(
-                new { Id = Guid.NewGuid(), Name = "Desenvolvedor", Login = "dev", Password = "MTIz", Profile = TypeProfile.Admin }
+                new { Id = Guid.NewGuid(), Name = "Desenvolvedor", Login = "dev", Password = "MTIz", Profile = TypeProfile.Admin,
+                EnterpriseId = enterprise.Id
+                }
             );
 
             modelBuilder.Entity<Service>()
@@ -34,15 +47,6 @@ namespace CSharks.NFEs.Infra.Data.Data
                 }
             );
 
-            modelBuilder.Entity<Enterprise>()
-                .HasData(
-                new
-                {
-                    Id = Guid.NewGuid(),
-                    CpfCnpj = "27883417000104",
-                    City = "8357"
-                }
-            );
 
             base.OnModelCreating(modelBuilder);
         }

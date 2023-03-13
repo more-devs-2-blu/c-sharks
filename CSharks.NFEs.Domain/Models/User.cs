@@ -28,8 +28,22 @@ namespace CSharks.NFEs.Domain.Models
                 return true;
             else return false;
         }
-        
-        public Guid? EnterpriseId { get; set; } 
+
+        public string GeneratePassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+            var random = new Random();
+            var password = new string(
+                Enumerable.Repeat(chars, 8)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+
+            return password;
+        }
+
+        public Guid EnterpriseId { get; set; }
+
+        public virtual Enterprise? Enterprise { get; set; }  
 
     }
 }

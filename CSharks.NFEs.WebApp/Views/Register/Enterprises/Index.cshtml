@@ -1,0 +1,29 @@
+﻿@using CSharks.NFEs.Domain.Models;
+@model Enterprise
+@{
+    Layout = "_LayoutOff";
+
+}
+<section>
+    <div> 
+        <h1> Cadastre sua Empresa.</h1>
+    </div>
+    <form asp-action="Create" asp-controller="Enterprise" method="post">
+        <div class="form-group">
+            <label asp-for="Name">Razão Social</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CpfCnpj">CPF/CNPJ</label>
+            <input asp-for="CpfCnpj" class="form-control" />
+            <span asp-validation-for="CpfCnpj" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City">Cidade</label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Criar</button>
+    </form>
+</section>
