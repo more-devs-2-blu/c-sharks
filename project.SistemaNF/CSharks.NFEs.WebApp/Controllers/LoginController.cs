@@ -40,7 +40,8 @@ namespace CSharks.NFEs.WebApp.Controllers
                     {
                         try
                         {
-                            user.Enterprise!.Id = enterprise.Id;
+                            //user.Enterprise!.Id = enterprise.Id;
+                            user.EnterpriseId = enterprise.Id;
                             user.Enterprise = enterprise;
                             string passEncoded = StringCodec.EncodeToBase64(credentials.Password);
                             if (user.InputValidation(passEncoded))

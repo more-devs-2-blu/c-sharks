@@ -1,86 +1,158 @@
 
 ﻿using CSharks.NFEs.Domain.Models;
+using System.Xml.Serialization;
 
 namespace CSharks.NFEs.Domain.DTOs
 
 {
-    public class nfse
+    [XmlRoot("nfse")]
+    public class NFEDTO
     {
-        //FIXME names in portuguese
-        //FIXME names like tags xml
-        //public string NFSE { get; set; }
-        public string identificador { get; set; }
-        public NF nf { get; set; }
-        public Prestador prestador { get; set; }
-        public Tomador tomador { get; set; }
-        public List<lista> itens { get; set; }
-        public PesquisaDTO2 pesquisa { get; set; }
-        public string numero { get; set; }
-        public string serie_nfse { get; set; }
-        public string situacao { get; set; }
-        public string observacao { get; set; }
+        [XmlElement("identificador")]
+        public string Identificador { get; set; }
 
-        //public int ServiceId { get; set; }
-        //public virtual Service? Service { get; set; }
+        [XmlElement("nf")]
+        public NF Nf { get; set; }
 
-        //public int CategoryId { get; set; }
-        //public virtual Category? Category { get; set; }
+        [XmlElement("prestador")]
+        public Prestador Prestador { get; set; }
 
-        //public int ClientId { get; set; }
-        //public virtual Client? Client { get; set; }
+        [XmlElement("tomador")]
+        public Tomador Tomador { get; set; }
+
+        [XmlArray("itens")]
+        public List<lista> Itens { get; set; }
+
+        [XmlElement("Pesquisa")]
+        public PesquisaDTO2 Pesquisa { get; set; }
+
+        [XmlElement("numero")]
+        public string Numero { get; set; }
+
+        [XmlElement("serie_nfse")]
+        public string SerieNf { get; set; }
+
+        [XmlElement("situacao")]
+        public string Situacao { get; set; }
+
+        [XmlElement("observacao")]
+        public string Observacao { get; set; }
 
     }
 
+    [XmlRoot("nf")]
     public class NF
     {
-        public string valor_total { get; set; }
-        public string numero { get; set; }
-        public string serie_nfse { get; set; }
-        public string situacao { get; set; }
-        public string observacao { get; set; }
-    }
-    public class Prestador 
-    {
-        public string cpfcnpj { get; set; }
-        public string cidade { get; set; }
+        [XmlElement("valor_total")]
+        public string ValorTotal { get; set; }
+
+        [XmlElement("numero")]
+        public string Numero { get; set; }
+
+        [XmlElement("serie_nfse")]
+        public string SerieNf { get; set; }
+
+        [XmlElement("situacao")]
+        public string Situacao { get; set; }
+
+        [XmlElement("observacao")]
+        public string Observacao { get; set; }
     }
 
+    [XmlRoot("prestador")]
+    public class Prestador 
+    {
+        [XmlElement("cpfcnpj")]
+        public string CpfCnpj { get; set; }
+
+        [XmlElement("cidade")]
+        public string Cidade { get; set; }
+    }
+
+    [XmlRoot("tomador")]
     public class Tomador
     {
-        public string tipo { get; set; }
-        public string endereco_informado { get; set; }
-        public string identificador { get; set; }
-        public string cpfcnpj { get; set; }
-        public string nome_razao_social { get; set; }
-        public string ie { get; set; }
-        public string logradouro { get; set; }
-        public string email { get; set; }
-        public string numero_residencia { get; set; }
-        public string complemento { get; set; }
+        [XmlElement("tipo")]
+        public string Tipo { get; set; }
+
+        [XmlElement("endereco_informado")]
+        public string EnderecoInformado { get; set; }
+
+        [XmlElement("identificador")]
+        public string Identificador { get; set; }
+
+        [XmlElement("cpfcnpj")]
+        public string CpfCnpj { get; set; }
+
+        [XmlElement("nome_razao_social")]
+        public string NomeRazaoSocial { get; set; }
+
+        [XmlElement("ie")]
+        public string Ie { get; set; }
+
+        [XmlElement("logradouro")]
+        public string Logradouro { get; set; }
+
+        [XmlElement("email")]
+        public string Email { get; set; }
+
+        [XmlElement("numero_residencia")]
+        public string NumeroResidencia { get; set; }
+
+        [XmlElement("complemento")]
+        public string Complemento { get; set; }
     }
     public class lista
     {
-        public string tributa_municipio_prestador { get; set; }
-        public string codigo_local_prestacao_servico { get; set; }
-        public string codigo_item_lista_servico { get; set; }
-        public string descritivo { get; set; }
-        public string aliquota_item_lista_servico { get; set; }
-        public string situacao_tributaria { get; set; }
-        public string valor_tributavel { get; set; }
+        [XmlElement("tributa_municipio_prestador")]
+        public string TributaMunicipioPrestador { get; set; }
+
+        [XmlElement("codigo_local_prestacao_servico")]
+        public string CodigoLocalPrestServico { get; set; }
+
+        [XmlElement("codigo_item_lista_servico")]
+        public string CodigoServico { get; set; }
+
+        [XmlElement("descritivo")]
+        public string Descricao { get; set; }
+
+        [XmlElement("aliquota_item_lista_servico")]
+        public string AliquotaServico { get; set; }
+
+        [XmlElement("situacao_tributaria")]
+        public string SituacaoTributaria { get; set; }
+
+        [XmlElement("valor_tributavel")]
+        public string ValorTributavel { get; set; }
     }
+
+    [XmlRoot("solicitacao_cancelamento")]
     public class SolicitacaoCancelamento
     {
-        public Prestador prestador { get; set; }
-        public Documentos documentos { get; set; }
+        [XmlElement("prestador")]
+        public Prestador Prestador { get; set; }
+
+        [XmlElement("documentos")]
+        public Documentos Documentos { get; set; }
     }
+
+    [XmlRoot("documentos")]
     public class Documentos
     {
-        public nfse nfse { get; set; }
+        [XmlElement("Nfse")]
+        public NFEDTO Nfse { get; set; }
     }
+
+    [XmlRoot("pesquisa")]
     public class PesquisaDTO2
     {
-        public string numero { get; set; }
-        public string serie_nfse { get; set; }
-        public string cadastro { get; set; }
+        [XmlElement("numero")]
+        public string Numero { get; set; }
+
+        [XmlElement("serie_nfse")]
+        public string SerieNfse { get; set; }
+
+        [XmlElement("cadastro")]
+        public string Cadastro { get; set; }
     }
 }
