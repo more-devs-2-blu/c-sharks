@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CSharks.NFEs.Domain.Models;
-using CSharks.NFEs.Domain.Models.NF;
 using CSharks.NFEs.Domain.Enums;
 
 namespace CSharks.NFEs.Infra.Data.Data
@@ -16,9 +15,10 @@ namespace CSharks.NFEs.Infra.Data.Data
             var enterprise = new Enterprise
             {
                 Id = Guid.NewGuid(),
-                Name = "Mock Enterprise",
+                Name = "Csharks Developers LTDA",
                 CpfCnpj = "12345678901234",
-                City = "Mock City"
+                City = "8453",
+                Email = "csharkenterprise@hotmail.com"
             };
 
 
@@ -28,7 +28,7 @@ namespace CSharks.NFEs.Infra.Data.Data
             modelBuilder.Entity<User>()
                 .HasData(
                 new { Id = Guid.NewGuid(), Name = "Desenvolvedor", Login = "dev", Password = "MTIz", Profile = TypeProfile.Admin,
-                EnterpriseId = enterprise.Id
+                Email = "teste@hotmail.com" ,EnterpriseId = enterprise.Id
                 }
             );
 
@@ -55,7 +55,6 @@ namespace CSharks.NFEs.Infra.Data.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Enterprise> Enterprises { get; set; }
 
