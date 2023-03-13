@@ -21,14 +21,14 @@
             <span asp-validation-for="CpfCnpj" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Enrollment" class="control-label">Enrollment</label>
+            <label asp-for="Enrollment" class="control-label">Tipo de Pessoa</label>
             <select asp-for="Enrollment" class="form-control">
                 <option value="@TypeClient.PF">Pessoa Física</option>
                 <option value="@TypeClient.PJ">Pessoa Jurídica</option>
             </select>
         </div>
         <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Criar</button>
         </div>
     </form>
 </section>
