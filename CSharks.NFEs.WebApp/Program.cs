@@ -29,6 +29,7 @@ builder.Services.AddDbContext<MySqlContext>
 builder.Services.AddScoped<ISessionService, UserSession>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IExcel, ExcelService>();
+builder.Services.AddScoped<ICacheMemory, CacheMemory>();
 
 builder.Services.AddScoped<IApiClientService, ApiClient>();
 
