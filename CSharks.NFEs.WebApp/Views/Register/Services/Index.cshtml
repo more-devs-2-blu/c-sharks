@@ -5,17 +5,19 @@
     ViewData["Title"] = "Shark NFE - Registro Serviço";
 }
 
-<section>
+<section class="col-8 mx-auto">
     <h1> @ViewData["Title"]</h1>
     <form asp-controller="Service" asp-action="Create" method="post">
          <div class="form-group"> 
             <label asp-for="codigo_item_lista_servico" class="control-label"> Código do Serviço </label>
-            <select asp-for="codigo_item_lista_servico" class="form-control">
+            <select id="selectize-codigo-descricao-servico" asp-for="codigo_item_lista_servico" class="">
                 @if (services != null && services.Any())
                 {
                     foreach (Service service in services)
                     {
-                        <option value="@service.codigo_item_lista_servico"> @service.codigo_item_lista_servico</option>
+                        <option value="@service.codigo_item_lista_servico" data-aliquota="@service.aliquota_item_lista_servico">
+                            @service.codigo_item_lista_servico : @service.descritivo 
+                        </option>
                     }
                 }
                 else
@@ -28,18 +30,32 @@
         </div>
         <div class="form-group">
             <label asp-for="descritivo" class="control-label"> Descrição</label>
-            <input asp-for="descritivo" class="form-control" disabled/>
+            <input id="input-descricao" asp-for="descritivo" class="form-control" disabled/>
             <span asp-validation-for="descritivo" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="aliquota_item_lista_servico" class="control-label"> Alíquota (%)</label>
-            <input asp-for="aliquota_item_lista_servico" class="form-control" disabled/>
+            <input id="input-aliquota" asp-for="aliquota_item_lista_servico" class="form-control" disabled/>
             <span asp-validation-for="aliquota_item_lista_servico" class="text-danger"></span>
         </div>
-        <div class="form-group mt-2">
-            <label asp-for="situacao_tributaria" class="control-label"> Situação Tributária</label>
-            <input type="checkbox" asp-for="situacao_tributaria" class="form-check-input mb-2" checked/>
-            <span asp-validation-for="situacao_tributaria" class="text-danger"></span>
+        <div class="d-flex justify-content-between my-2">
+            <div class="me-2">
+                <div class="form-group mt-2 bg-light p-1 rounded-2">
+                    <label asp-for="tributa_municipio_prestador" class="control-label"> Tributável no Município do Prestador? </label>
+                    <input id="checkbox-tributavel" type="checkbox" asp-for="tributa_municipio_prestador" class="form-check-input" />
+                    <span asp-validation-for="tributa_municipio_prestador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="codigo_local_prestacao_servico" class="control-label">Código local prestação de serviço</label>
+                    <input id="codigo-tom" asp-for="codigo_local_prestacao_servico" class="form-control" />
+                    <span asp-validation-for="codigo_local_prestacao_servico" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group mt-2 align-self-end">
+                <label asp-for="situacao_tributaria" class="control-label"> Situação Tributária </label>
+                <input type="text" asp-for="situacao_tributaria" class="form-control"/>
+                <span asp-validation-for="situacao_tributaria" class="text-danger"></span>
+            </div>
         </div>
         <div class="form-group">
             <label asp-for="valor_tributavel" class="control-label">Valor Tributável</label>
@@ -47,17 +63,7 @@
             <span asp-validation-for="valor_tributavel" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="codigo_local_prestacao_servico" class="control-label">Código local prestação de serviço</label>
-            <input id="codigo" asp-for="codigo_local_prestacao_servico" class="form-control" disabled/>
-            <span asp-validation-for="codigo_local_prestacao_servico" class="text-danger"></span>
-        </div>
-        <div class="form-group mt-2">
-            <label asp-for="tributa_municipio_prestador" class="control-label"> Tributa Município Prestador</label>
-            <input type="checkbox" asp-for="tributa_municipio_prestador" class="form-check-input" />
-            <span asp-validation-for="tributa_municipio_prestador" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary mt-4">Create</button>
+            <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
         </div>
     </form>
 
@@ -65,5 +71,35 @@
 
 @section Scripts {
     <script type="text/javascript">
+        $('#selectize-codigo-descricao-servico').selectize({
+            render: {
+                option: function (data, escape) {
+                    return "<div id="+data.value+" data-aliquota='" + data.aliquota + "'>" + data.text + "</div>"
+                }
+            }
+        });
+
+        $('#selectize-codigo-descricao-servico').change(e => {
+            let selected = e.target.options[e.target.selectedIndex];
+            let selectedItem = $(`#${selected.value}`)[0];
+            let aliquota = selectedItem.dataset.aliquota;
+            let descricao = (e.target.innerText.trim().substring(6).trim());
+            $('#input-aliquota').val(aliquota += "%");
+            $('#input-descricao').val(descricao);
+        })
+
+        $('#checkbox-tributavel').change(e => {
+            let checkbox = e.target;
+            let inputTom = $('#codigo-tom')[0];
+            if(checkbox.checked) {
+                //Buscar Código TOM da sessão;
+                let codigoTomEmpresa = "8845"
+                inputTom.disabled = true;
+                inputTom.value = codigoTomEmpresa;
+            } else {
+                inputTom.disabled = false;
+                inputTom.value = "";
+            }
+        })
     </script>
 }

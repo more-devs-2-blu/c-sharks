@@ -43,7 +43,18 @@ namespace CSharks.NFEs.Infra.Data.Data
                     codigo_item_lista_servico = "702",
                     descritivo = "Teste",
                     aliquota_item_lista_servico = "5",
-                    situacao_tributaria = "0",
+                    situacao_tributaria = "000",
+                    valor_tributavel = "0"
+                },
+                new
+                {
+                    Id = Guid.NewGuid(),
+                    tributa_municipio_prestador = "S",
+                    codigo_local_prestacao_servico = "8357",
+                    codigo_item_lista_servico = "0106",
+                    descritivo = "Assessoria e consultoria em informática.",
+                    aliquota_item_lista_servico = "2",
+                    situacao_tributaria = "000",
                     valor_tributavel = "0"
                 }
             );

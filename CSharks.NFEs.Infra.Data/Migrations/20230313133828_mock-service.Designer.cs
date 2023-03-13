@@ -3,6 +3,7 @@ using System;
 using CSharks.NFEs.Infra.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +11,31 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharks.NFEs.Infra.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20230313133828_mock-service")]
+    partial class mockservice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("CSharks.NFEs.Domain.Models.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
 
             modelBuilder.Entity("CSharks.NFEs.Domain.Models.Client", b =>
                 {
@@ -56,10 +74,6 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -71,35 +85,11 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f97206ee-5853-496a-8321-5eb050903ae0"),
-                            City = "8453",
+                            Id = new Guid("1ec72713-91a4-48a6-b803-7ee15c5d35a0"),
+                            City = "Mock City",
                             CpfCnpj = "12345678901234",
-                            Email = "csharkenterprise@hotmail.com",
-                            Name = "Csharks Developers LTDA"
+                            Name = "Mock Enterprise"
                         });
-                });
-
-            modelBuilder.Entity("CSharks.NFEs.Domain.Models.NF_UTILS.ISQN", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Aliquot")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Isqns");
                 });
 
             modelBuilder.Entity("CSharks.NFEs.Domain.Models.Service", b =>
@@ -143,7 +133,6 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-
                             Id = new Guid("9d2fe87f-2829-4074-8ab0-a5ef5d9e2cae"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
@@ -166,34 +155,11 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CSharks.NFEs.Domain.Models.TOM", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cities");
-                });
-
             modelBuilder.Entity("CSharks.NFEs.Domain.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<Guid>("EnterpriseId")
                         .HasColumnType("char(36)");
@@ -222,9 +188,8 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9ebca88b-fd23-4b60-9331-a3e05a72beab"),
-                            Email = "teste@hotmail.com",
-                            EnterpriseId = new Guid("f97206ee-5853-496a-8321-5eb050903ae0"),
+                            Id = new Guid("d3f12311-b743-46f2-8880-c7fa5b16b9a4"),
+                            EnterpriseId = new Guid("1ec72713-91a4-48a6-b803-7ee15c5d35a0"),
                             Login = "dev",
                             Name = "Desenvolvedor",
                             Password = "MTIz",
