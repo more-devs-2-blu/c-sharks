@@ -38,7 +38,7 @@ namespace CSharks.NFEs.WebApp.Controllers
                 return View("~/Views/Register/Users/Index.cshtml");
             }
 
-
+                    
             return View("~/Views/Register/Users/Index.cshtml");
         }
     }
