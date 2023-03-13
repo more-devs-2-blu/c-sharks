@@ -1,8 +1,6 @@
-﻿
-
-namespace CSharks.NFEs.Domain.Models.NF
+﻿namespace CSharks.NFEs.Domain.DTOs
 {
-    public class Pesquisa
+    public class PesquisaDTO
     {
         public Guid Id { get; set; }
         public string numero { get; set; }

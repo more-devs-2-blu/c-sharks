@@ -13,11 +13,12 @@ namespace CSharks.NFEs.WebApp.Controllers
 
         private readonly IUserRepository _userRepo;
         private readonly ISessionService _session;
-
-        public LoginController(IUserRepository userRepo, ISessionService session)
+        private readonly IEnterpriseRepository _enterpriseRepo;
+        public LoginController(IUserRepository userRepo, ISessionService session, IEnterpriseRepository enterpriseRepository)
         {
             _userRepo = userRepo;
             _session = session;
+            _enterpriseRepo = enterpriseRepository;
         }
 
         public IActionResult Index()
@@ -29,23 +30,33 @@ namespace CSharks.NFEs.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = _userRepo.GetByLogin(credentials.Login);
-                if (user != null)
-                {
-                    string passEncoded = StringCodec.EncodeToBase64(credentials.Password);
-                    if (user.InputValidation(passEncoded))
-                    {
-                        _session.CreateSession(user);
-                        return RedirectToAction("Index", "Home");
-                    }
-
-                    TempData["Error"] = "Senha inválida";
-                    return View("Index");
+                Enterprise enterprise = _enterpriseRepo.GetByCnpj(credentials.Cnpj);
+                if (enterprise == null) {
+                    TempData["Warning"] = "Empresa não cadastrada no sistema";
                 } else
                 {
-                    TempData["Error"] = "Usuário não existe";
-                    return View("Index");
+                    User user = _userRepo.GetByLogin(credentials.Login);
+                    if (user != null)
+                    {
+                        user.EnterpriseId = enterprise.Id;
+                        string passEncoded = StringCodec.EncodeToBase64(credentials.Password);
+                        if (user.InputValidation(passEncoded))
+                        {
+                            _session.CreateSession(user);
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                        TempData["Error"] = "Senha inválida";
+                        return View("Index");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Usuário não existe";
+                        return View("Index");
+                    }
                 }
+
+                
 
             }
             

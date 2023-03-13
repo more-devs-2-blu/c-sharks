@@ -17,6 +17,11 @@
                         <h1 class="text-center mb-4"> @ViewData["Title"]</h1>
                         <form asp-action="InputValidate" asp-controller="Login" method="POST">
                             <div class="mb-3">
+                                <label for="username" class="form-label">Empresa</label>
+                                <input asp-for="Cnpj" type="text" class="form-control">
+                                @Html.ValidationMessageFor(x => x.Cnpj)
+                            </div>
+                            <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input asp-for="Login" type="text" class="form-control">
                                 @Html.ValidationMessageFor(x => x.Login)

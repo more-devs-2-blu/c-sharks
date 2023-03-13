@@ -1,10 +1,7 @@
-﻿@using CSharks.NFEs.Domain.Models.NF;
+﻿@using CSharks.NFEs.Domain.Models;
 @{
-    List<Lista> listas = ViewBag.listas;
-    List<Pesquisa> pesquisas = ViewBag.pesquisas;
-    List<NF> NFS = ViewBag.NFS;
-    List<Tomador> tomadores = ViewBag.tomadores;
-    List<Prestador> prestadores = ViewBag.prestadores;
+    List<Service> services = ViewBag.services;
+    List<Client> clients = ViewBag.clients;
     ViewData["Title"] = "Shark NFE - NFEs";
 }
 
@@ -19,86 +16,35 @@
                 <input class="form-control" />
             </div>
             <div>
-                <label> Lista</label>
+                <label> Serviços </label>
                 <select class="form-control">
-                    @if (listas != null && listas.Any())
+                    @if (services != null && services.Any())
                     {
-                        foreach (Lista lista in listas)
+                        foreach (Service service in services)
                         {
-                            <option value="#">@lista.descritivo</option>
+                            <option value="#">@service.codigo_item_lista_servico</option>
                         }
                     }
                     else
                     {
-                        <option> Cadastre uma Lista. </option>
+                        <option> Cadastre um Serviço. </option>
                     }
 
                 </select>
             </div>
             <div>
-                <label> Pesquisa </label>
+                <label> Clientes </label>
                 <select class="form-control">
-                    @if (pesquisas != null && pesquisas.Any())
+                    @if (clients != null && clients.Any())
                     {
-                        foreach (Pesquisa pesquisa in pesquisas)
+                        foreach (Client client in clients)
                         {
-                            <option value="#">@pesquisa.cadastro</option>
+                            <option value="#">@client.CpfCnpj</option>
                         }
                     }
                     else
                     {
-                        <option> Cadastre uma Pesquisa. </option>
-                    }
-
-                </select>
-            </div>
-            <div>
-                <label> NF</label>
-                <select class="form-control">
-                    @if (NFS != null && NFS.Any())
-                    {
-                        foreach (NF nf in NFS)
-                        {
-                            <option value="#">@nf.numero</option>
-                        }
-                    }
-                    else
-                    {
-                        <option> Cadastre uma NF. </option>
-                    }
-
-                </select>
-            </div>
-            <div>
-                <label> Tomador</label>
-                <select class="form-control">
-                    @if (tomadores != null && tomadores.Any())
-                    {
-                        foreach (Tomador tomador in tomadores)
-                        {
-                            <option value="#">@tomador.identificador</option>
-                        }
-                    }
-                    else
-                    {
-                        <option> Cadastre uma Tomador. </option>
-                    }
-
-                </select>
-            </div>
-            <div>
-                <label> Prestador </label>
-                <select class="form-control">
-                    @if (listas != null && listas.Any())
-                    {
-                        foreach (Prestador prestador in prestadores)
-                        {
-                            <option value="#"> @prestador.cpfcnpj</option>
-                        }
-                    }
-                    else
-                    {
-                        <option> Cadastre uma Prestador. </option>
+                        <option> Cadastre um Cliente. </option>
                     }
 
                 </select>

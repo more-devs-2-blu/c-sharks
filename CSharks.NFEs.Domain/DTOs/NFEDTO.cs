@@ -14,7 +14,7 @@ namespace CSharks.NFEs.Domain.DTOs
         public Prestador prestador { get; set; }
         public Tomador tomador { get; set; }
         public List<lista> itens { get; set; }
-        public Pesquisa pesquisa { get; set; }
+        public PesquisaDTO2 pesquisa { get; set; }
         public string numero { get; set; }
         public string serie_nfse { get; set; }
         public string situacao { get; set; }
@@ -77,7 +77,7 @@ namespace CSharks.NFEs.Domain.DTOs
     {
         public nfse nfse { get; set; }
     }
-    public class Pesquisa
+    public class PesquisaDTO2
     {
         public string numero { get; set; }
         public string serie_nfse { get; set; }

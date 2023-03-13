@@ -1,14 +1,10 @@
 using CSharks.NFEs.Domain.Interfaces.Repositories;
-using CSharks.NFEs.Domain.Interfaces.Repositories.NF_UTILS;
-using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Infra.Data.Data;
 using CSharks.NFEs.Infra.Data.Repositories;
-using CSharks.NFEs.Infra.Data.Repositories.NF_UTILS;
 using CSharks.NFEs.Services.Interfaces;
 using CSharks.NFEs.Services.Services;
 using CSharks.NFEs.WebApp.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 var MySqlConnectionString = builder.Configuration.GetConnectionString("MySqlConnectionString");
@@ -39,11 +35,7 @@ builder.Services.AddScoped<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddScoped<IServicesRepository, ServicesRepository>();
 
 //NF Utils
-builder.Services.AddScoped<INFRepository, NFRepository>();
-builder.Services.AddScoped<IListaRepository, ListaRepository>();
-builder.Services.AddScoped<IPesquisaRepository, PesquisaRepository>();
-builder.Services.AddScoped<ITomadorRepository, TomadorRepository>();
-builder.Services.AddScoped<IPrestadorRepository, PrestadorRepository>();
+builder.Services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
 
 
 //Creates WebApplication instance
