@@ -1,6 +1,7 @@
 using CSharks.NFEs.Domain.Interfaces.Repositories;
 using CSharks.NFEs.Infra.Data.Data;
 using CSharks.NFEs.Infra.Data.Repositories;
+using CSharks.NFEs.Services;
 using CSharks.NFEs.Services.Interfaces;
 using CSharks.NFEs.Services.Services;
 using CSharks.NFEs.WebApp.Services;
@@ -26,6 +27,7 @@ builder.Services.AddDbContext<MySqlContext>
 
 //Default lifetimes services
 builder.Services.AddScoped<ISessionService, UserSession>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddScoped<IApiClientService, ApiClient>();
 

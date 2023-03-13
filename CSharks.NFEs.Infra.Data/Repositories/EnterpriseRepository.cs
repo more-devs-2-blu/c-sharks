@@ -1,6 +1,5 @@
 ﻿using CSharks.NFEs.Domain.Interfaces.Repositories;
 using CSharks.NFEs.Domain.Models;
-using CSharks.NFEs.Domain.Models.NF;
 using CSharks.NFEs.Infra.Data.Data;
 
 namespace CSharks.NFEs.Infra.Data.Repositories

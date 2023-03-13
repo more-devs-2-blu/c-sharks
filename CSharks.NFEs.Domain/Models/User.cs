@@ -22,6 +22,9 @@ namespace CSharks.NFEs.Domain.Models
         [Required(ErrorMessage = "Escolha um perfil para o usuário")]
         public TypeProfile Profile { get; set; }
 
+        [Required(ErrorMessage = "Digite o email do usuário")]
+        public String Email { get; set; }
+
         public bool InputValidation(string paramPassword)
         {
             if (Password.Equals(paramPassword))
