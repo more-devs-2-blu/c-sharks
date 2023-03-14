@@ -13,8 +13,8 @@ public class City implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID Id;
-  @Column(name = "name", nullable = false)
+  @Column(name = "name")
   private String name;
-  @Column(name = "tom", nullable = false)
+  @Column(name = "tom")
   private String tom;
 }
