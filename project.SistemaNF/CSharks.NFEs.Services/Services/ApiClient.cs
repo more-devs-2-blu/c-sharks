@@ -9,116 +9,87 @@ using System.Xml.Serialization;
 using System.Xml;
 using CSharks.NFEs.Domain.DTOs;
 using System.Net;
+using MySql.Data.MySqlClient.Memcached;
 
 namespace CSharks.NFEs.Services.Services
 {
     public class ApiClient : IApiClientService
     {
-        public string EmitNF(XmlSerializer xmlNf)
+        static readonly HttpClient client = new HttpClient();
+        public async void EmitNF(string xmlFileEmit)
         {
-            var _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
+            const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
 
-            XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
-            HttpWebRequest webRequest = CreateWebRequest(_url);
-            InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
-
-            IAsyncResult asyncResult = webRequest.BeginGetResponse(null, null);
-
-            asyncResult.AsyncWaitHandle.WaitOne();
-
-            string soapResult;
-            using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
+           
+            try
             {
-                using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
+                var content = new StringContent(xmlFileEmit);
+
+                content.Headers.Add("Authorization", "MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
+
+                HttpResponseMessage response = await client.PostAsync(_url, content);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    soapResult = rd.ReadToEnd();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(responseBody);
                 }
-                Console.Write(soapResult);
+                else
+                {
+                    Console.WriteLine($"Erro: {response.StatusCode}");
+                }
             }
-
-
-
-            return "";
-        }
-        private static XmlDocument CreateSoapEnvelope()
-        {
-            XmlDocument soapEnvelopeDocument = new XmlDocument();
-            soapEnvelopeDocument.LoadXml(
-            @"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" 
-                xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" 
-                xmlns:xsd=""http://www.w3.org/1999/XMLSchema"">
-                <SOAP-ENV:Body>
-                    <HelloWorld xmlns=""http://tempuri.org/"" 
-                        SOAP-ENV:encodingStyle=""http://schemas.xmlsoap.org/soap/encoding/"">
-                        <int1 xsi:type=""xsd:integer"">12</int1>
-                        <int2 xsi:type=""xsd:integer"">32</int2>
-                    </HelloWorld>
-                </SOAP-ENV:Body>
-            </SOAP-ENV:Envelope>");
-            return soapEnvelopeDocument;
-        }
-
-        private static void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
-        {
-            using (Stream stream = webRequest.GetRequestStream())
+            catch (Exception e)
             {
-                soapEnvelopeXml.Save(stream);
+                Console.WriteLine($"Erro: {e.Message}");
             }
         }
-        private static HttpWebRequest CreateWebRequest(string url)
-        {
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-            webRequest.Headers.Add("Authorization", "MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
-            webRequest.ContentType = "multipart/form-data";
-            webRequest.Accept = "xml";
-            webRequest.Method = "POST";
-            return webRequest;
-        }
 
-        public XmlSerializer GetFile(nfse nfe)
+
+        public string GetFile(NFEDTO nfe)
         {
 
             return SerializeXMLEmit(nfe);
         }
-        public XmlSerializer SerializeXMLEmit(nfse nfe)
+        public string SerializeXMLEmit(NFEDTO nfe)
         {
 
-            nfe.identificador = "3812817100220600010000000001";
+            nfe.Identificador = "3812817100220600010000000001";
 
-            nfe.nf = new NF()
+            nfe.Nf = new NF()
             {
-                valor_total = "1,00"
+                ValorTotal = "1,00"
             };
 
-            nfe.prestador = new Prestador()
+            nfe.Prestador = new Prestador()
             {
-                cpfcnpj = "00000000000000",
-                cidade = "8357"
+                CpfCnpj = "00000000000000",
+                Cidade = "8357"
             };
 
-            nfe.tomador = new Tomador()
+            nfe.Tomador = new Tomador()
             {
-                tipo = "J",
-                endereco_informado = "",
-                identificador = "",
-                cpfcnpj = "06262485902",
-                nome_razao_social = "",
-                ie = "",
-                logradouro = "",
-                email = "",
-                numero_residencia = "",
-                complemento = ""
+                Tipo = "J",
+                EnderecoInformado = "lalala",
+                Identificador = "0000000000",
+                CpfCnpj = "06262485902",
+                NomeRazaoSocial = "lepo",
+                Ie = "testeie",
+                Logradouro = "testerua",
+                Email = "teste@gmail.com",
+                NumeroResidencia = "658",
+                Complemento = "casa"
             };
 
             lista item = new lista();
-            item.tributa_municipio_prestador = "S";
-            item.codigo_local_prestacao_servico = "8357";
-            item.codigo_item_lista_servico = "702";
-            item.descritivo = "Teste";
-            item.aliquota_item_lista_servico = "5";
-            item.situacao_tributaria = "0";
-            item.valor_tributavel = "0";
-            nfe.itens = new List<lista>
+            item.TributaMunicipioPrestador = "S";
+            item.CodigoLocalPrestServico = "8357";
+            item.CodigoServico = "702";
+            item.Descricao = "Teste";
+            item.AliquotaServico = "5";
+            item.SituacaoTributaria = "0";
+            item.ValorTributavel = "0";
+            nfe.Itens = new List<lista>
             {
                 item
             };
@@ -126,9 +97,13 @@ namespace CSharks.NFEs.Services.Services
             string nomeArquivo = DateTime.Now.ToString().Replace(@"/", "").Replace(@" ", "").Replace(@":", "") + ".xml";
             using (StreamWriter stream = new StreamWriter(Path.Combine(@"D:\Pastas\Programação\Devs2Blu\Hackathon\Csharks", nomeArquivo)))
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(nfse));
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(NFEDTO));
                 xmlSerializer.Serialize(stream, nfe);
-                return xmlSerializer;
+
+                var sw = new StringWriter();
+                xmlSerializer.Serialize(sw, nfe);
+
+                return sw.ToString();
             }
         }
     } 
