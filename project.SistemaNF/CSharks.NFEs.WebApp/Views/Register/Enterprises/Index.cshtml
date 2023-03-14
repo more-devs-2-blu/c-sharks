@@ -5,28 +5,27 @@
 
 }
 <section>
-    <div class="mt-3">
-        @await Html.PartialAsync("_MessageResult")
-    </div>
     <div class="wrapper fadeInDown">
-        <div class="formContent">
-            <div class="fadeIn first mt-4">
+        <div class="formContent bg-white rounded text-center col-6">
+            <div class="mt-3">
+                @await Html.PartialAsync("_MessageResult")
+            </div>
+            <div class="fadeIn first my-5">
                 <h5> Cadastre sua Empresa</h5>
             </div>
-
             <form asp-action="Create" asp-controller="Enterprise" method="post">
                 <input asp-for="Name" class="fadeIn second form-control" placeholder="nome">
                 <input asp-for="CpfCnpj" class="fadeIn second form-control" placeholder="cnpj">
                 <input asp-for="Email" class="fadeIn third form-control" placeholder="email">
-                <input asp-for="City" class="fadeIn third form-control" placeholder="cidade">
+                <input id="input-city" asp-for="City" class="fadeIn third form-control" placeholder="cidade">
 
-                <input type="submit" class="fadeIn fourth" placeholder="criar">
-                <div><a asp-controller="Login" asp-action="Index" class="underlineHover fadeIn fourth mb-1">Voltar </a></div>
+                <input type="submit" class="fadeIn fourth mt-3" placeholder="criar" value="Cadastrar">
+                <div class="pt-1 pb-3"><a asp-controller="Login" asp-action="Index" class="underlineHover fadeIn fourth mb-1">Voltar</a></div>
             </form>
             <div id="formFooter">
-                <span asp-validation-for="Name" class="text-danger"></span><br />
-                <span asp-validation-for="CpfCnpj" class="text-danger"></span><br />
-                <span asp-validation-for="Email" class="text-danger"></span><br />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <span asp-validation-for="CpfCnpj" class="text-danger"></span>
+                <span asp-validation-for="Email" class="text-danger"></span>
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
         </div>
