@@ -18,12 +18,12 @@ body {
 }
 
 */
+
 html, body {
     height: 100%;
     padding: 0;
     overflow: hidden;
 }
-
 
 /* Custom colors */
 .bg-primary-application {
@@ -64,7 +64,6 @@ html, body {
     background-color: #346c84;
     border-radius: 50%;
 }
-
 
 .nav-link.active + .selected-circle {
     opacity: 1;
