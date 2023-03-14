@@ -10,26 +10,32 @@ using System.Xml;
 using CSharks.NFEs.Domain.DTOs;
 using System.Net;
 using MySql.Data.MySqlClient.Memcached;
+using System.Net.Http.Headers;
+using System.Reflection.Metadata;
+using System.Security.Principal;
+using System.Xml.Linq;
 
 namespace CSharks.NFEs.Services.Services
 {
     public class ApiClient : IApiClientService
     {
-        static readonly HttpClient client = new HttpClient();
+
+        static readonly HttpClient _client = new HttpClient();
 
         public async void EmitNF(string xmlFileEmit)
         {
             const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
 
-           
             try
+
             {
-                var content = new StringContent(xmlFileEmit);
+                _client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse("Basic MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
+                //var stringContent = new StringContent(xmlFileEmit, Encoding.UTF8, "multipart/form-data");
 
-                content.Headers.Add("Authorization", "MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
+                var stringContent = new StringContent(xmlFileEmit);
+                stringContent.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
 
-                HttpResponseMessage response = await client.PostAsync(_url, content);
-
+                var response = await _client.PostAsync(_url, stringContent);
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
@@ -37,7 +43,7 @@ namespace CSharks.NFEs.Services.Services
                 }
                 else
                 {
-                    Console.WriteLine($"Erro: {response.StatusCode}");
+                    Console.WriteLine(response.StatusCode);
                 }
             }
             catch (Exception e)
