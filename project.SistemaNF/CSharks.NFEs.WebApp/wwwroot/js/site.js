@@ -1,26 +1,16 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-// close _MessageResult alert
+﻿$(document).ready(function () {
 
 
-$(document).ready(function () {
-    // Get the current page URL
+    // BEGIN MENU BAR
     var url = window.location.href;
-    // Loop through each navigation item
     $('.nav-link').each(function () {
-        // Get the URL of the navigation item
         var navUrl = $(this).attr('href');
-        // Check if the current page URL matches the navigation URL
         if (url.includes(navUrl)) {
-            // Add the "active" class to the navigation item and show the circle
             $(this).addClass('active');
             $(this).parent().find('.selected-circle').css('opacity', '1');
         }
     });
 
-    // Handle click events on the navigation items
     $('.nav-link').click(function (e) {
         e.preventDefault();
         $('.nav-link').removeClass('active');
@@ -29,11 +19,48 @@ $(document).ready(function () {
         $(this).parent().find('.selected-circle').css('opacity', '1');
         window.location.href = $(this).attr('href');
     });
+    // END MENU BAR
 
+
+    //ALERT MESSAGE RESULT
     $('.close-alert').click(function () {
         $('.alert').hide('hide');
     });
+    //END
 
-    $('#menu-bar').Load("Home/GetMenuBar"); 
+    //BEGIN DATA TABLE
+    getDataTable('#dt-nf');
+    
+    function getDataTable(id) {
+        $(id).DataTable({
+            "ordering": true,
+            "paging": true,
+            "searching": true,
+            "oLanguage": {
+                "sEmptyTable": "Nenhum registro encontrado na tabela",
+                "sInfo": "Mostrar _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrar 0 até 0 de 0 Registros",
+                "sInfoFiltered": "(Filtrar de _MAX_ total registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "Mostrar _MENU_ registros por pagina",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Ultimo"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
+    }
+    //END DATA TABLE
 
 });

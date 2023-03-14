@@ -1,0 +1,64 @@
+﻿@using CSharks.NFEs.Domain.Models;
+@{
+    List<Service> services = ViewBag.services;
+    List<Client> clients = ViewBag.clients;
+    ViewData["Title"] = "Shark NFE - NFEs";
+}
+
+<section>
+    <div class="container">
+        <div class="form-control">
+            <div class="mt-4">
+                <h2> Emitir uma nova Nota Fiscal </h2>
+            </div>
+            <div class="mt-4">
+                <label> Identificador </label>
+                <input class="form-control" />
+            </div>
+            <div>
+                <label> Serviços </label>
+                <select class="form-control">
+                    @if (services != null && services.Any())
+                    {
+                        foreach (Service service in services)
+                        {
+                            <option value="@service.codigo_item_lista_servico">@service.codigo_item_lista_servico - @service.descritivo</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre um Serviço. </option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label> Clientes </label>
+                <select class="form-control">
+                    @if (clients != null && clients.Any())
+                    {
+                        foreach (Client client in clients)
+                        {
+                            <option value="#">@client.CpfCnpj</option>
+                        }
+                    }
+                    else
+                    {
+                        <option> Cadastre um Cliente. </option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <a class="btn btn-primary mt-4"> Emitir </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+    </script>
+}
