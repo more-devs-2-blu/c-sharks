@@ -16,8 +16,8 @@
 <body class="m-0 bg-shark d-flex flex-column justify-content-center">
     <div id="mainDiv" class=" bg-light shadow rounded">
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-shark-bottom mb-3 rounded-top shadow-sm">
-                @await Html.PartialAsync("_MenuBar.cshtml")
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom shadow mb-3">
+                @await Component.InvokeAsync("MenuBar")
             </nav>
         </header>
         <div class="container">

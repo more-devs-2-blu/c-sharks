@@ -3,9 +3,7 @@
 
 // Write your JavaScript code.
 // close _MessageResult alert
-$('.close-alert').click(function () {
-    $('.alert').hide('hide');
-});
+
 
 $(document).ready(function () {
     // Get the current page URL
@@ -31,4 +29,11 @@ $(document).ready(function () {
         $(this).parent().find('.selected-circle').css('opacity', '1');
         window.location.href = $(this).attr('href');
     });
+
+    $('.close-alert').click(function () {
+        $('.alert').hide('hide');
+    });
+
+    $('#menu-bar').Load("Home/GetMenuBar"); 
+
 });
