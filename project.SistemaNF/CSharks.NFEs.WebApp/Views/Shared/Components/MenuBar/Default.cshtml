@@ -1,0 +1,52 @@
+﻿@using CSharks.NFEs.Domain.Models;
+@model User
+@{
+}
+
+<div class="container-fluid">
+    <div>
+        <img width="65px" src="https://i.imgur.com/wVYsLd0.png" />
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> @Model.Enterprise!.Name </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+        <ul class="navbar-nav flex-grow-1 justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="User" asp-action="Index">Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Client" asp-action="Index">Clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Service" asp-action="Index">Serviços</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Nfe" asp-action="Index">Buscar NF</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="EmmitNF" asp-action="Index">Emitir NF</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">Relatórios</a>
+            </li>
+            @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Login" asp-action="Exit">Sair</a>
+            </li>*@
+        </ul>
+        <li class="navbar-nav nav-item dropdown me-5">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @Model.Name
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"> Configurações </li>
+                <li><a class="dropdown-item" asp-controller="Login" asp-action="Exit">Sair</a></li>
+            </ul>
+        </li>
+    </div>
+</div>

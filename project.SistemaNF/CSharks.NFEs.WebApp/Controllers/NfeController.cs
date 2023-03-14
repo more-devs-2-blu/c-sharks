@@ -29,12 +29,6 @@ namespace CSharks.NFEs.WebApp.Controllers
             ViewBag.services = _serviceRepo.GetAll().ToList();
             return View("~/Views/Nfe/ListNF.cshtml");
         }
-        public IActionResult EmitNFE()
-        {
-            ViewBag.services = _serviceRepo.GetAll().ToList();
-            ViewBag.clients = _clientRepo.GetAll().ToList();
-            return View("~/Views/Nfe/EmitNF.cshtml");
-        }
 
         private NFEDTO MapNF(NFE nfse, Enterprise enterprise, Client client, Service service)
         {

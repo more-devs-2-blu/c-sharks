@@ -19,7 +19,9 @@ namespace CSharks.NFEs.Services.Services
 {
     public class ApiClient : IApiClientService
     {
+
         static readonly HttpClient _client = new HttpClient();
+
         public async void EmitNF(string xmlFileEmit)
         {
             const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
@@ -50,12 +52,12 @@ namespace CSharks.NFEs.Services.Services
             }
         }
 
-
         public string GetFile(NFEDTO nfe)
         {
 
             return SerializeXMLEmit(nfe);
         }
+
         public string SerializeXMLEmit(NFEDTO nfe)
         {
 

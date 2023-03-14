@@ -1,13 +1,8 @@
-﻿using CSharks.NFEs.Domain.Models;
+﻿using CSharks.NFEs.Domain.DTOs;
+using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Domain.Models.NF_UTILS;
 using CSharks.NFEs.Services.Interfaces;
 using ExcelDataReader;
-using MySql.Data.MySqlClient.Memcached;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Services.Services
 {
@@ -45,9 +40,35 @@ namespace CSharks.NFEs.Services.Services
             }
         }
 
-        public List<TOM> ReadTOMFromExcel(string pathFile)
+        public List<TOMDTO> ReadTOMFromExcel(string pathFile)
         {
-            throw new NotImplementedException();
+            List<TOMDTO> toms = new List<TOMDTO>();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            using (var stream = System.IO.File.Open(pathFile, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    int counter = 0;
+
+                    while (reader.Read())
+                    {
+
+                        if (counter >= 1 && counter < 5570)
+                        {
+                            toms.Add(new TOMDTO
+                            {
+                                tom = reader.GetValue(0).ToString()!,
+                                name = reader.GetValue(1).ToString()!,
+
+                            });
+                        }
+
+                        counter++;
+                    }
+                }
+
+                return toms;
+            }
         }
     }
 }

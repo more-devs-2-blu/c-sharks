@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/city")
 public class CityController {
@@ -19,8 +21,9 @@ public class CityController {
   }
 
   @PostMapping
-  public ResponseEntity<City> saveCity(@RequestBody City city) {
-    City newCity = cityService.saveCity(city);
-    return ResponseEntity.ok().body(newCity);
+  public ResponseEntity saveAllCity(@RequestBody List<City> cities) {
+    System.out.println(cities);
+    Boolean ok = cityService.saveCity(cities);
+    return ResponseEntity.ok().body("");
   }
 }

@@ -1,4 +1,6 @@
-﻿using CSharks.NFEs.Domain.Models.NF_UTILS;
+﻿using CSharks.NFEs.Domain.DTOs;
+using CSharks.NFEs.Domain.Models;
+using CSharks.NFEs.Domain.Models.NF_UTILS;
 using CSharks.NFEs.Infra.Data.Repositories;
 using CSharks.NFEs.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +13,11 @@ namespace CSharks.NFEs.WebApp.Controllers
         private readonly IExcel _excelService;
         private readonly IIsqnRepository _isqnRepo;
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IDataProviderService _dataProviderService;
 
-        public ExcelHandlerController(IExcel excelService, IIsqnRepository isqnRepository, IWebHostEnvironment hostingEnvironment)
+        public ExcelHandlerController(IExcel excelService, IIsqnRepository isqnRepository, IWebHostEnvironment hostingEnvironment, IDataProviderService dataProvider)
         {
+            _dataProviderService = dataProvider;
             _excelService = excelService;
             _isqnRepo = isqnRepository;
             _hostingEnvironment = hostingEnvironment;
@@ -44,6 +48,7 @@ namespace CSharks.NFEs.WebApp.Controllers
             TempData["Error"] = "Falha ao tentar ler os dados do arquivo excel, certifique-se se o arquivo com extensão isqn.xlsx está no diretório /wwwroot/files.";
             return View("~/Views/Home/Index.cshtml");
         }
+
         public IActionResult DeleteAllISQNData()
         {
             if (_isqnRepo.DeleteAll())
@@ -59,5 +64,11 @@ namespace CSharks.NFEs.WebApp.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
     
+        public IActionResult RegisterAllTOMs()
+        {
+            List<TOMDTO> listTom = _excelService.ReadTOMFromExcel(Path.Combine(_hostingEnvironment.WebRootPath, "files", "tom.xlsx"));
+            _dataProviderService.SendToms(listTom);
+            return View("~/Views/Home/Index.cshtml");
+        }
     }
 }
