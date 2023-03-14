@@ -3,12 +3,6 @@ using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Domain.Models.NF_UTILS;
 using CSharks.NFEs.Services.Interfaces;
 using ExcelDataReader;
-using MySql.Data.MySqlClient.Memcached;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharks.NFEs.Services.Services
 {
