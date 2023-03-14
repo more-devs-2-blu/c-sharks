@@ -11,6 +11,7 @@ namespace CSharks.NFEs.Domain.Models.NF_UTILS
         public Guid ID { get; set; }
 
         public string Code { get; set; }
+
         public string Description { get; set; }
 
         public string Aliquot { get; set; }

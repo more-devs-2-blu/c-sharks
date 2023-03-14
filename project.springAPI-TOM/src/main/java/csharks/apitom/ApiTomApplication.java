@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ApiTomApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiTomApplication.class, args);
+		SpringApplication.	run(ApiTomApplication.class, args);
 	}
 }

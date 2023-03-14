@@ -42,6 +42,11 @@ builder.Services.AddScoped<IIsqnRepository, IsqnRepository>();
 //NF Utils
 builder.Services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
 
+builder.Services.AddHttpClient<IDataProviderService, DataProviderClient>(client =>
+{
+    //lient.BaseAddress = new Uri("");
+    client.BaseAddress = new Uri("http://localhost:8080/");
+});
 
 //Creates WebApplication instance
 
