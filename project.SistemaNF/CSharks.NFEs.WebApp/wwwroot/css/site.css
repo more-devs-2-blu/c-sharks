@@ -7,7 +7,7 @@ html {
     font-size: 16px;
   }
 }
-
+/*
 html {
   position: relative;
   min-height: 100%;
@@ -17,8 +17,64 @@ body {
   margin-bottom: 60px;
 }
 
+*/
+html, body {
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+/* Custom colors */
+.bg-primary-application {
+    background-color: #24b49a;
+}
+
+.bg-sec-application {
+    background-color: #B2EBB5;
+}
+
+/* Custom screen */
+#mainDiv {
+    width: 95%; /* this will center the element horizontally */
+    height: 90%;
+    margin: auto;
+}
+
 /* Validation Styles */ 
 .field-validation-error {
     color: red;
 }
 /* End Validation Styles */
+
+/* Layout MenuBar*/
+.navbar-nav .nav-item .nav-link.active {
+    color: #346c84 !important; /* Change text color of active link */
+    position: relative; /* Make the link relative so the circle can be positioned absolutely */
+}
+
+.navbar-nav .nav-item .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 5px;
+    width: 5px;
+    background-color: #346c84;
+    border-radius: 50%;
+}
+
+
+.nav-link.active + .selected-circle {
+    opacity: 1;
+    bottom: -10px;
+}
+
+.bg-shark {
+    background-color: #346c84;
+}
+
+.color-shark {
+    color: #346c84;
+}
