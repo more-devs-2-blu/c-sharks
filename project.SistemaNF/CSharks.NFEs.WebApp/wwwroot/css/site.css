@@ -7,23 +7,17 @@ html {
     font-size: 16px;
   }
 }
-/*
-html {
-  position: relative;
-  min-height: 100%;
-}
 
-body {
-  margin-bottom: 60px;
-}
-
-*/
 html, body {
     height: 100%;
     padding: 0;
     overflow: hidden;
 }
 
+.form-control:focus {
+    border-color: #346c84;
+    box-shadow: 0 2px 4px #346c84;
+}
 
 /* Custom colors */
 .bg-primary-application {
@@ -65,7 +59,6 @@ html, body {
     border-radius: 50%;
 }
 
-
 .nav-link.active + .selected-circle {
     opacity: 1;
     bottom: -10px;
@@ -77,4 +70,8 @@ html, body {
 
 .color-shark {
     color: #346c84;
+}
+
+.border-shark-bottom {
+    border-bottom: 2px solid #346c84;
 }
