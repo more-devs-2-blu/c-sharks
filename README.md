@@ -7,10 +7,12 @@ Desafio A: Como facilitar a digitação e gestão de NFS-es
 
 1- Verificar se o email com as credenciais está no SPAM caso não esteja na caixa de entrada principal (GMAIL) 
 
-2- Caso ocorra problemas com a autenticação 
+2- Caso ocorra problemas com a autenticação:
 
 empresa: 12345678901234
+
 login: dev
+
 senha: 123
 
 
