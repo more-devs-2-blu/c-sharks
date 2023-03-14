@@ -17,8 +17,8 @@
     <div id="mainDiv" class=" bg-light shadow rounded-bottom">
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom shadow mb-3">
-                @await Html.PartialAsync("_MenuBar.cshtml")
-            </nav
+                @await Component.InvokeAsync("MenuBar")
+            </nav>
         </header>
         <div class="container">
             <main role="main" class="pb-0">
