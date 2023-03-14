@@ -14,14 +14,14 @@
           referrerpolicy="no-referrer" />
 </head>
 <body class="m-0 bg-shark d-flex flex-column justify-content-center">
-    <div id="mainDiv" class=" bg-light shadow rounded-bottom">
+    <div id="mainDiv" class=" bg-light shadow rounded">
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom shadow mb-3">
                 @await Component.InvokeAsync("MenuBar")
             </nav>
         </header>
         <div class="container">
-            <main role="main" class="pb-0">
+            <main role="main" class="pb-0 col-9 pt-3 mx-auto">
                 @RenderBody()
             </main>
         </div>

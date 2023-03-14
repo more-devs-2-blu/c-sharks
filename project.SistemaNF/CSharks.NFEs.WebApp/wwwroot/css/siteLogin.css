@@ -7,7 +7,7 @@
 }
 
 html {
-    background-color: #56baed;
+    /*background-color: #56baed;*/
 }
 
 body {
@@ -15,11 +15,15 @@ body {
 }
 
 a {
-    color: #92badd;
+    color: #5fbae9;
     display: inline-block;
     text-decoration: none;
     font-weight: 600;
 }
+
+    a:hover {
+        color: #5fbae9;
+    }
 
 /* STRUCTURE */
 
@@ -43,21 +47,7 @@ a {
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 #0000004d;
-    box-shadow: 0 30px 60px 0 #0000004d;
-    text-align: center;
-}
-
-.formContent {
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 #0000004d;
-    box-shadow: 0 30px 60px 0 #0000004d;
+    box-shadow: 0 1rem 2rem 0 #0000004d;
     text-align: center;
 }
 
@@ -80,17 +70,17 @@ input[type=button], input[type=submit] {
     background-color: #24b49a;
     border: none;
     color: white;
-    padding: 15px 80px;
+    padding: 0.75rem 5rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
     font-size: 1em;
     -webkit-box-shadow: 0 10px 20px 0 #1a8874;
-    box-shadow: 0 10px 20px 0 #1a8874;
+    box-shadow: 0 5px 10px 0 #1a8874;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
+    margin: 0.5rem 1rem 1.5rem 1rem;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -114,7 +104,7 @@ input[type=text], input[type=password] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
-    padding: 15px 32px;
+    padding: 0.75rem 1.5rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
