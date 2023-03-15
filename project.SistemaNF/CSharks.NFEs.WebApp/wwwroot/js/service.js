@@ -1,5 +1,4 @@
 ﻿$('document').ready(e => {
-    console.log("teste")
     $('#selectize-codigo-descricao-servico').selectize({
         render: {
             option: function (data, escape) {
@@ -8,13 +7,23 @@
         }
     });
 
+    $('#btn-cadastrar').click(e => {
+        //e.preventDefault();
+        //let form = $('#form-service');
+        //let codigoInput = $('#input-codigo-servico');
+        //let codigoServico = $('.item');
+        //console.log(codigoServico.dataset.value);
+        //form.submit();
+    });
+
     $('#selectize-codigo-descricao-servico').change(e => {
         let selected = e.target.options[e.target.selectedIndex];
         let selectedItem = $(`#${selected.value}`)[0];
         let aliquota = selectedItem.dataset.aliquota;
         let descricao = (e.target.innerText.trim().substring(6).trim());
-        $('#input-aliquota').val(aliquota += "%");
+        $('#input-aliquota').val(aliquota);
         $('#input-descricao').val(descricao);
+        $('#input-codigo-servico').val(selectedItem.id);
     })
 
     $('#checkbox-tributavel').change(e => {
@@ -23,10 +32,10 @@
         if (checkbox.checked) {
             //Buscar Código TOM da sessão;
             let codigoTomEmpresa = "8845"
-            inputTom.disabled = true;
+            inputTom.readOnly = true;
             inputTom.value = codigoTomEmpresa;
         } else {
-            inputTom.disabled = false;
+            inputTom.readOnly = false;
             inputTom.value = "";
         }
     });
