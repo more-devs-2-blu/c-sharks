@@ -9,22 +9,18 @@
 <section>
     <div class="container">
         <div class="form-control">
-            <form asp-action="EmmitNF" asp-controller="EmmitNF" method="POST">
+            <form>
                 <div class="mt-4">
                     <h2> Emitir uma nova Nota Fiscal </h2>
                 </div>
-                <div class="mt-4">
-                    <label> Identificador </label>
-                    <input class="form-control" />
-                </div>
                 <div>
                     <label> Serviços </label>
-                    <select class="form-control">
+                    <select class="form-control" id="selectService">
                         @if (services != null && services.Any())
                         {
                             foreach (Service service in services)
                             {
-                                <option value="@service.codigo_item_lista_servico">@service.codigo_item_lista_servico - @service.descritivo</option>
+                                <option value="@service.Id">@service.codigo_item_lista_servico - @service.descritivo</option>
                             }
                         }
                         else
@@ -36,7 +32,7 @@
                 </div>
                 <div>
                     <label> Clientes </label>
-                    <select class="form-control">
+                    <select class="form-control" id="selectClient">
                         @if (clients != null && clients.Any())
                         {
                             foreach (Client client in clients)
@@ -51,7 +47,7 @@
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary mt-4"> Emitir </button>
+                    <button type="submit" id="btn-Emmit" class="btn btn-primary mt-4"> Emitir </button>
                 </div>
             </form>
         </div>
@@ -61,6 +57,20 @@
 
 @section Scripts {
     <script type="text/javascript">
-
+        $("#btn-Emmit").click(function () {
+            var idClient = $("#selectClient").val();
+            var idService = $("#selectService").val();
+            $.ajax({
+                type: "POST",
+                url: "/EmmitNf/EmmitNf",
+                data: { idClient: idClient, idService: idService },
+                success: function (result) {
+                    console.log("Success!");
+                },
+                error: function (error) {
+                    console.log("Error!");
+                }
+            });
+        });
     </script>
 }

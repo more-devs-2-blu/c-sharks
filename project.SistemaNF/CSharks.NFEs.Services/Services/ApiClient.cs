@@ -64,52 +64,6 @@ namespace CSharks.NFEs.Services.Services
             xmlSerializer.Serialize(sw, nfe);
 
             return sw.ToString();
-
-        }
-
-        public string SerializeXMLEmit(NFEDTO nfe)
-        {
-
-            nfe.Identificador = "3812817100220600010000000001";
-
-            nfe.Nf = new NF()
-            {
-                ValorTotal = "1,00"
-            };
-
-            nfe.Prestador = new Prestador()
-            {
-                CpfCnpj = "00000000000000",
-                Cidade = "8357"
-            };
-
-            nfe.Tomador = new Tomador()
-            {
-                Tipo = "J",
-                EnderecoInformado = "lalala",
-                Identificador = "0000000000",
-                CpfCnpj = "06262485902",
-                NomeRazaoSocial = "lepo",
-                Ie = "testeie",
-                Logradouro = "testerua",
-                Email = "teste@gmail.com",
-                NumeroResidencia = "658",
-                Complemento = "casa"
-            };
-
-            lista item = new lista();
-            item.TributaMunicipioPrestador = "S";
-            item.CodigoLocalPrestServico = "8357";
-            item.CodigoServico = "702";
-            item.Descricao = "Teste";
-            item.AliquotaServico = "5";
-            item.SituacaoTributaria = "0";
-            item.ValorTributavel = "0";
-            nfe.Itens = new List<lista>
-            {
-                item
-            };
-            return "";
         }
     }
 }

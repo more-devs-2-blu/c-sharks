@@ -27,10 +27,12 @@ namespace CSharks.NFEs.WebApp.Controllers
             return View("~/Views/EmmitNf/Index.cshtml");
         }
         [HttpPost]
-        public IActionResult EmmitNf(Guid idClient, Service service)
+        public async Task<IActionResult> EmmitNf(Guid idClient, Guid idService)
         {
+            Client client =  await _clientRepo.GetById(idClient);
+            Service service = await _serviceRepo.GetById(idService);
+
             NFE nfse = new NFE();
-            Client client = new Client();
             NFEDTO nf = new NFEDTO(nfse, _session.GetSession(), client, service);
 
             string xmlFile = _serviceApi.GetFile(nf);
