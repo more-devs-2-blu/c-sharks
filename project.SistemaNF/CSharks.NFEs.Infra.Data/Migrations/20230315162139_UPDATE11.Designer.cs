@@ -3,6 +3,7 @@ using System;
 using CSharks.NFEs.Infra.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharks.NFEs.Infra.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20230315162139_UPDATE11")]
+    partial class UPDATE11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +37,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Country")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("CpfCnpj")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -50,14 +56,14 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.Property<string>("Ie")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("InformedAdress")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("ResidentialNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("State")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -67,18 +73,14 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("412a7651-7cd4-4528-9cc3-306b3e11a050"),
-                            Address = "Rua Gustavo Zimmermann",
-                            CEP = "89062100 ",
-                            City = "8357",
-                            CpfCnpj = "43975686855",
-                            District = "Itoupava Central",
-                            Email = "juninhocb@hotmail.com",
+                            Id = new Guid("14fdf9c0-bb6f-477e-b92e-df6160d6d1fc"),
+                            Address = "Leopoldo Holz",
+                            CpfCnpj = "06262485902",
+                            Email = "patrick@gmail.com",
                             Enrollment = "F",
                             Ie = "16",
-                            InformedAdress = "1",
-                            Name = "Carlos Eduardo dos Santos Junior",
-                            ResidentialNumber = "2421"
+                            Name = "Patrick Weber",
+                            ResidentialNumber = "111"
                         });
                 });
 
@@ -124,7 +126,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a4830455-6511-4be7-aab2-ff1efa488a96"),
+                            Id = new Guid("e8f382b8-e4a1-41d5-9978-f09a8023374a"),
                             ClientName = "PATRICK WEBER",
                             CodVerify = "8357738593202582530720240315032023189724",
                             EmitDate = "23-03-15-19-29",
@@ -165,9 +167,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("dffa0ee5-bce8-43e0-8401-fd5c57c1befc"),
-                            City = "8357",
-                            CpfCnpj = "25825307000152",
+                            Id = new Guid("b0f085eb-66cc-49ac-8cc2-c60bd819c86f"),
+                            City = "8453",
+                            CpfCnpj = "12345678901234",
                             Email = "csharkenterprise@hotmail.com",
                             Name = "Csharks Developers LTDA"
                         });
@@ -237,14 +239,25 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("842cb543-e444-4634-a4f4-7191cce6987c"),
+                            Id = new Guid("2aaba793-0853-4585-90b7-4b41688addf3"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
+                            codigo_local_prestacao_servico = "8357",
+                            descritivo = "Teste",
+                            situacao_tributaria = "000",
+                            tributa_municipio_prestador = "S",
+                            valor_tributavel = "0"
+                        },
+                        new
+                        {
+                            Id = new Guid("a4b0a690-2804-48ef-8a3c-bd1cd13f44db"),
+                            aliquota_item_lista_servico = "2",
+                            codigo_item_lista_servico = "0106",
                             codigo_local_prestacao_servico = "8357",
                             descritivo = "Assessoria e consultoria em informática.",
                             situacao_tributaria = "0",
                             tributa_municipio_prestador = "S",
-                            valor_tributavel = "1"
+                            valor_tributavel = "0"
                         });
                 });
 
@@ -304,9 +317,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("bc7b9b60-543a-4e42-8cfe-2337e8738830"),
+                            Id = new Guid("24c9544d-180b-44d1-ab4f-0580ce54e803"),
                             Email = "teste@hotmail.com",
-                            EnterpriseId = new Guid("dffa0ee5-bce8-43e0-8401-fd5c57c1befc"),
+                            EnterpriseId = new Guid("b0f085eb-66cc-49ac-8cc2-c60bd819c86f"),
                             Login = "dev",
                             Name = "Desenvolvedor",
                             Password = "MTIz",
