@@ -53,6 +53,15 @@ namespace CSharks.NFEs.Domain.DTOs
                 item
             };
         }
+        public NFEDTO(string numero, User user)
+        {
+            Numero = numero;
+
+            SerieNf = "1";
+            Situacao = "C";
+            Observacao = "Teste";
+            Prestador = new Prestador(user);
+        }
 
         //new construtctor with others overloads
         public NFEDTO(User user, Client client, Service service, string value)
@@ -66,7 +75,10 @@ namespace CSharks.NFEs.Domain.DTOs
             Prestador = new Prestador(user);
 
             Tomador = new Tomador(client);
-            
+
+            service.codigo_item_lista_servico = "701";
+            service.aliquota_item_lista_servico = "5";
+
             lista items = new lista(service);
             
             Itens = new List<lista>
