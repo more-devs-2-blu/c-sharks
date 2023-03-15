@@ -3,6 +3,7 @@ using System;
 using CSharks.NFEs.Infra.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharks.NFEs.Infra.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20230315163648_UPDATE12")]
+    partial class UPDATE12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +70,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("412a7651-7cd4-4528-9cc3-306b3e11a050"),
+                            Id = new Guid("3ac04250-fb25-4a99-a4d5-ab7ab070f78d"),
                             Address = "Rua Gustavo Zimmermann",
                             CEP = "89062100 ",
                             City = "8357",
@@ -124,7 +127,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a4830455-6511-4be7-aab2-ff1efa488a96"),
+                            Id = new Guid("5f02452a-e9e7-4d65-abf8-41e09a1d2863"),
                             ClientName = "PATRICK WEBER",
                             CodVerify = "8357738593202582530720240315032023189724",
                             EmitDate = "23-03-15-19-29",
@@ -165,7 +168,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("dffa0ee5-bce8-43e0-8401-fd5c57c1befc"),
+                            Id = new Guid("eedadba9-5ced-491e-af02-0e29daea5f70"),
                             City = "8357",
                             CpfCnpj = "25825307000152",
                             Email = "csharkenterprise@hotmail.com",
@@ -237,9 +240,20 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("842cb543-e444-4634-a4f4-7191cce6987c"),
+                            Id = new Guid("9333e8c7-4767-46a2-b9e2-dd898a4f2eb3"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
+                            codigo_local_prestacao_servico = "8357",
+                            descritivo = "Assessoria e consultoria em informática.",
+                            situacao_tributaria = "0",
+                            tributa_municipio_prestador = "S",
+                            valor_tributavel = "1"
+                        },
+                        new
+                        {
+                            Id = new Guid("53fa0b05-72c4-477d-b0e1-d817b9b5dbc3"),
+                            aliquota_item_lista_servico = "2",
+                            codigo_item_lista_servico = "0106",
                             codigo_local_prestacao_servico = "8357",
                             descritivo = "Assessoria e consultoria em informática.",
                             situacao_tributaria = "0",
@@ -304,9 +318,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("bc7b9b60-543a-4e42-8cfe-2337e8738830"),
+                            Id = new Guid("0cfa54b6-584f-43c4-b8b3-77a769abe3db"),
                             Email = "teste@hotmail.com",
-                            EnterpriseId = new Guid("dffa0ee5-bce8-43e0-8401-fd5c57c1befc"),
+                            EnterpriseId = new Guid("eedadba9-5ced-491e-af02-0e29daea5f70"),
                             Login = "dev",
                             Name = "Desenvolvedor",
                             Password = "MTIz",

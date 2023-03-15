@@ -13,14 +13,16 @@ namespace CSharks.NFEs.WebApp.Controllers
         private readonly ISessionService _session;
         private readonly IApiClientService _serviceApi;
         private readonly IWebHostEnvironment _environment;
+        private readonly IEmitedNfRepository _emitedRepo;
 
-        public EmmitNFController(IServicesRepository serviceRepo, IClientRepository clientRepo, ISessionService session, IApiClientService serviceApi, IWebHostEnvironment environment)
+        public EmmitNFController(IServicesRepository serviceRepo, IClientRepository clientRepo, ISessionService session, IApiClientService serviceApi, IWebHostEnvironment environment, IEmitedNfRepository emitedRepo)
         {
             _serviceRepo = serviceRepo;
             _clientRepo = clientRepo;
             _session = session;
             _serviceApi = serviceApi;
             _environment = environment;
+            _emitedRepo = emitedRepo;
         }
         public IActionResult Index()
         {
@@ -43,15 +45,24 @@ namespace CSharks.NFEs.WebApp.Controllers
                     user, client, service, dto.ValueNF
                     );
 
+                string dateNow = DateTime.Now.ToString("yy-MM-dd-HH-mm");
                 string xmlFile = _serviceApi.GetFile(nfe);
-                string xmlFileName = $"{DateTime.Now.ToString("MM-dd-HH-mm")}.xml";
+                string xmlFileName = $"{dateNow}.xml";
                 string xmlFilePath = Path.Combine(_environment.WebRootPath, "files", xmlFileName);
 
                 EmitedNF emited = await _serviceApi.EmitNF(xmlFile, xmlFilePath);
+                
+                EmitedNF emitedDao = new EmitedNF();
 
                 if (emited.Situation != null)
                 {
-                    Console.WriteLine("teste");
+                    emitedDao.EmitDate = dateNow;
+                    emitedDao.ServiceName = service.descritivo;
+                    emitedDao.ClientName = client.Name;
+                    emitedDao.ValueNF = dto.ValueNF;
+                    emitedDao.Situation = emited.Situation;
+                    await _emitedRepo.Save(emitedDao);
+                    TempData["Success"] = "Nota emitida com sucesso";
                 }
 
 

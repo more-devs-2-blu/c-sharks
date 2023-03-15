@@ -8,7 +8,7 @@ namespace CSharks.NFEs.Domain.Models
 {
     public class EmitedNF
     {
-        Guid Id { get; set; }
+        public Guid Id { get; set; }
 
         public string EmitDate { get; set; }
 

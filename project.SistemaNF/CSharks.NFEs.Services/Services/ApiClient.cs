@@ -90,8 +90,20 @@ namespace CSharks.NFEs.Services.Services
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             string responseBody = await response.Content.ReadAsStringAsync();
-                            Console.WriteLine(responseBody);
                             //use emited
+                            
+
+                            XmlDocument xmlDoc = new XmlDocument();
+                            xmlDoc.LoadXml(responseBody);
+                            string numeroNfse = xmlDoc.SelectSingleNode("//numero_nfse").InnerText;
+                            string codVerificadorAutenticidade = xmlDoc.SelectSingleNode("//cod_verificador_autenticidade").InnerText;
+
+                            emited.Situation = "Success";
+                            emited.NoNfse = numeroNfse;
+                            emited.CodVerify = codVerificadorAutenticidade;
+                            emited.LinkPDF = $"https://homologacao.atende.net//autoatendimento/servicos/consulta-de-autenticidade-de-nota-fiscal-eletronica-nfse/detalhar/1/identificador/{emited.CodVerify}?cidade=integracoes";
+                            return emited;
+
                         }
                         else
                         {
@@ -133,6 +145,7 @@ namespace CSharks.NFEs.Services.Services
             public override Encoding Encoding => Encoding.UTF8;
         }
 
+        /* mock pruposes
         public string SerializeXMLEmit(NFEDTO nfe)
         {
 
@@ -176,6 +189,6 @@ namespace CSharks.NFEs.Services.Services
                 item
             };
             return "";
-        }
+        } */
     }
 }
