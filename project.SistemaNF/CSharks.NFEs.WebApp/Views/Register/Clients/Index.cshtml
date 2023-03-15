@@ -23,9 +23,25 @@
         <div class="form-group">
             <label asp-for="Enrollment" class="control-label">Tipo de Pessoa</label>
             <select asp-for="Enrollment" class="form-control">
-                <option value="@TypeClient.PF">Pessoa Física</option>
-                <option value="@TypeClient.PJ">Pessoa Jurídica</option>
+                <option value="F">Pessoa Física</option>
+                <option value="J">Pessoa Jurídica</option>
+                @*<option value="E">Estrangeiro</option>*@
             </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Informar endereço?</label>
+            <input class="form-control" type="checkbox" />
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label asp-for="CEP" class="control-label">CEP</label>
+                <input asp-for="CEP" class="form-control" />
+            </div>
         </div>
         <div class="form-group mt-4">
             <button type="submit" class="btn bg-shark text-white" style="width: 5rem;">Criar</button>

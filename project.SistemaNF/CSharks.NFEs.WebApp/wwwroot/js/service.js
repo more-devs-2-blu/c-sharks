@@ -7,15 +7,6 @@
         }
     });
 
-    $('#btn-cadastrar').click(e => {
-        //e.preventDefault();
-        //let form = $('#form-service');
-        //let codigoInput = $('#input-codigo-servico');
-        //let codigoServico = $('.item');
-        //console.log(codigoServico.dataset.value);
-        //form.submit();
-    });
-
     $('#selectize-codigo-descricao-servico').change(e => {
         let selected = e.target.options[e.target.selectedIndex];
         let selectedItem = $(`#${selected.value}`)[0];

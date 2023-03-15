@@ -140,14 +140,11 @@ namespace CSharks.NFEs.Domain.DTOs
         {
             Tipo = client.Enrollment;
             EnderecoInformado = client.Address;
-            Identificador = client.Identifier;
             CpfCnpj = client.CpfCnpj;
             NomeRazaoSocial = client.Name;
             Ie = client.Ie;
-            Logradouro = client.Patio;
             Email = client.Email;
             NumeroResidencia = client.ResidentialNumber;
-            Complemento = client.Complement;
         }
         public Tomador()
         {
