@@ -1,0 +1,83 @@
+﻿
+
+<div class="container p-2">
+    <div class="row row-cols-1 row-cols-md-3">
+        <a id="reg-service" class="col cardi">
+            <div class="m-1 p-2 rounded" style="max-width: 400px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="/images/cadastroservicoIcon-02-02-02-02-02.svg" class="img-fluid rounded-start img-top" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pt-1">
+                            <h3 class="card-title">Serviços</h3>
+                            <small class="card-text">Cadastre um novo serviço para agilizar sua emissão de notas fiscais.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a id="reg-user" class="col cardi">
+            <div class="m-1 p-2 rounded" style="max-width: 400px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="/images/cadastrocomandoIcon-02-02-02-02-02.svg" class="img-fluid rounded-start img-top" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pt-1">
+                            <h3 class="card-title">Usuários</h3>
+                            <small class="card-text">Cadatres novos usuarios para que seus funcionários tenham acesso ao sistema.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a id="reg-client" class="col cardi">
+            <div class="m-1 p-2 rounded" style="max-width: 400px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="/images/cadastroprestadorIcon-02-02-02.svg" class="img-fluid rounded-start img-top" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pt-1">
+                            <h3 class="card-title">Clientes</h3>
+                            <small class="card-text">Cadastre novos clientes na sua base de dados.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="container bd" id="register-area"></div>
+
+@section Scripts {
+    <script>        
+        $('#reg-service').click((e)=>{
+            $.ajax({
+                url: `@Url.Action("RegisterService", "Registrations")`,
+                success: (resp)=> {
+                    $('#register-area').html(resp);
+                }
+            });
+        });
+
+        $('#reg-user').click(()=>{
+            $.ajax({
+                url: `@Url.Action("RegisterUser", "Registrations")`,
+                success: (resp)=> {
+                    $('#register-area').html(resp);
+                }
+            })
+        });
+
+        $('#reg-client').click(() => {
+            $.ajax({
+                url: `@Url.Action("RegisterClient", "Registrations")`,
+                success: (resp)=> {
+                    $('#register-area').html(resp);
+                }
+            })
+        });
+    </script>
+}

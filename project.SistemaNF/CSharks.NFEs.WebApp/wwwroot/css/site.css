@@ -75,3 +75,29 @@ html, body {
 .border-shark-bottom {
     border-bottom: 2px solid #346c84;
 }
+
+/* registrations */
+
+.cardi:hover {
+    -webkit-box-shadow: 5px 10px 25px 1px #b8bdc1;
+    box-shadow: 5px 10px 25px 1px #b8bdc1;
+    
+    text-decoration: none;
+    color: #111;
+}
+
+.img-top {
+    /*width: 80%;
+    height: 80%;*/
+}
+
+.cardi {
+    border: none;
+    text-decoration: none;
+    color: #111;
+}
+/* teste */
+.bd{
+    border: 1px solid #111;
+}
+
