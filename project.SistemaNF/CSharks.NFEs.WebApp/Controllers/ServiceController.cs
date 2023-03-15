@@ -11,19 +11,22 @@ namespace CSharks.NFEs.WebApp.Controllers
     {
         private readonly IServicesRepository _serviceRepo;
         private readonly IIsqnRepository _isqnRepo;
-        private readonly ICacheMemory _memoryCache; 
+        private readonly ICacheMemory _memoryCache;
+        private readonly ISessionService _sessionService;
 
 
         public ServiceController(
-            IServicesRepository servicesRepository, IIsqnRepository isqnRepository, ICacheMemory cacheMemory)
+            IServicesRepository servicesRepository, IIsqnRepository isqnRepository, ICacheMemory cacheMemory, ISessionService sessionService)
         {
             _serviceRepo = servicesRepository;
             _isqnRepo = isqnRepository;
             _memoryCache = cacheMemory;
+            _sessionService = sessionService;
         }
         public IActionResult Index()
         {
             ViewBag.isqns = GetISQNS();
+            ViewBag.enterpise = _sessionService.GetSession();
             return PartialView("~/Views/Register/Services/Index.cshtml");
         }
 
