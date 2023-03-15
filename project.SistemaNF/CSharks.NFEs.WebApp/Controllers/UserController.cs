@@ -35,11 +35,11 @@ namespace CSharks.NFEs.WebApp.Controllers
                 TempData["Success"] = "Salvo com sucesso";
             } else
             {
-                return PartialView("~/Views/Register/Users/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
-                    
-            return PartialView("~/Views/Register/Users/Index.cshtml");
+
+            return RedirectToAction("Index", "Registrations");
         }
     }
 }

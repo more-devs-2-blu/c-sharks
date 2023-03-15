@@ -33,11 +33,11 @@ namespace CSharks.NFEs.WebApp.Controllers
             }
             else
             {
-                return PartialView("~/Views/Register/Clients/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
 
-            return PartialView("~/Views/Register/Clients/Index.cshtml");
+            return RedirectToAction("Index", "Registrations");
         }
     }
 }
