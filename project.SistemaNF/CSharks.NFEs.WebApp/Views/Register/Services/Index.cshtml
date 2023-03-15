@@ -4,17 +4,18 @@
 @{
     List<ISQN> isqns = ViewBag.isqns; 
     ViewData["Title"] = "Shark NFE - Registro Serviço";
+    Console.WriteLine(isqns);
 }
 
 <section class="col-8 mx-auto">
     <h1> @ViewData["Title"]</h1>
-    <div class="mt-3">
+    <div class="mt-2">
         @await Html.PartialAsync("_MessageResult")
     </div>
-    <form asp-controller="Service" asp-action="Create" method="post">
+    <form id="form-service" asp-controller="Service" asp-action="Create" method="POST">
          <div class="form-group"> 
             <label asp-for="codigo_item_lista_servico" class="control-label"> Código do Serviço </label>
-            <select id="selectize-codigo-descricao-servico" asp-for="codigo_item_lista_servico" class="">
+            <select id="selectize-codigo-descricao-servico" class="">
                 @if (isqns != null && isqns.Any())
                 {
                     <option> Selecione </option>
@@ -31,34 +32,38 @@
                 }
 
             </select>
+            <input id="input-codigo-servico" type="hidden" asp-for="codigo_item_lista_servico" />
             <span asp-validation-for="codigo_item_lista_servico" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="descritivo" class="control-label"> Descrição</label>
-            <input id="input-descricao" asp-for="descritivo" class="form-control" disabled/>
+            <input id="input-descricao" asp-for="descritivo" class="form-control" readonly />
             <span asp-validation-for="descritivo" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="aliquota_item_lista_servico" class="control-label"> Alíquota (%)</label>
-            <input id="input-aliquota" asp-for="aliquota_item_lista_servico" class="form-control" disabled/>
-            <span asp-validation-for="aliquota_item_lista_servico" class="text-danger"></span>
+        <div class="form-group mt-2 ms-3 bg-light p-1 rounded-2">
+            <label asp-for="tributa_municipio_prestador" class="control-label"> Tributável no Município do Prestador? </label>
+            <input id="checkbox-tributavel" type="checkbox" asp-for="tributa_municipio_prestador" class="form-check-input ms-2" />
+            <span asp-validation-for="tributa_municipio_prestador" class="text-danger"></span>
         </div>
-        <div class="d-flex justify-content-between my-2">
-            <div class="me-2">
-                <div class="form-group mt-2 bg-light p-1 rounded-2">
-                    <label asp-for="tributa_municipio_prestador" class="control-label"> Tributável no Município do Prestador? </label>
-                    <input id="checkbox-tributavel" type="checkbox" asp-for="tributa_municipio_prestador" class="form-check-input"/>
-                    <span asp-validation-for="tributa_municipio_prestador" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="codigo_local_prestacao_servico" class="control-label">Código local prestação de serviço</label>
-                    <input id="codigo-tom" asp-for="codigo_local_prestacao_servico" class="form-control" />
-                    <span asp-validation-for="codigo_local_prestacao_servico" class="text-danger"></span>
+        <div class="d-flex justify-content-between mb-2">
+            <div class="form-group mt-1 align-self-en">
+                <label asp-for="codigo_local_prestacao_servico" class="control-label">Código local prestação de serviço</label>
+                <input id="codigo-tom" asp-for="codigo_local_prestacao_servico" class="form-control mt-1" />
+                <span asp-validation-for="codigo_local_prestacao_servico" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-1 align-self-end flex-grow-1">
+                <label asp-for="aliquota_item_lista_servico" class="control-label"> Alíquota (%)</label>
+                <div class="input-group mt-1">
+                    <input id="input-aliquota" asp-for="aliquota_item_lista_servico" class="form-control" readonly />
+                    <span asp-validation-for="aliquota_item_lista_servico" class="text-danger"></span>
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group mt-2 align-self-end">
+            <div class="form-group mt-1 align-self-end flex-grow-1">
                 <label asp-for="situacao_tributaria" class="control-label"> Situação Tributária </label>
-                <input type="text" asp-for="situacao_tributaria" class="form-control" placeholder="Em progresso"/>
+                <input type="text" asp-for="situacao_tributaria" class="form-control mt-1" placeholder="Em progresso"/>
                 <span asp-validation-for="situacao_tributaria" class="text-danger"></span>
             </div>
         </div>
@@ -68,43 +73,7 @@
             <span asp-validation-for="valor_tributavel" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
+            <button id="btn-cadastrar" class="btn bg-shark text-white" style="width: 7rem;">Cadastrar</button>
         </div>
     </form>
-
 </section>
-
-@section Scripts {
-    <script type="text/javascript">
-        $('#selectize-codigo-descricao-servico').selectize({
-            render: {
-                option: function (data, escape) {
-                    return "<div id="+data.value+" data-aliquota='" + data.aliquota + "'>" + data.text + "</div>"
-                }
-            }
-        });
-
-        $('#selectize-codigo-descricao-servico').change(e => {
-            let selected = e.target.options[e.target.selectedIndex];
-            let selectedItem = $(`#${selected.value}`)[0];
-            let aliquota = selectedItem.dataset.aliquota;
-            let descricao = (e.target.innerText.trim().substring(6).trim());
-            $('#input-aliquota').val(aliquota += "%");
-            $('#input-descricao').val(descricao);
-        })
-
-        $('#checkbox-tributavel').change(e => {
-            let checkbox = e.target;
-            let inputTom = $('#codigo-tom')[0];
-            if(checkbox.checked) {
-                //Buscar Código TOM da sessão;
-                let codigoTomEmpresa = "8845"
-                inputTom.disabled = true;
-                inputTom.value = codigoTomEmpresa;
-            } else {
-                inputTom.disabled = false;
-                inputTom.value = "";
-            }
-        });
-    </script>
-}

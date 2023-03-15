@@ -2,10 +2,10 @@
 @using CSharks.NFEs.Domain.Enums;
 @model User
 @{
-    ViewData["Title"] = "Shark NFE - Usuarios";
+
 }
 
-<section>
+<section class="col-8 mx-auto">
     <form asp-action="Create" method="post">
         <div class="form-group">
             <label asp-for="Name" class="control-label">Nome</label>
@@ -35,10 +35,9 @@
             </select>
         </div>
         <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn bg-shark text-white" style="width: 5rem;">Criar</button>
         </div>
     </form>
-
 </section>
 
 @section Scripts {

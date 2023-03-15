@@ -3,6 +3,7 @@ using System;
 using CSharks.NFEs.Infra.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharks.NFEs.Infra.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20230315145401_update-campos-client")]
+    partial class updatecamposclient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,11 +37,17 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Complement")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Country")
                         .HasColumnType("longtext");
 
                     b.Property<string>("CpfCnpj")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DDDComercial")
                         .HasColumnType("longtext");
 
                     b.Property<string>("District")
@@ -48,6 +57,12 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Enrollment")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FoneComercial")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Identifier")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Ie")
@@ -70,11 +85,13 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("628383a5-04a3-4c1f-b85d-17005b5286e8"),
+                            Id = new Guid("853a21b2-73c2-4666-8d3e-8f67d88f967f"),
                             Address = "Leopoldo Holz",
+                            Complement = "Rua",
                             CpfCnpj = "06262485902",
                             Email = "patrick@gmail.com",
                             Enrollment = "F",
+                            Identifier = "3812817100220600010000000001",
                             Ie = "16",
                             Name = "Patrick Weber",
                             ResidentialNumber = "111"
@@ -110,7 +127,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("eaa3995c-7ab4-43a6-8453-8ea4a4cbc9d4"),
+                            Id = new Guid("b13f06d5-06f2-4682-9413-853f9dc8571e"),
                             City = "8453",
                             CpfCnpj = "12345678901234",
                             Email = "csharkenterprise@hotmail.com",
@@ -182,7 +199,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("591659d9-8ff5-4329-90e9-b48f040be544"),
+                            Id = new Guid("7e7c21b6-31ee-4672-b721-39a8471b0e01"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
                             codigo_local_prestacao_servico = "8357",
@@ -193,7 +210,7 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e076feed-09fd-4b17-b352-30b385e85d65"),
+                            Id = new Guid("d634fee8-192c-4947-8de9-f094903db4aa"),
                             aliquota_item_lista_servico = "2",
                             codigo_item_lista_servico = "0106",
                             codigo_local_prestacao_servico = "8357",
@@ -260,9 +277,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e3f32fcc-69dc-42bf-af4f-a36cb0f67bb7"),
+                            Id = new Guid("7cd918a0-92d8-4ee8-bc79-3ade20fad13f"),
                             Email = "teste@hotmail.com",
-                            EnterpriseId = new Guid("eaa3995c-7ab4-43a6-8453-8ea4a4cbc9d4"),
+                            EnterpriseId = new Guid("b13f06d5-06f2-4682-9413-853f9dc8571e"),
                             Login = "dev",
                             Name = "Desenvolvedor",
                             Password = "MTIz",

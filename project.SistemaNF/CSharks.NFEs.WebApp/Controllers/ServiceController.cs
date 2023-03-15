@@ -24,21 +24,23 @@ namespace CSharks.NFEs.WebApp.Controllers
         public IActionResult Index()
         {
             ViewBag.isqns = GetISQNS();
-            return View("~/Views/Register/Services/Index.cshtml");
+            return PartialView("~/Views/Register/Services/Index.cshtml");
         }
 
         [HttpPost]
         public IActionResult Create(Service service)
         {
+            service.tributa_municipio_prestador = service.tributa_municipio_prestador == "true" ? "1" : "0";
+
             ViewBag.isqns = GetISQNS();
             if (ModelState.IsValid)
             {
                 _serviceRepo.Save(service); 
                 TempData["Success"] = "Salvo com sucesso";
-                return View("~/Views/Register/Services/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
-            return View("~/Views/Register/Services/Index.cshtml");
+            return RedirectToAction("Index", "Registrations");
         }
 
         private List<ISQN> GetISQNS()
