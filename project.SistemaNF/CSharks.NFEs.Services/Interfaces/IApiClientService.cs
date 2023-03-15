@@ -14,6 +14,7 @@ namespace CSharks.NFEs.Services.Interfaces
     {
         public string GetFile(NFEDTO nfe);
         public Task<EmitedNF> EmitNF(string xmlFileEdit, string pathFile);
+        public Task<EmitedNF> CancelNF(string xmlFileEdit, string pathFile);
 
     }
 }
