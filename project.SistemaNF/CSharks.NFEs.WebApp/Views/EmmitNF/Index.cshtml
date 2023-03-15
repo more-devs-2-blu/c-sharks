@@ -1,5 +1,6 @@
 ﻿@using CSharks.NFEs.Domain.Models;
-@model Client
+@using CSharks.NFEs.Domain.DTOs;
+@model SendNFDTO;
 @{
     List<Service> services = ViewBag.services;
     List<Client> clients = ViewBag.clients;
@@ -15,16 +16,16 @@
                 </div>
                 <div class="mt-4">
                     <label> Identificador </label>
-                    <input class="form-control" />
+                    <input class="form-control" placeholder="Desnecessário"/>
                 </div>
                 <div>
-                    <label> Serviços </label>
-                    <select class="form-control">
+                    <label> Serviçosa </label>
+                    <select asp-for="ServiceId" class="form-control">
                         @if (services != null && services.Any())
                         {
                             foreach (Service service in services)
                             {
-                                <option value="@service.codigo_item_lista_servico">@service.codigo_item_lista_servico - @service.descritivo</option>
+                                <option value="@service.Id">@service.codigo_item_lista_servico - @service.descritivo</option>
                             }
                         }
                         else
@@ -36,12 +37,12 @@
                 </div>
                 <div>
                     <label> Clientes </label>
-                    <select class="form-control">
+                    <select asp-for="ClientId" class="form-control" name="clientId">
                         @if (clients != null && clients.Any())
                         {
                             foreach (Client client in clients)
                             {
-                                <option value="@client.Id">@client.Name</option>
+                                <option asp-route-clientId="@client.Id" value="@client.Id">@client.Name</option>
                             }
                         }
                         else
@@ -49,6 +50,10 @@
                             <option> Cadastre um Cliente. </option>
                         }
                     </select>
+                </div>
+                <div class="mt-4">
+                    <label> Valor NF (R$) </label>
+                    <input asp-for="ValueNF" class="form-control" />
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary mt-4"> Emitir </button>

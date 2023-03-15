@@ -41,6 +41,7 @@ builder.Services.AddScoped<IIsqnRepository, IsqnRepository>();
 
 //NF Utils
 builder.Services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
+builder.Services.AddScoped<IEmitedNfRepository, EmitedNfRepository>();  
 
 builder.Services.AddHttpClient<IDataProviderService, DataProviderClient>(client =>
 {

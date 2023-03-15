@@ -53,6 +53,29 @@ namespace CSharks.NFEs.Domain.DTOs
                 item
             };
         }
+
+        //new construtctor with others overloads
+        public NFEDTO(User user, Client client, Service service, string value)
+        {
+
+            Nf = new NF()
+            {
+                ValorTotal = value
+            };
+
+            Prestador = new Prestador(user);
+
+            Tomador = new Tomador(client);
+            
+            lista items = new lista(service);
+            
+            Itens = new List<lista>
+            {
+                items
+            };
+        }
+
+
         public NFEDTO()
         {
 

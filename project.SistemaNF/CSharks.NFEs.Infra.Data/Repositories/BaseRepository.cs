@@ -16,7 +16,7 @@ namespace CSharks.NFEs.Infra.Data.Repositories
             return _sqlContext.Set<T>();
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(Guid id)
         {
             return await _sqlContext.Set<T>().FindAsync(id);
         }

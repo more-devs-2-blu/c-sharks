@@ -19,6 +19,9 @@ namespace CSharks.NFEs.Services.Services
 {
     public class ApiClient : IApiClientService
     {
+
+        //emmit patrick
+        /*
         public async void EmitNF(string xmlFileEmit)
         {
             const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
@@ -55,16 +58,79 @@ namespace CSharks.NFEs.Services.Services
                 Console.WriteLine($"Erro: {e.Message}");
             }
         }
+        */
+        //novo emmit
+        public async Task<EmitedNF> EmitNF(string xmlFileEmit, string pathFile)
+        {
+            const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
+            string Sxmldata = xmlFileEmit;
+
+            string tempFilePath = Path.GetTempFileName();
+            string xmlFilePath = pathFile;
+            EmitedNF emited = new EmitedNF();
+
+            try
+            {
+                File.WriteAllText(tempFilePath, Sxmldata);
+                File.WriteAllText(xmlFilePath, Sxmldata);
+
+
+                HttpClient httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
+
+
+                using (var formDataContent = new MultipartFormDataContent())
+                {
+                    using (var streamContent = new StreamContent(File.OpenRead(tempFilePath)))
+                    {
+                        formDataContent.Add(streamContent, "teste", Path.GetFileName(tempFilePath));
+
+                        var response = await httpClient.PostAsync(_url, formDataContent);
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            string responseBody = await response.Content.ReadAsStringAsync();
+                            Console.WriteLine(responseBody);
+                            //use emited
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Erro: {response.StatusCode}");
+                        }
+                    }
+                }
+
+                
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro: {e.Message}");
+                
+            }
+            finally
+            {
+                // Delete the temporary file
+                File.Delete(tempFilePath);
+            }
+
+            return emited;
+        }
 
         public string GetFile(NFEDTO nfe)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(NFEDTO));
-            var sw = new StringWriter();
+            var sw = new Utf8StringWriter();
 
             xmlSerializer.Serialize(sw, nfe);
 
             return sw.ToString();
 
+        }
+
+        public class Utf8StringWriter : StringWriter
+        {
+            public override Encoding Encoding => Encoding.UTF8;
         }
 
         public string SerializeXMLEmit(NFEDTO nfe)

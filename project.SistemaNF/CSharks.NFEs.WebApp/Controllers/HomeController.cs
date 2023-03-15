@@ -27,6 +27,5 @@ namespace CSharks.NFEs.WebApp.Controllers
             TempData["NameUserLogged"] = _session.GetSession().Name;
             return PartialView("~/Views/Shared/_MenuBar.cshtml");
         }
-
     }
 }
