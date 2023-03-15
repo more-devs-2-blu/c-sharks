@@ -9,7 +9,6 @@ namespace CSharks.NFEs.Domain.Models
 		public string Name { get; set; }
         [Required(ErrorMessage = "Digite o cpf ou cnpj do cliente")]
         public string CpfCnpj { get; set; }
-        public string Type { get; set; }
         public string Address { get; set; }
         public string Identifier { get; set; }
         public string Ie { get; set; }

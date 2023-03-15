@@ -30,24 +30,5 @@ namespace CSharks.NFEs.WebApp.Controllers
             return View("~/Views/Nfe/ListNF.cshtml");
         }
 
-        private NFEDTO MapNF(NFE nfse, Enterprise enterprise, Client client, Service service)
-        {
-            NFEDTO nfe = new NFEDTO();
-            nfe.Identificador = nfse.Identificador;
-            nfe.Nf = new Domain.DTOs.NF()
-            {
-                ValorTotal = "1,00"
-            };
-            nfe.Prestador = new Domain.DTOs.Prestador(enterprise);
-            nfe.Tomador = new Domain.DTOs.Tomador(client);
-            lista item = new Domain.DTOs.lista(service);           
-            nfe.Itens = new List<lista>
-            {
-                item
-            };
-
-            return nfe;
-        }
-
     }
 }
