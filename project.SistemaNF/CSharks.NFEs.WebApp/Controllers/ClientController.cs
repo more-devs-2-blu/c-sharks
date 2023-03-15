@@ -28,6 +28,8 @@ namespace CSharks.NFEs.WebApp.Controllers
             
             if (ModelState.IsValid)
             {
+                client.CpfCnpj = client.CpfCnpj.Replace(".", "").Replace("/", "").Replace("-", "");
+                client.Ie = client.Ie.Replace(".", "").Replace("/", "");
                 _clientRepo.Save(client);
                 TempData["Success"] = "Salvo com sucesso";
             }
