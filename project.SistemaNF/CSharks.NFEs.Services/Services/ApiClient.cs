@@ -20,45 +20,7 @@ namespace CSharks.NFEs.Services.Services
     public class ApiClient : IApiClientService
     {
 
-        //emmit patrick
-        /*
-        public async void EmitNF(string xmlFileEmit)
-        {
-            const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
-            string Sxmldata = xmlFileEmit;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_url);
-            request.Method = "POST";
-            request.ContentType = "multipart/form-data";
-            request.Headers.Add("Authorization", "Basic MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
-
-            using (StreamWriter writer = new StreamWriter(request.GetRequestStream()))
-            {
-                writer.Write(Sxmldata);
-            }
-
-            try
-            {
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    string responseBody = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                    Console.WriteLine(responseBody);
-                }
-                else
-                {
-                    Console.WriteLine($"Erro: {response.StatusCode}");
-                }
-
-                response.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Erro: {e.Message}");
-            }
-        }
-        */
+        
         //novo emmit
         public async Task<EmitedNF> EmitNF(string xmlFileEmit, string pathFile)
         {
