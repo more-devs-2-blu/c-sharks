@@ -12,10 +12,11 @@
                 <h5 class="title-login text-center"> Cadastre sua Empresa</h5>
             </div>
             <form asp-action="Create" asp-controller="Enterprise" method="post">
-                <input asp-for="Name" class="fadeIn second form-control" placeholder="nome">
-                <input asp-for="CpfCnpj" class="fadeIn second form-control" placeholder="cnpj">
-                <input asp-for="Email" class="fadeIn third form-control" placeholder="email">
-                <input id="input-city" asp-for="City" class="fadeIn third form-control" placeholder="cidade">
+                <input asp-for="Name" class="fadeIn second form-control" placeholder="nome"/>
+                <input asp-for="CpfCnpj" class="fadeIn second form-control" placeholder="cnpj"/>
+                <input asp-for="Email" class="fadeIn third form-control" placeholder="email"/>
+                <input id="input-city" class="fadeIn fourth form-control" placeholder="cidade" type="text"/>
+                <input id="hidden-input-city" asp-for="City" type="hidden"/>
 
                 <input type="submit" class="fadeIn fourth mt-3" placeholder="criar" value="Cadastrar">
                 <div class="pt-1"><a asp-controller="Login" asp-action="Index" class="underlineHover fadeIn fourth mb-1">Voltar</a></div>
@@ -32,18 +33,17 @@
 
 @section Scripts {
     <script>
-        $('#input-city').focusout(e => {
-            let cityInputText = e.target.value;
-            $.ajax({
-                url: `localhost:8080/city/${cityInputText}`,
-                method: 'GET',
-                crossDomain: true, // enable cross-domain requests
-                xhrFields: {
-                    withCredentials: true // enable sending cookies and authentication headers
-                },
-                success: res => {
-                    console.log(`| TOM: ${res}`);
-                }
+        $('document').ready(e => {
+            $('#input-city').focusout(e => {
+                let cityInputText = e.target.value;
+                if(cityInputText == "") return;
+                $.ajax({
+                    url: `http://localhost:8080/city/${cityInputText}`,
+                    method: 'GET',
+                    success: res => {
+                        $('#hidden-input-city').val(res);
+                    }
+                })
             })
         })
     </script>
