@@ -61,6 +61,9 @@ namespace CSharks.NFEs.WebApp.Controllers
                     emitedDao.ClientName = client.Name;
                     emitedDao.ValueNF = dto.ValueNF;
                     emitedDao.Situation = emited.Situation;
+                    emitedDao.LinkPDF = emited.LinkPDF;
+                    emitedDao.CodVerify = emited.CodVerify;
+                    emitedDao.NoNfse = emited.NoNfse;
                     await _emitedRepo.Save(emitedDao);
                     TempData["Success"] = "Nota emitida com sucesso";
                 }

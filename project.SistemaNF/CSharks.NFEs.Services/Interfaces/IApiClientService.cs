@@ -13,7 +13,6 @@ namespace CSharks.NFEs.Services.Interfaces
     public interface IApiClientService
     {
         public string GetFile(NFEDTO nfe);
-        //public string SerializeXMLEmit(NFEDTO nfe);
         public Task<EmitedNF> EmitNF(string xmlFileEdit, string pathFile);
 
     }
