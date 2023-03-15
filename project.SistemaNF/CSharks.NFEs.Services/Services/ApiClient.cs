@@ -19,32 +19,36 @@ namespace CSharks.NFEs.Services.Services
 {
     public class ApiClient : IApiClientService
     {
-
-        static readonly HttpClient _client = new HttpClient();
-
         public async void EmitNF(string xmlFileEmit)
         {
             const string _url = "https://homologacao.atende.net/?pg=rest&service=WNERestServiceNFSe&cidade=integracoes";
+            string Sxmldata = xmlFileEmit;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_url);
+            request.Method = "POST";
+            request.ContentType = "multipart/form-data";
+            request.Headers.Add("Authorization", "Basic MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
+
+            using (StreamWriter writer = new StreamWriter(request.GetRequestStream()))
+            {
+                writer.Write(Sxmldata);
+            }
 
             try
-
             {
-                _client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse("Basic MjUuODI1LjMwNy8wMDAxLTUyOlRlc3RlQDIwMjM");
-                //var stringContent = new StringContent(xmlFileEmit, Encoding.UTF8, "multipart/form-data");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                var stringContent = new StringContent(xmlFileEmit);
-                stringContent.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
-
-                var response = await _client.PostAsync(_url, stringContent);
-                if (response.IsSuccessStatusCode)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
+                    string responseBody = new StreamReader(response.GetResponseStream()).ReadToEnd();
                     Console.WriteLine(responseBody);
                 }
                 else
                 {
-                    Console.WriteLine(response.StatusCode);
+                    Console.WriteLine($"Erro: {response.StatusCode}");
                 }
+
+                response.Close();
             }
             catch (Exception e)
             {
@@ -54,8 +58,13 @@ namespace CSharks.NFEs.Services.Services
 
         public string GetFile(NFEDTO nfe)
         {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(NFEDTO));
+            var sw = new StringWriter();
 
-            return SerializeXMLEmit(nfe);
+            xmlSerializer.Serialize(sw, nfe);
+
+            return sw.ToString();
+
         }
 
         public string SerializeXMLEmit(NFEDTO nfe)
@@ -100,18 +109,7 @@ namespace CSharks.NFEs.Services.Services
             {
                 item
             };
-
-            string nomeArquivo = DateTime.Now.ToString().Replace(@"/", "").Replace(@" ", "").Replace(@":", "") + ".xml";
-            using (StreamWriter stream = new StreamWriter(Path.Combine(@"D:\Pastas\Programação\Devs2Blu\Hackathon\Csharks", nomeArquivo)))
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(NFEDTO));
-                xmlSerializer.Serialize(stream, nfe);
-
-                var sw = new StringWriter();
-                xmlSerializer.Serialize(sw, nfe);
-
-                return sw.ToString();
-            }
+            return "";
         }
-    } 
+    }
 }

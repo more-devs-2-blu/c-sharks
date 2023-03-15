@@ -2,6 +2,8 @@
 using CSharks.NFEs.Domain.Models;
 using CSharks.NFEs.Domain.Enums;
 using CSharks.NFEs.Domain.Models.NF_UTILS;
+using System.Data.Common;
+using System.IO;
 
 namespace CSharks.NFEs.Infra.Data.Data
 {
@@ -30,6 +32,25 @@ namespace CSharks.NFEs.Infra.Data.Data
                 .HasData(
                 new { Id = Guid.NewGuid(), Name = "Desenvolvedor", Login = "dev", Password = "MTIz", Profile = TypeProfile.Admin,
                 Email = "teste@hotmail.com" ,EnterpriseId = enterprise.Id
+                }
+            );
+
+
+            modelBuilder.Entity<Client>()
+                .HasData(
+                new
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Patrick Weber",
+                    CpfCnpj = "06262485902",
+                    Address = "Leopoldo Holz",
+                    Identifier = "3812817100220600010000000001",
+                    Ie = "16",
+                    Patio = "Condominio",
+                    Email = "patrick@gmail.com",
+                    ResidentialNumber = "111",
+                    Complement = "Rua",
+                    Enrollment = "F"
                 }
             );
 

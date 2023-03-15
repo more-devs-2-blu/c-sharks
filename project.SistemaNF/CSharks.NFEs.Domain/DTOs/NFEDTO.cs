@@ -38,6 +38,25 @@ namespace CSharks.NFEs.Domain.DTOs
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
+        public NFEDTO(NFE nfse, User user, Client client, Service service)
+        {
+            Identificador = nfse.Identificador;
+            Nf = new NF()
+            {
+                ValorTotal = "1,00"
+            };
+            Prestador = new Prestador(user);
+            Tomador = new Tomador(client);
+            lista item = new lista(service);
+            Itens = new List<lista>
+            {
+                item
+            };
+        }
+        public NFEDTO()
+        {
+
+        }
     }
 
     [XmlRoot("nf")]
@@ -72,6 +91,11 @@ namespace CSharks.NFEs.Domain.DTOs
         {
             CpfCnpj = enterprise.CpfCnpj;
             Cidade = enterprise.City;
+        }
+        public Prestador(User user)
+        {
+            CpfCnpj = user.Enterprise.CpfCnpj;
+            Cidade = user.Enterprise.City;
         }
         public Prestador()
         {
@@ -114,7 +138,7 @@ namespace CSharks.NFEs.Domain.DTOs
 
         public Tomador(Client client)
         {
-            Tipo = client.Type;
+            Tipo = client.Enrollment;
             EnderecoInformado = client.Address;
             Identificador = client.Identifier;
             CpfCnpj = client.CpfCnpj;
