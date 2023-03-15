@@ -4,11 +4,12 @@
 @{
     List<ISQN> isqns = ViewBag.isqns; 
     ViewData["Title"] = "Shark NFE - Registro Serviço";
+    Console.WriteLine(isqns);
 }
 
 <section class="col-8 mx-auto">
     <h1> @ViewData["Title"]</h1>
-    <div class="mt-3">
+    <div class="mt-2">
         @await Html.PartialAsync("_MessageResult")
     </div>
     <form asp-controller="Service" asp-action="Create" method="post">
@@ -68,43 +69,17 @@
             <span asp-validation-for="valor_tributavel" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
+            <button type="submit" class="btn bg-shark text-white" style="width: 7rem;">Cadastrar</button>
         </div>
     </form>
 
 </section>
 
 @section Scripts {
+    
     <script type="text/javascript">
-        $('#selectize-codigo-descricao-servico').selectize({
-            render: {
-                option: function (data, escape) {
-                    return "<div id="+data.value+" data-aliquota='" + data.aliquota + "'>" + data.text + "</div>"
-                }
-            }
-        });
+        $document.ready(e => {
 
-        $('#selectize-codigo-descricao-servico').change(e => {
-            let selected = e.target.options[e.target.selectedIndex];
-            let selectedItem = $(`#${selected.value}`)[0];
-            let aliquota = selectedItem.dataset.aliquota;
-            let descricao = (e.target.innerText.trim().substring(6).trim());
-            $('#input-aliquota').val(aliquota += "%");
-            $('#input-descricao').val(descricao);
         })
-
-        $('#checkbox-tributavel').change(e => {
-            let checkbox = e.target;
-            let inputTom = $('#codigo-tom')[0];
-            if(checkbox.checked) {
-                //Buscar Código TOM da sessão;
-                let codigoTomEmpresa = "8845"
-                inputTom.disabled = true;
-                inputTom.value = codigoTomEmpresa;
-            } else {
-                inputTom.disabled = false;
-                inputTom.value = "";
-            }
-        });
     </script>
 }

@@ -10,6 +10,7 @@
             <div class="mt-3">
                 @await Html.PartialAsync("_MessageResult")
             </div>
+            
             <div class="fadeIn first my-5">
                 <h5> Cadastre sua Empresa</h5>
             </div>
@@ -25,9 +26,28 @@
             <div id="formFooter">
                 <span asp-validation-for="Name" class="text-danger"></span>
                 <span asp-validation-for="CpfCnpj" class="text-danger"></span>
-                <span asp-validation-for="Email" class="text-danger"></span>
                 <span asp-validation-for="City" class="text-danger"></span>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        $('#input-city').focusout(e => {
+            let cityInputText = e.target.value;
+            $.ajax({
+                url: `localhost:8080/city/${cityInputText}`,
+                method: 'GET',
+                crossDomain: true, // enable cross-domain requests
+                xhrFields: {
+                    withCredentials: true // enable sending cookies and authentication headers
+                },
+                success: res => {
+                    console.log(`| TOM: ${res}`);
+                }
+            })
+        })
+    </script>
+}

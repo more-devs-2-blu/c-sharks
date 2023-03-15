@@ -17,7 +17,7 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
             </li>
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link text-dark" asp-controller="User" asp-action="Index">Usuários</a>
             </li>
             <li class="nav-item">
@@ -25,6 +25,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-controller="Service" asp-action="Index">Serviços</a>
+            </li>*@
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Registrations" asp-action="Index">Cadastros</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-controller="Nfe" asp-action="Index">Buscar NF</a>
@@ -35,9 +38,6 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">Relatórios</a>
             </li>
-            @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Login" asp-action="Exit">Sair</a>
-            </li>*@
         </ul>
         <li class="navbar-nav nav-item dropdown me-5">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

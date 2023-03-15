@@ -24,7 +24,7 @@ namespace CSharks.NFEs.WebApp.Controllers
         public IActionResult Index()
         {
             ViewBag.isqns = GetISQNS();
-            return View("~/Views/Register/Services/Index.cshtml");
+            return PartialView("~/Views/Register/Services/Index.cshtml");
         }
 
         [HttpPost]
@@ -38,7 +38,7 @@ namespace CSharks.NFEs.WebApp.Controllers
                 return View("~/Views/Register/Services/Index.cshtml");
             }
 
-            return View("~/Views/Register/Services/Index.cshtml");
+            return PartialView("~/Views/Register/Services/Index.cshtml");
         }
 
         private List<ISQN> GetISQNS()
