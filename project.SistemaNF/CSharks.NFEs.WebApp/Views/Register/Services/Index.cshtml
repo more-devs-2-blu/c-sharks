@@ -4,7 +4,6 @@
 @{
     List<ISQN> isqns = ViewBag.isqns; 
     ViewData["Title"] = "Shark NFE - Registro Serviço";
-    Console.WriteLine(isqns);
 }
 
 <section class="col-8 mx-auto">
@@ -13,6 +12,7 @@
         @await Html.PartialAsync("_MessageResult")
     </div>
     <form id="form-service" asp-controller="Service" asp-action="Create" method="POST">
+        <input id="input-tom" type="hidden" value=""/>
          <div class="form-group"> 
             <label asp-for="codigo_item_lista_servico" class="control-label"> Código do Serviço </label>
             <select id="selectize-codigo-descricao-servico" class="">
