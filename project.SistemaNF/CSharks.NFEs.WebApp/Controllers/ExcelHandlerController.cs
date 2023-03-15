@@ -33,7 +33,7 @@ namespace CSharks.NFEs.WebApp.Controllers
             if (_isqnRepo.GetAll().Count() > 0)
             {
                 TempData["Warning"] = "A tebela de ISQN já está atualizada. Você precisa fazer a limpeza antes.";
-                return View("~/Views/Home/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
             string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "files", "isqn.xlsx");
             List<ISQN> isqns = _excelService.ReadISQNFromExcel(filePath);
@@ -42,11 +42,11 @@ namespace CSharks.NFEs.WebApp.Controllers
                 if (await _isqnRepo.SaveAll(isqns))
                 {
                     TempData["Success"] = "Importação realizada com sucesso!";
-                    return RedirectToAction("Index", "Service");
+                    return RedirectToAction("Index", "Registrations");
                 }
             }
             TempData["Error"] = "Falha ao tentar ler os dados do arquivo excel, certifique-se se o arquivo com extensão isqn.xlsx está no diretório /wwwroot/files.";
-            return View("~/Views/Home/Index.cshtml");
+            return RedirectToAction("Index", "Registrations");
         }
 
         public IActionResult DeleteAllISQNData()

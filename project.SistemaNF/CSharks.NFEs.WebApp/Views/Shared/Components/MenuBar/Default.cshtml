@@ -43,14 +43,25 @@
         </ul>
     </div>
     <div class="col-4 d-flex justify-content-end">
-        <div class="navbar-nav nav-item dropdown me-5">
+        <li class="navbar-nav  nav-item dropdown me-5">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @Model.Name
+                Olá, @Model.Name
             </a>
             <ul class="dropdown-menu">
-                <li class="dropdown-item"> <a asp-controller="ExcelHandler" asp-action="ReadDataAndSave"> Configurações </a>  </li>
-                <li><a class="dropdown-item" asp-controller="Login" asp-action="Exit">Sair</a></li>
+
+                <li>  
+                    <a class="dropdown-item" asp-controller="ExcelHandler" asp-action="ReadDataAndSave">
+                        <img class="tool-icon" src="~/images/ConfigIcon-02-02.svg" />
+                        Configurações 
+                    </a>    
+                </li>
+                <li>
+                    <a class="dropdown-item " asp-controller="Login" asp-action="Exit">
+                        <img class="tool-icon" src="~/images/ExitIcon-02.svg" />
+                        Sair
+                    </a>
+                </li>
             </ul>
-        </div>
+        </li>
     </div>
 </div>
