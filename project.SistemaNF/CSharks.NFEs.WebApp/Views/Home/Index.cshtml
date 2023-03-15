@@ -2,27 +2,227 @@
     ViewData["Title"] = "Shark NFE - Home";
 }
 
-<section>
-    <h3 class="text-center">Bem vindo @TempData["NameUserLogged"]</h3>
+<section class="">
+
+    <div class="header-index">
+        <h3 class="text-right ">Informações @TempData["NameUserLogged"]</h3>
+    </div>
+
     <div class="mt-3">
         @await Html.PartialAsync("_MessageResult")
     </div>
-    <h5 class="mt-5 text-lg-start"> 
-        Este sistema foi desenvolvido de acordo com as definições estiupuladas através do estudo de regras de negócios que geraram requisitos funcionais e não funcionais 
-        disponíveis na documentação do projeto.    
-    </h5>
-    <div class="border p-4 mt-2">
-        <label> <b> Atualização de ISQN - Serviços CNAE</b></label>
-        <p class="text-lg-start mt-4"> Os dados a serem importados do excel (planilha) está localizada 'em wwwroot/files considerando a raíz do nosso projeto'. </p>
-        <a asp-action="ReadDataAndSave" asp-controller="ExcelHandler" class="btn btn-primary"> Importar ISQN da planila - Excel </a>
-        <p class="mt-4"> Caso haja alguma atualização na norma ou atualização de alíquotas, o sistema irá permitir a limpeza dos dados de serviço existentes para nova importação de ISQN.</p>
-        <a asp-action="DeleteAllISQNData" asp-controller="ExcelHandler" class="btn btn-secondary"> Limpar os dados salvos através da planilha do ISQN </a>
+
+    <div class="container d-flex">
+
+        <div class="row col-3">
+            <div class="bg-white border" style="">
+                <div class="card-body">
+                    <h5 class="card-title display-6 text-center text-color-green">65</h5>
+                    <p class="card-text text-center">Notas Fiscais Emitidas</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-3">
+            <div class="bg-white border" style="">
+                <div class="card-body">
+                    <h5 class="card-title display-6 text-center text-color-green">02</h5>
+                    <p class="card-text text-center">Notas Fiscais Canceladas</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-3">
+            <div class="bg-white border" style="">
+                <div class="card-body">
+                    <h5 class="card-title display-6 text-center text-color-green">58</h5>
+                    <p class="card-text text-center">Clientes Atendidos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-3">
+            <div class="bg-white border" style="">
+                <div class="card-body">
+                    <h5 class="card-title display-6 text-center text-color-green">R$ 10.000,00</h5>
+                    <p class="card-text text-center">Total em Serviços Prestados</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    <div class="header-index mt-3">
+        <h3 class="text-right ">Nossos Serviços @TempData["NameUserLogged"]</h3>
+    </div>
+
+    <div class="container d-flex flex-column container-space">
+        <div class="d-flex">
+            <div class="row">
+                <ul class="home-ul">
+                    <li class="home-li">
+                        <img class="img-icon" src="~/images/nfIcon-02.svg" alt="Card image cap">
+                    </li>
+                    <li class="home-li">
+                        <h2>Notas Fiscais</h2>
+                        <span>Aqui podemos emitir, listar, administrar todas as notas fiscais realativas ao sistema</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <ul class="home-ul">
+                    <li class="home-li">
+                        <img class="img-icon" src="~/images/cadastroIcon-02.svg" alt="Card image cap">
+                    </li>
+                    <li class="home-li">
+                        <h2>Cadastros</h2>
+                        <span>Aqui você pode cadastar usuários, serviços, clientes etc...</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <ul class="home-ul">
+
+                    <li class="home-li">
+                        <img class="img-icon" src="~/images/dashboardIcon-02.svg" alt="Card image cap">
+                    </li>
+                    <li class="home-li">
+                        <h2>Relatórios</h2>
+                        <span>Aqui você pode ter acesso aos relatórios do sistema para levantamento de dados</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     
+        <div class="mt-3 overflow-scroll">
+
+            <div class="header-index">
+                <h3 class="text-right ">Nfs - Recentes @TempData["NameUserLogged"]</h3>
+            </div>
+
+            <div class="">
+                <table id="example" class="display overflow-hidden" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011-04-25</td>
+                            <td>$320,800</td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011-07-25</td>
+                            <td>$170,750</td>
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009-01-12</td>
+                            <td>$86,000</td>
+                        </tr>
+                        <tr>
+                            <td>Cedric Kelly</td>
+                            <td>Senior Javascript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2012-03-29</td>
+                            <td>$433,060</td>
+                        </tr>
+                        <tr>
+                            <td>Airi Satou</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>33</td>
+                            <td>2008-11-28</td>
+                            <td>$162,700</td>
+                        </tr>
+                        <tr>
+                            <td>Brielle Williamson</td>
+                            <td>Integration Specialist</td>
+                            <td>New York</td>
+                            <td>61</td>
+                            <td>2012-12-02</td>
+                            <td>$372,000</td>
+                        </tr>
+                        <tr>
+                            <td>Herrod Chandler</td>
+                            <td>Sales Assistant</td>
+                            <td>San Francisco</td>
+                            <td>59</td>
+                            <td>2012-08-06</td>
+                            <td>$137,500</td>
+                        </tr>
+                        <tr>
+                            <td>Rhona Davidson</td>
+                            <td>Integration Specialist</td>
+                            <td>Tokyo</td>
+                            <td>55</td>
+                            <td>2010-10-14</td>
+                            <td>$327,900</td>
+                        </tr>
+                        <tr>
+                            <td>Colleen Hurst</td>
+                            <td>Javascript Developer</td>
+                            <td>San Francisco</td>
+                            <td>39</td>
+                            <td>2009-09-15</td>
+                            <td>$205,500</td>
+                        </tr>
+                        <tr>
+                            <td>Sonya Frost</td>
+                            <td>Software Engineer</td>
+                            <td>Edinburgh</td>
+                            <td>23</td>
+                            <td>2008-12-13</td>
+                            <td>$103,600</td>
+                        </tr>
+                        <tr>
+                            <td>Jena Gaines</td>
+                            <td>Office Manager</td>
+                            <td>London</td>
+                            <td>30</td>
+                            <td>2008-12-19</td>
+                            <td>$90,560</td>
+                        </tr>
+                        <tr>
+                            <td>Quinn Flynn</td>
+                            <td>Support Lead</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2013-03-03</td>
+                            <td>$342,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </section>
 
 @section Scripts {
     <script type="text/javascript">
 
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
     </script>
 }

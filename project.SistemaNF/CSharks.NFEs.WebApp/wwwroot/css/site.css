@@ -14,6 +14,15 @@ html, body {
     overflow: hidden;
 }
 
+main {
+    max-height: 100%;
+}
+
+#main-wrapper {
+    max-height: 100%;
+    padding-bottom: 8rem;
+}
+
 .form-control:focus {
     border-color: #346c84;
     box-shadow: 0 2px 4px #346c84;
@@ -33,6 +42,7 @@ html, body {
     width: 95%; /* this will center the element horizontally */
     height: 90%;
     margin: auto;
+    /*overflow-y: auto;*/
 }
 
 /* Validation Styles */ 
@@ -74,4 +84,93 @@ html, body {
 
 .border-shark-bottom {
     border-bottom: 2px solid #346c84;
+}
+
+.btn-green {
+    background-color: #24b49a;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+
+.btn-standard-1 {
+    background-color: #b8bdc1;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.btn-warning-1 {
+    background-color: #1f2426;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.btn-danger-1 {
+    background-color: #d4145a;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.btn-green:hover {
+    background-color: #1a8874;
+}
+
+
+.nf-topic {
+    color: wheat;
+    padding-top: 20em;
+}
+
+
+.cancel-question {
+    padding-top: 15em;
+}
+
+.crud-text {
+    padding-bottom: 1em;
+}
+
+.form-group {
+    padding: 1em;
+}
+
+.subtitle {
+    padding-bottom: 1em;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+.color-container {
+    background-color: #f9f9f9;
+}
+
+.img-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.text-color-green {
+    color: #24b49a;
+}
+
+.datatable dt {
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+#main-wrapper::-webkit-scrollbar {
+    display: none;
 }

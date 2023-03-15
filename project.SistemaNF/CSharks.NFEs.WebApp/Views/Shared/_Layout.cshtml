@@ -15,26 +15,17 @@
           referrerpolicy="no-referrer" />
 </head>
 <body class="m-0 bg-shark d-flex flex-column justify-content-center">
-    <div id="mainDiv" class=" bg-light shadow rounded">
+    <div id="mainDiv" class="bg-light shadow rounded overflow-hidden">
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom shadow mb-3">
                 @await Component.InvokeAsync("MenuBar")
             </nav>
         </header>
-        <div class="container">
-            <main role="main" class="pb-0 col-9 pt-3 mx-auto">
+        <div id="main-wrapper" class="container mx-auto overflow-auto">
+            <main role="main" class="pb-0 pt-3 mx-auto">
                 @RenderBody()
             </main>
         </div>
-        <!--
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2023 - CSharks.NFEs.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
-
-        -->
     </div>
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
