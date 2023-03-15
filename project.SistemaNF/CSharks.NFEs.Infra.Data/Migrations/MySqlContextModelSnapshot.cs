@@ -26,43 +26,38 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Complement")
-                        .IsRequired()
+                    b.Property<string>("CEP")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("City")
                         .HasColumnType("longtext");
 
                     b.Property<string>("CpfCnpj")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("District")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Enrollment")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Identifier")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Ie")
-                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("InformedAdress")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Patio")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("ResidentialNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -72,17 +67,72 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3aaca86a-7bca-4c79-aa8c-5b59a6201fe2"),
-                            Address = "Leopoldo Holz",
-                            Complement = "Rua",
-                            CpfCnpj = "06262485902",
-                            Email = "patrick@gmail.com",
+                            Id = new Guid("412a7651-7cd4-4528-9cc3-306b3e11a050"),
+                            Address = "Rua Gustavo Zimmermann",
+                            CEP = "89062100 ",
+                            City = "8357",
+                            CpfCnpj = "43975686855",
+                            District = "Itoupava Central",
+                            Email = "juninhocb@hotmail.com",
                             Enrollment = "F",
-                            Identifier = "3812817100220600010000000001",
                             Ie = "16",
-                            Name = "Patrick Weber",
-                            Patio = "Condominio",
-                            ResidentialNumber = "111"
+                            InformedAdress = "1",
+                            Name = "Carlos Eduardo dos Santos Junior",
+                            ResidentialNumber = "2421"
+                        });
+                });
+
+            modelBuilder.Entity("CSharks.NFEs.Domain.Models.EmitedNF", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ClientName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CodVerify")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("EmitDate")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LinkPDF")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NoNfse")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ServiceName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Situation")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ValueNF")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Emiteds");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a4830455-6511-4be7-aab2-ff1efa488a96"),
+                            ClientName = "PATRICK WEBER",
+                            CodVerify = "8357738593202582530720240315032023189724",
+                            EmitDate = "23-03-15-19-29",
+                            LinkPDF = "https://homologacao.atende.net//homologacao.atende.net//autoatendimento/servicos/consulta-de-autenticidade-de-nota-fiscal-eletronica-nfse/detalhar/1/identificador/atende.php?rot=1&aca=119&ajax=t&processo=viewFile&ajaxPrevent=1678894724274&file=3BEC12ECA3FEFF0F56229CD1C8598E57ABEC522A&sistema=wne&classe=upload_nota_fiscal_eletronica",
+                            NoNfse = "74",
+                            ServiceName = "Programação",
+                            Situation = "Success",
+                            ValueNF = "35"
                         });
                 });
 
@@ -115,9 +165,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("140bb8fc-12f0-4287-b12a-b8d6901ccc46"),
-                            City = "8453",
-                            CpfCnpj = "12345678901234",
+                            Id = new Guid("dffa0ee5-bce8-43e0-8401-fd5c57c1befc"),
+                            City = "8357",
+                            CpfCnpj = "25825307000152",
                             Email = "csharkenterprise@hotmail.com",
                             Name = "Csharks Developers LTDA"
                         });
@@ -187,25 +237,14 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("93f4e4ee-3e42-483a-9acf-2fff13cdf0d4"),
+                            Id = new Guid("842cb543-e444-4634-a4f4-7191cce6987c"),
                             aliquota_item_lista_servico = "5",
                             codigo_item_lista_servico = "702",
                             codigo_local_prestacao_servico = "8357",
-                            descritivo = "Teste",
-                            situacao_tributaria = "000",
-                            tributa_municipio_prestador = "S",
-                            valor_tributavel = "0"
-                        },
-                        new
-                        {
-                            Id = new Guid("f91e6dfa-40e4-46dd-a502-0649b14e1e04"),
-                            aliquota_item_lista_servico = "2",
-                            codigo_item_lista_servico = "0106",
-                            codigo_local_prestacao_servico = "8357",
                             descritivo = "Assessoria e consultoria em informática.",
-                            situacao_tributaria = "000",
+                            situacao_tributaria = "0",
                             tributa_municipio_prestador = "S",
-                            valor_tributavel = "0"
+                            valor_tributavel = "1"
                         });
                 });
 
@@ -265,9 +304,9 @@ namespace CSharks.NFEs.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a51bbf93-cded-42bd-834d-4426697a0bc1"),
+                            Id = new Guid("bc7b9b60-543a-4e42-8cfe-2337e8738830"),
                             Email = "teste@hotmail.com",
-                            EnterpriseId = new Guid("140bb8fc-12f0-4287-b12a-b8d6901ccc46"),
+                            EnterpriseId = new Guid("dffa0ee5-bce8-43e0-8401-fd5c57c1befc"),
                             Login = "dev",
                             Name = "Desenvolvedor",
                             Password = "MTIz",

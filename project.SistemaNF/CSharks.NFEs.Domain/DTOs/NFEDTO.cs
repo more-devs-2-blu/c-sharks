@@ -53,6 +53,29 @@ namespace CSharks.NFEs.Domain.DTOs
                 item
             };
         }
+
+        //new construtctor with others overloads
+        public NFEDTO(User user, Client client, Service service, string value)
+        {
+
+            Nf = new NF()
+            {
+                ValorTotal = value
+            };
+
+            Prestador = new Prestador(user);
+
+            Tomador = new Tomador(client);
+            
+            lista items = new lista(service);
+            
+            Itens = new List<lista>
+            {
+                items
+            };
+        }
+
+
         public NFEDTO()
         {
 
@@ -87,15 +110,17 @@ namespace CSharks.NFEs.Domain.DTOs
         [XmlElement("cidade")]
         public string Cidade { get; set; }
 
+        /*
         public Prestador(Enterprise enterprise)
         {
             CpfCnpj = enterprise.CpfCnpj;
             Cidade = enterprise.City;
         }
+        */
         public Prestador(User user)
         {
-            CpfCnpj = user.Enterprise.CpfCnpj;
-            Cidade = user.Enterprise.City;
+            CpfCnpj = user.Enterprise!.CpfCnpj;
+            Cidade = user.Enterprise!.City;
         }
         public Prestador()
         {
@@ -112,9 +137,6 @@ namespace CSharks.NFEs.Domain.DTOs
         [XmlElement("endereco_informado")]
         public string EnderecoInformado { get; set; }
 
-        [XmlElement("identificador")]
-        public string Identificador { get; set; }
-
         [XmlElement("cpfcnpj")]
         public string CpfCnpj { get; set; }
 
@@ -127,27 +149,33 @@ namespace CSharks.NFEs.Domain.DTOs
         [XmlElement("logradouro")]
         public string Logradouro { get; set; }
 
+
+        [XmlElement("bairro")]
+        public string Bairro { get; set; }
+
+
+        [XmlElement("cidade")]
+        public string Cidade { get; set; }
+
+
         [XmlElement("email")]
         public string Email { get; set; }
 
         [XmlElement("numero_residencia")]
         public string NumeroResidencia { get; set; }
 
-        [XmlElement("complemento")]
-        public string Complemento { get; set; }
-
         public Tomador(Client client)
         {
             Tipo = client.Enrollment;
-            EnderecoInformado = client.Address;
-            Identificador = client.Identifier;
+            EnderecoInformado = client.InformedAdress;
             CpfCnpj = client.CpfCnpj;
             NomeRazaoSocial = client.Name;
             Ie = client.Ie;
-            Logradouro = client.Patio;
+            Logradouro = client.Address;
+            Bairro = client.District;
+            Cidade = client.City;
             Email = client.Email;
             NumeroResidencia = client.ResidentialNumber;
-            Complemento = client.Complement;
         }
         public Tomador()
         {
@@ -181,7 +209,7 @@ namespace CSharks.NFEs.Domain.DTOs
         {
             TributaMunicipioPrestador = service.tributa_municipio_prestador;
             CodigoLocalPrestServico = service.codigo_local_prestacao_servico;
-            CodigoServico = service.codigo_local_prestacao_servico;
+            CodigoServico = service.codigo_item_lista_servico;
             Descricao = service.descritivo;
             AliquotaServico = service.aliquota_item_lista_servico;
             SituacaoTributaria = service.situacao_tributaria;

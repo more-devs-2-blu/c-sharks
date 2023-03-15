@@ -18,7 +18,6 @@ namespace CSharks.NFEs.Domain.Models
         public string situacao_tributaria { get; set; }
         public string valor_tributavel { get; set; }
 
-
         //public virtual Category? Category { get; set; }
     }
 }

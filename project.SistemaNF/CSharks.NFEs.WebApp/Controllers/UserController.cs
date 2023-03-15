@@ -19,7 +19,7 @@ namespace CSharks.NFEs.WebApp.Controllers
         public IActionResult Index()
         {
 
-            return View("~/Views/Register/Users/Index.cshtml");
+            return PartialView("~/Views/Register/Users/Index.cshtml");
         }
 
         [HttpPost]
@@ -35,11 +35,11 @@ namespace CSharks.NFEs.WebApp.Controllers
                 TempData["Success"] = "Salvo com sucesso";
             } else
             {
-                return View("~/Views/Register/Users/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
-                    
-            return View("~/Views/Register/Users/Index.cshtml");
+
+            return RedirectToAction("Index", "Registrations");
         }
     }
 }

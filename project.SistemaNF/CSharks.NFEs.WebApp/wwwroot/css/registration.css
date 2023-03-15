@@ -1,0 +1,17 @@
+﻿.cardi:hover {
+    -webkit-box-shadow: 5px 10px 25px 1px #b8bdc1;
+    box-shadow: 5px 10px 25px 1px #b8bdc1;
+    text-decoration: none;
+    color: #111;
+}
+
+.img-top {
+    /*width: 80%;
+    height: 80%;*/
+}
+
+.cardi {
+    border: none;
+    text-decoration: none;
+    color: #111;
+}

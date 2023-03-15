@@ -1,17 +1,17 @@
-﻿@{
+﻿@using CSharks.NFEs.Domain.Models;
+@{
     ViewData["Title"] = "Shark NFE - NFEs";
+    List<EmitedNF> emiteds = ViewBag.ListEmiteds; 
 }
 
 <section>
-     <h3> Buscar NF </h3>
-     <div class="border m-5"> Lorem </div>
      <h3> Notas emitidas </h3>
     <table id="dt-nf" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Data Emissão</th>
                 <th>Serviço</th>
-                <th>Código</th>
+                <th>Número NFSE</th>
                 <th>Cliente</th>
                 <th>Valor</th>
                 <th>Situação</th>
@@ -19,40 +19,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>03/14/2023</td>
-                <td> Programação</td>
-                <td>101</td>
-                <td>Zsharks System</td>
-                <td>R$320,800</td>
-                <td style="color: green"> <b> Aprovado </b></td>
-                <td> <a id="show-options">  :  </a> <datalist id="options-list">
-    <option value="Chocolate">Visualizar</option>
-    <option value="Chocolate">Baixar PDF</option>
-    <option value="Chocolate">Baixar Xml</option>
-    <option value="Chocolate">Enviar por Email</option>
-    <option value="Chocolate">Imprimir</option>
-    <option value="Chocolate">Cancelar NF</option>
-</datalist> </td>
-            </tr>
-            <tr>
-                <td>02/14/2023</td>
-                <td> Análise de Sistemas</td>
-                <td>104</td>
-                <td>ZF ff System</td>
-                <td>R$120,800</td>
-                <td style="color: red"> <b>Reprovado</b></td>
-                <td> <a> : </a></td>
-            </tr>
-            <tr>
-                <td>01/14/2023</td>
-                <td> Informática </td>
-                <td>106</td>
-                <td>Abeira ab System</td>
-                <td>R$220,800</td>
-                <td style="color: yellow"> <b>Em Andamento </b></td>
-                <td> <a> : </a></td>
-            </tr>
+            @if(emiteds != null && emiteds.Any())
+            {
+                foreach (EmitedNF emited in emiteds)
+                {
+                    <tr>
+                        <td>@emited.EmitDate</td>
+                        <td> @emited.ServiceName</td>
+                        <td>@emited.NoNfse</td>
+                        <td> @emited.ClientName</td>
+                        <td>R$ @emited.ValueNF ,00</td>
+                        <td style="color: green"> <b> Emitida </b></td>
+                        <td>
+                            <a class="btn btn-success" href="@emited.LinkPDF" target="_blank">  Ver PDF  </a>
+                            <a class="btn btn-outline-success" onclick="downloadXML('@emited.EmitDate')"> Download XML </a>
+                            <span class="ml-5"> X </span>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 
@@ -66,5 +51,30 @@
         showOptionsLink.addEventListener("click", function () {
             optionsList.style.display = "block";
         });
+
+        function downloadXML(fname){
+            alert(fname);
+            $.ajax({
+                url: '@Url.Action("DownloadAction", "Nfe")',
+                data: {fileName : fname},
+                type: "POST",
+                dataType: "json",
+                success: function (response) {
+                    var downloadUrl = response.fileUrl;
+                    var anchor = document.createElement('a');
+                    anchor.href = downloadUrl;
+                    anchor.download = 'NF.xml';
+                    anchor.click();
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+           
+        
+        
+
+
     </script>
 }

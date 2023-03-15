@@ -1,4 +1,5 @@
 ﻿using CSharks.NFEs.Domain.DTOs;
+using CSharks.NFEs.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace CSharks.NFEs.Services.Interfaces
     public interface IApiClientService
     {
         public string GetFile(NFEDTO nfe);
-        public void EmitNF(string xmlFileEdit);
+        public Task<EmitedNF> EmitNF(string xmlFileEdit, string pathFile);
 
     }
 }

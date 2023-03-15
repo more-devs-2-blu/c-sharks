@@ -11,34 +11,39 @@ namespace CSharks.NFEs.WebApp.Controllers
     {
         private readonly IServicesRepository _serviceRepo;
         private readonly IIsqnRepository _isqnRepo;
-        private readonly ICacheMemory _memoryCache; 
+        private readonly ICacheMemory _memoryCache;
+        private readonly ISessionService _sessionService;
 
 
         public ServiceController(
-            IServicesRepository servicesRepository, IIsqnRepository isqnRepository, ICacheMemory cacheMemory)
+            IServicesRepository servicesRepository, IIsqnRepository isqnRepository, ICacheMemory cacheMemory, ISessionService sessionService)
         {
             _serviceRepo = servicesRepository;
             _isqnRepo = isqnRepository;
             _memoryCache = cacheMemory;
+            _sessionService = sessionService;
         }
         public IActionResult Index()
         {
             ViewBag.isqns = GetISQNS();
-            return View("~/Views/Register/Services/Index.cshtml");
+            ViewBag.enterpise = _sessionService.GetSession();
+            return PartialView("~/Views/Register/Services/Index.cshtml");
         }
 
         [HttpPost]
         public IActionResult Create(Service service)
         {
+            service.tributa_municipio_prestador = service.tributa_municipio_prestador == "true" ? "1" : "0";
+
             ViewBag.isqns = GetISQNS();
             if (ModelState.IsValid)
             {
                 _serviceRepo.Save(service); 
                 TempData["Success"] = "Salvo com sucesso";
-                return View("~/Views/Register/Services/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
-            return View("~/Views/Register/Services/Index.cshtml");
+            return RedirectToAction("Index", "Registrations");
         }
 
         private List<ISQN> GetISQNS()

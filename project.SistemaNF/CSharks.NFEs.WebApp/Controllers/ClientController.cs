@@ -19,7 +19,7 @@ namespace CSharks.NFEs.WebApp.Controllers
         {
             //recive list of clients to display
             //  List<clients> clients = _requestMySql and pass it on parameters
-            return View("~/Views/Register/Clients/Index.cshtml");
+            return PartialView("~/Views/Register/Clients/Index.cshtml");
         }
 
         [HttpPost]
@@ -33,11 +33,11 @@ namespace CSharks.NFEs.WebApp.Controllers
             }
             else
             {
-                return View("~/Views/Register/Clients/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
 
-            return View("~/Views/Register/Clients/Index.cshtml");
+            return RedirectToAction("Index", "Registrations");
         }
     }
 }

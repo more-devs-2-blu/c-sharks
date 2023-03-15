@@ -7,27 +7,44 @@
 <section>
     <div class="wrapper fadeInDown">
         <div class="formContent bg-white rounded text-center col-6">
-            <div class="mt-3">
-                @await Html.PartialAsync("_MessageResult")
-            </div>
-            <div class="fadeIn first my-5">
-                <h5> Cadastre sua Empresa</h5>
+            <div class="fadeIn first">
+                <img src="/images/icon.jpeg" id="icon-register" alt="User Icon" style="width: 40%;"/>
+                <h5 class="title-login text-center"> Cadastre sua Empresa</h5>
             </div>
             <form asp-action="Create" asp-controller="Enterprise" method="post">
-                <input asp-for="Name" class="fadeIn second form-control" placeholder="nome">
-                <input asp-for="CpfCnpj" class="fadeIn second form-control" placeholder="cnpj">
-                <input asp-for="Email" class="fadeIn third form-control" placeholder="email">
-                <input id="input-city" asp-for="City" class="fadeIn third form-control" placeholder="cidade">
+                <input asp-for="Name" class="fadeIn second form-control" placeholder="nome"/>
+                <input asp-for="CpfCnpj" class="fadeIn second form-control" placeholder="cnpj"/>
+                <input asp-for="Email" class="fadeIn third form-control" placeholder="email"/>
+                <input id="input-city" class="fadeIn fourth form-control" placeholder="cidade" type="text"/>
+                <input id="hidden-input-city" asp-for="City" type="hidden"/>
 
                 <input type="submit" class="fadeIn fourth mt-3" placeholder="criar" value="Cadastrar">
-                <div class="pt-1 pb-3"><a asp-controller="Login" asp-action="Index" class="underlineHover fadeIn fourth mb-1">Voltar</a></div>
+                <div class="pt-1"><a asp-controller="Login" asp-action="Index" class="underlineHover fadeIn fourth mb-1">Voltar</a></div>
             </form>
             <div id="formFooter">
                 <span asp-validation-for="Name" class="text-danger"></span>
                 <span asp-validation-for="CpfCnpj" class="text-danger"></span>
-                <span asp-validation-for="Email" class="text-danger"></span>
                 <span asp-validation-for="City" class="text-danger"></span>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        $('document').ready(e => {
+            $('#input-city').focusout(e => {
+                let cityInputText = e.target.value;
+                if(cityInputText == "") return;
+                $.ajax({
+                    url: `http://localhost:8080/city/${cityInputText}`,
+                    method: 'GET',
+                    success: res => {
+                        $('#hidden-input-city').val(res);
+                    }
+                })
+            })
+        })
+    </script>
+}

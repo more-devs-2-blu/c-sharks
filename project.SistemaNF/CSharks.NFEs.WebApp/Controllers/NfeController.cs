@@ -12,22 +12,32 @@ namespace CSharks.NFEs.WebApp.Controllers
         private readonly IServicesRepository _serviceRepo;
         private readonly IClientRepository _clientRepo;
         private readonly IApiClientService _serviceApi;
+        private readonly IEmitedNfRepository _emitedRepo;
 
-        public NfeController(IServicesRepository serviceRepo, IClientRepository clientRepo, IApiClientService serviceApi)
+        public NfeController(IServicesRepository serviceRepo, IClientRepository clientRepo, IApiClientService serviceApi, IEmitedNfRepository emitedRepo)
         {
             _serviceRepo = serviceRepo;
-            _clientRepo = clientRepo;   
+            _clientRepo = clientRepo;
             _serviceApi = serviceApi;
+            _emitedRepo = emitedRepo;
         }
         public IActionResult Index()
         {
+            ViewBag.ListEmiteds = _emitedRepo.GetAll().ToList();
             return View();
         }
 
-        public IActionResult ListNFE()
+        public IActionResult DownloadAction(string fileName)
         {
-            ViewBag.services = _serviceRepo.GetAll().ToList();
-            return View("~/Views/Nfe/ListNF.cshtml");
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", $"{fileName}.xml");
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+
+            string fileUrl = Url.Content("~/files/" + $"{fileName}.xml");
+            return Json(new { fileUrl = fileUrl });
         }
 
     }
