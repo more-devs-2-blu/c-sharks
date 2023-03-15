@@ -35,10 +35,10 @@ namespace CSharks.NFEs.WebApp.Controllers
             {
                 _serviceRepo.Save(service); 
                 TempData["Success"] = "Salvo com sucesso";
-                return View("~/Views/Register/Services/Index.cshtml");
+                return RedirectToAction("Index", "Registrations");
             }
 
-            return PartialView("~/Views/Register/Services/Index.cshtml");
+            return RedirectToAction("Index", "Registrations");
         }
 
         private List<ISQN> GetISQNS()
