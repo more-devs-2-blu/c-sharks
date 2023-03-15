@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nfse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <nf>
+    <valor_total>123</valor_total>
+  </nf>
+  <prestador>
+    <cpfcnpj>12345678901234</cpfcnpj>
+    <cidade>8453</cidade>
+  </prestador>
+  <tomador>
+    <tipo>F</tipo>
+    <endereco_informado>Leopoldo Holz</endereco_informado>
+    <identificador>3812817100220600010000000001</identificador>
+    <cpfcnpj>06262485902</cpfcnpj>
+    <nome_razao_social>Patrick Weber</nome_razao_social>
+    <ie>16</ie>
+    <logradouro>Condominio</logradouro>
+    <email>patrick@gmail.com</email>
+    <numero_residencia>111</numero_residencia>
+    <complemento>Rua</complemento>
+  </tomador>
+  <itens>
+    <lista>
+      <tributa_municipio_prestador>S</tributa_municipio_prestador>
+      <codigo_local_prestacao_servico>8357</codigo_local_prestacao_servico>
+      <codigo_item_lista_servico>8357</codigo_item_lista_servico>
+      <descritivo>Assessoria e consultoria em informática.</descritivo>
+      <aliquota_item_lista_servico>2</aliquota_item_lista_servico>
+      <situacao_tributaria>000</situacao_tributaria>
+      <valor_tributavel>0</valor_tributavel>
+    </lista>
+  </itens>
+</nfse>
