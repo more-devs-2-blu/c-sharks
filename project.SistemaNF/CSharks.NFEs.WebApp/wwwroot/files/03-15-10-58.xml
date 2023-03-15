@@ -10,7 +10,6 @@
   <tomador>
     <tipo>F</tipo>
     <endereco_informado>1</endereco_informado> <!--Tipo true ou false-->
-    <identificador>3812817100220600010000000001</identificador>
     <cpfcnpj>43975686855</cpfcnpj>
     <nome_razao_social>Patrick Weber</nome_razao_social>
     <ie>16</ie>
@@ -18,7 +17,6 @@
 	<bairro>Itoupava Central</bairro> <!--Arrumar-->
 	<cidade>8357</cidade> <!--Arrumar-->
     <email>patrick@gmail.com</email>
-    <numero_residencia>111</numero_residencia>
   </tomador>
   <itens>
     <lista>
