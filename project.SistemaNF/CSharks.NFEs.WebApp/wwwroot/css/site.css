@@ -174,3 +174,19 @@ li {
 #main-wrapper::-webkit-scrollbar {
     display: none;
 }
+
+/*Menu bar style*/
+.header-index {
+    padding-top: 3em;
+    padding-bottom: 1em;
+}
+
+.tool-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.session-nav {
+    padding-left: 10em;
+}
+/*End menu bar style*/
