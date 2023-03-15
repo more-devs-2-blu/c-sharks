@@ -30,6 +30,8 @@ namespace CSharks.NFEs.WebApp.Controllers
         [HttpPost]
         public IActionResult Create(Service service)
         {
+            service.tributa_municipio_prestador = service.tributa_municipio_prestador == "true" ? "1" : "0";
+
             ViewBag.isqns = GetISQNS();
             if (ModelState.IsValid)
             {

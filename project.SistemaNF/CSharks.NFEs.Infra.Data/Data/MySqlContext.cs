@@ -46,7 +46,6 @@ namespace CSharks.NFEs.Infra.Data.Data
                     Address = "Leopoldo Holz",
                     Identifier = "3812817100220600010000000001",
                     Ie = "16",
-                    Patio = "Condominio",
                     Email = "patrick@gmail.com",
                     ResidentialNumber = "111",
                     Complement = "Rua",
