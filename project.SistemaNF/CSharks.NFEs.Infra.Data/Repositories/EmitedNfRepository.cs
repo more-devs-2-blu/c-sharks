@@ -14,8 +14,13 @@ namespace CSharks.NFEs.Infra.Data.Repositories
         private readonly MySqlContext? _dataContext;
         public EmitedNfRepository(MySqlContext context) : base(context)
         {
+            _dataContext = context;
         }
 
+        public EmitedNF GetByNoNfse(string noNfse)
+        {
+            return _dataContext.Emiteds.FirstOrDefault(e => e.NoNfse.Equals(noNfse));
+        }
     }
 
 

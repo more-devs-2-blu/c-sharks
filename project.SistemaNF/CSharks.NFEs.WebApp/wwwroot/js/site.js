@@ -93,7 +93,5 @@
             }
         });
     }
-
     //END DATA TABLE
-
 });

@@ -73,9 +73,6 @@ namespace CSharks.NFEs.Services.Services
                         }
                     }
                 }
-
-                
-
             }
             catch (Exception e)
             {
@@ -120,11 +117,18 @@ namespace CSharks.NFEs.Services.Services
                         {
                             string responseBody = await response.Content.ReadAsStringAsync();
                             //use emited
-                            
+                            responseBody = responseBody.Replace(" <?","<?");
                             XmlDocument xmlDoc = new XmlDocument();
                             xmlDoc.LoadXml(responseBody);
 
-                            emited.Situation = "Cancel";
+                            if (xmlDoc.SelectSingleNode("//codigo").InnerText.StartsWith("00117"))
+                            {
+                                emited.Situation = "Already canceled";
+                            }
+                            else
+                            {
+                                emited.Situation = "Cancel";
+                            }
                             return emited;
 
                         }
