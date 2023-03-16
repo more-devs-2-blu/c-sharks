@@ -22,7 +22,7 @@ namespace CSharks.NFEs.WebApp.Controllers
         { 
             List<EmitedNF> emiteds = _emitedRepo.GetAll().ToList();
             TempData["EmitQuantity"] = emiteds.Count > 0 ? emiteds.Count : "0";
-            TempData["EmitCanceled"] = emiteds.Count(e => e.Situation == "Canceled") > 0 ? emiteds.Count(e => e.Situation == "Canceled") : "0";
+            TempData["EmitCanceled"] = emiteds.Count(e => e.Situation == "Cancel") > 0 ? emiteds.Count(e => e.Situation == "Cancel") : "0";
             double valueCounter = 0; 
             foreach (EmitedNF emited in emiteds)
             {

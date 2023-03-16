@@ -190,3 +190,23 @@ li {
     padding-left: 10em;
 }
 /*End menu bar style*/
+
+/*Buttons NF list*/
+.img-btn {
+    width: 30px;
+    height: 30px;
+}
+
+
+.btn-standard-1:hover {
+    background-color: #565d5e;
+}
+
+
+.btn-danger-1:hover {
+    background-color: #961248;
+}
+
+.text-color-red {
+    color: #d4145a;
+}

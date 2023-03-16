@@ -9,5 +9,6 @@ namespace CSharks.NFEs.Domain.Interfaces.Repositories
 {
     public interface IEmitedNfRepository : IBaseRepository<EmitedNF>
     {
+        public EmitedNF GetByNoNfse(string noNfse);
     }
 }

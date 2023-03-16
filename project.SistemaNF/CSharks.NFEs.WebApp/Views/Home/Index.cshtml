@@ -100,7 +100,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(emiteds != null && emiteds.Any()){
+                        @if (emiteds != null && emiteds.Any())
+                        {
                             foreach (EmitedNF emited in emiteds)
                             {
                                 <tr>
@@ -109,7 +110,14 @@
                                     <td>@emited.NoNfse</td>
                                     <td> @emited.ClientName</td>
                                     <td>R$ @emited.ValueNF ,00</td>
-                                    <td style="color: green"> <b> Emitida </b></td>
+                                    @if (emited.Situation.Equals("Cancel"))
+                                    {
+                                        <td class="text-color-red"> <b> Cancelado </b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-color-green"> <b> Emitido </b></td>
+                                    }
                                 </tr>
                             }
                         }

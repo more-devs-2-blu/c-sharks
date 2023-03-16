@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Views\History\" />
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>

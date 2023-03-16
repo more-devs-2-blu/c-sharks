@@ -29,11 +29,11 @@ namespace CSharks.NFEs.WebApp.Controllers
             return View("~/Views/Nfe/Index.cshtml");
         }
         [HttpPost]
-        public async Task<IActionResult> CancelNF(EmitedNF emitedNF)
+        public async Task<IActionResult> CancelNF(string noNfse)
         { 
             if (ModelState.IsValid)
             {
-                NFEDTO nfe = new NFEDTO(emitedNF.NoNfse, _session.GetSession());
+                NFEDTO nfe = new NFEDTO(noNfse, _session.GetSession());
 
                 string dateNow = DateTime.Now.ToString("yy-MM-dd-HH-mm-ss");
                 string xmlFile = _serviceApi.GetFile(nfe);
@@ -41,14 +41,21 @@ namespace CSharks.NFEs.WebApp.Controllers
                 string xmlFilePath = Path.Combine(_environment.WebRootPath, "files", xmlFileName);
 
                 EmitedNF emited = await _serviceApi.CancelNF(xmlFile, xmlFilePath);
-                
-                EmitedNF emitedDao = new EmitedNF();
+
+                EmitedNF emitedDao = _emitedRepo.GetByNoNfse(noNfse); 
 
                 if (emited.Situation != null)
                 {
-                    emitedDao.Situation = emited.Situation;
-                    await _emitedRepo.Update(emitedDao);
-                    TempData["Success"] = "Nota emitida com sucesso";
+                    if(emited.Situation.Equals("Already canceled"))
+                    {
+                        TempData["Warning"] = "Nota já cancelada";
+                    }
+                    else
+                    {
+                        emitedDao.Situation = emited.Situation;
+                        await _emitedRepo.Update(emitedDao);
+                        TempData["Success"] = "Nota emitida com sucesso";
+                    }                    
                 }
             }
 

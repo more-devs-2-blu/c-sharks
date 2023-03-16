@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nfse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <nf>
+    <numero>104</numero>
+    <serie_nfse>1</serie_nfse>
+    <situacao>C</situacao>
+    <observacao>Teste</observacao>
+  </nf>
+  <prestador>
+    <cpfcnpj>25825307000152</cpfcnpj>
+    <cidade>8357</cidade>
+  </prestador>
+</nfse>
