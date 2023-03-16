@@ -8,12 +8,12 @@
 }
 
 <section>
-    <div class="container">
+    <div class="container mb-3">
         <div class="mt-3">
             @await Html.PartialAsync("_MessageResult")
         </div>
         <div class="form-control">
-            <form asp-action="EmmitNF" asp-controller="EmmitNF" method="POST">
+            <form asp-action="EmmitNF" asp-controller="EmmitNF" method="POST" class="mb-2">
                 <div class="mt-4">
                     <h2> Emitir uma nova Nota Fiscal </h2>
                 </div>
@@ -54,9 +54,8 @@
                     <label> Valor NF (R$) </label>
                     <input asp-for="ValueNF" class="form-control" />
                 </div>
-                <div class="row">
-                    <button type="submit" class="btn bg-shark text-white mt-4 ml-lg-2 col-2"> Emitir </button>
-                    <input type="checkbox" class="form-check-input mt-4 ml-lg-2" value="Exibir dados da nota" id="cb-notas">
+                <div class="mt-3 d-flex align-content-center">
+                    <button type="submit" class="btn bg-shark text-white col-2"> Emitir </button>
                 </div>
             </form>
         </div>
