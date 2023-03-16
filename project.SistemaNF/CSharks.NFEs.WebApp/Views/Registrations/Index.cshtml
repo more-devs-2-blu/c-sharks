@@ -63,7 +63,7 @@
     <script>
         function reload_js(src) {
             $('script[src="' + src + '"]').remove();
-            $('<script>').attr('src', src).appendTo('head');
+            $('<script>').attr('src', src).appendTo('body');
         }
     </script>
     <script>
@@ -72,7 +72,7 @@
                 url: `@Url.Action("Index", "Service")`,
                 success: (resp) => {
                     $('#register-area').html(resp);
-                    reload_js("/js/service.js")
+                    reload_js("/js/service.js");
                 }
             });
         });
@@ -89,7 +89,7 @@
                 url: `@Url.Action("Index", "Client")`,
                 success: (resp) => {
                     $('#register-area').html(resp);
-                    reload_js("/js/client.js")
+                    reload_js("/js/client.js");
                 }
             })
         });

@@ -2,7 +2,8 @@
 @using CSharks.NFEs.Domain.Models.NF_UTILS;
 @model Service;
 @{
-    List<ISQN> isqns = ViewBag.isqns; 
+    List<ISQN> isqns = ViewBag.isqns;
+    User user = ViewBag.enterpise;
     ViewData["Title"] = "Shark NFE - Registro Serviço";
 }
 
@@ -12,7 +13,7 @@
         @await Html.PartialAsync("_MessageResult")
     </div>
     <form id="form-service" asp-controller="Service" asp-action="Create" method="POST">
-        <input id="input-tom" type="hidden" value=""/>
+        <input id="input-tom" type="hidden" value="@user.Enterprise.City" />
          <div class="form-group"> 
             <label asp-for="codigo_item_lista_servico" class="control-label"> Código do Serviço </label>
             <select id="selectize-codigo-descricao-servico" class="">
