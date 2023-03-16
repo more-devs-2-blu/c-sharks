@@ -43,7 +43,7 @@ namespace CSharks.NFEs.WebApp.Controllers
 
                 NFEDTO nfe = new NFEDTO(
                     user, client, service, dto.ValueNF
-                    );
+                );
 
                 string dateNow = DateTime.Now.ToString("yy-MM-dd-HH-mm-ss");
                 string xmlFile = _serviceApi.GetFile(nfe);

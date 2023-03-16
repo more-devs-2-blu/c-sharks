@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nfse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <nf>
+    <valor_total>12</valor_total>
+  </nf>
+  <prestador>
+    <cpfcnpj>25825307000152</cpfcnpj>
+    <cidade>8357</cidade>
+  </prestador>
+  <tomador>
+    <tipo>F</tipo>
+    <endereco_informado>1</endereco_informado>
+    <cpfcnpj>43975686855</cpfcnpj>
+    <nome_razao_social>Carlos Eduardo dos Santos Junior</nome_razao_social>
+    <ie>16</ie>
+    <logradouro>Rua Gustavo Zimmermann</logradouro>
+    <bairro>Itoupava Central</bairro>
+    <cidade>8357</cidade>
+    <email>juninhocb@hotmail.com</email>
+    <numero_residencia>2421</numero_residencia>
+  </tomador>
+  <itens>
+    <lista>
+      <tributa_municipio_prestador>1</tributa_municipio_prestador>
+      <codigo_local_prestacao_servico>8357</codigo_local_prestacao_servico>
+      <codigo_item_lista_servico>503</codigo_item_lista_servico>
+      <descritivo>Laboratórios de análise na área veterinária.</descritivo>
+      <aliquota_item_lista_servico>5</aliquota_item_lista_servico>
+      <situacao_tributaria>0</situacao_tributaria>
+      <valor_tributavel>4</valor_tributavel>
+    </lista>
+  </itens>
+</nfse>
