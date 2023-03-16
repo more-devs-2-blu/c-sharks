@@ -21,8 +21,7 @@
         let checkbox = e.target;
         let inputTom = $('#codigo-tom')[0];
         if (checkbox.checked) {
-            //Buscar Código TOM da sessão;
-            let codigoTomEmpresa = "8845"
+            let codigoTomEmpresa = $('#input-tom').val();
             inputTom.readOnly = true;
             inputTom.value = codigoTomEmpresa;
         } else {
